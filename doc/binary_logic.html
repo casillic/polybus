@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module binary_logic</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module binary_logic</h1>
+<ul class="index"><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+
+
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#and_binary-2">and_binary/2*</a></td><td>
+ Performs Bitwise AND on two binaries.</td></tr>
+<tr><td valign="top"><a href="#and_binary-3">and_binary/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#and_gate-2">and_gate/2*</a></td><td>
+ ANDs two Bits.</td></tr>
+<tr><td valign="top"><a href="#asl_binary_with_flags-1">asl_binary_with_flags/1*</a></td><td>
+ Performs Arithmetic Shift Lift ASL.</td></tr>
+<tr><td valign="top"><a href="#asr_binary_with_flags-1">asr_binary_with_flags/1*</a></td><td>
+ Performs Arithmetic Shift Right ASL.</td></tr>
+<tr><td valign="top"><a href="#bit_addition_with_carry-2">bit_addition_with_carry/2*</a></td><td>
+ Adds two Bits.</td></tr>
+<tr><td valign="top"><a href="#bit_addition_with_carry-3">bit_addition_with_carry/3*</a></td><td>
+ Adds two Bits with Carry In.</td></tr>
+<tr><td valign="top"><a href="#byte_addition_with_flags-2">byte_addition_with_flags/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#byte_addition_with_flags-3">byte_addition_with_flags/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#byte_addition_with_flags-5">byte_addition_with_flags/5*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#complement_binary-1">complement_binary/1*</a></td><td>
+ Complement a Binary.</td></tr>
+<tr><td valign="top"><a href="#duplicate_bit-2">duplicate_bit/2*</a></td><td>
+ Duplicates a Bit.</td></tr>
+<tr><td valign="top"><a href="#duplicate_bit-3">duplicate_bit/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#each_bit-2">each_bit/2*</a></td><td>
+ Performs the function Fun on each bit in Bits.</td></tr>
+<tr><td valign="top"><a href="#each_bit-3">each_bit/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expand_to_size_with_expansion_bit-3">expand_to_size_with_expansion_bit/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expand_to_size_with_zeros-2">expand_to_size_with_zeros/2*</a></td><td>
+ Zero extends a group of bits.</td></tr>
+<tr><td valign="top"><a href="#generic_addition_with_flags-2">generic_addition_with_flags/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#generic_addition_with_flags-3">generic_addition_with_flags/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#generic_addition_with_flags-5">generic_addition_with_flags/5*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#generic_subtraction_with_flags-2">generic_subtraction_with_flags/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_bit-2">get_bit/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#inverter-1">inverter/1*</a></td><td>
+ Inverts a Bit.</td></tr>
+<tr><td valign="top"><a href="#nand_gate-2">nand_gate/2*</a></td><td>
+ NANDs two Bits.</td></tr>
+<tr><td valign="top"><a href="#or_gate-2">or_gate/2*</a></td><td>
+ ORs two Bits.</td></tr>
+<tr><td valign="top"><a href="#set_bit-3">set_bit/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#sign_extend-2">sign_extend/2*</a></td><td>
+ Sign extends a group of bits to the requested size.</td></tr>
+<tr><td valign="top"><a href="#twos_complement-1">twos_complement/1*</a></td><td>
+ Convert the bits to their twos complement.</td></tr>
+<tr><td valign="top"><a href="#twos_complement_inv-1">twos_complement_inv/1*</a></td><td>
+ Performs the inverse twos complement on the bits.</td></tr>
+<tr><td valign="top"><a href="#xor_gate-2">xor_gate/2*</a></td><td>
+ XORs two Bits.</td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="and_binary-2">and_binary/2 *</a></h3>
+<div class="spec">
+<p><tt>and_binary(Binary1::binary(), Binary2::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Performs Bitwise AND on two binaries<br>
+ The binaries must be the same length<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="and_binary-3">and_binary/3 *</a></h3>
+<div class="spec">
+<p><tt>and_binary(Binary1, Binary2, Result) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="and_gate-2">and_gate/2 *</a></h3>
+<div class="spec">
+<p><tt>and_gate(Bit1::binary(), Bit2::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ ANDs two Bits<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="asl_binary_with_flags-1">asl_binary_with_flags/1 *</a></h3>
+<div class="spec">
+<p><tt>asl_binary_with_flags(Binary::binary()) -&gt; {binary(), binary(), #{}}</tt><br></p>
+</div><p>
+ Performs Arithmetic Shift Lift ASL<br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="asr_binary_with_flags-1">asr_binary_with_flags/1 *</a></h3>
+<div class="spec">
+<p><tt>asr_binary_with_flags(Binary::binary()) -&gt; {binary(), binary(), #{}}</tt><br></p>
+</div><p>
+ Performs Arithmetic Shift Right ASL<br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="bit_addition_with_carry-2">bit_addition_with_carry/2 *</a></h3>
+<div class="spec">
+<p><tt>bit_addition_with_carry(Bit1::binary(), Bit2::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ Adds two Bits<br>
+ Returns: tuple {carry,result}<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="bit_addition_with_carry-3">bit_addition_with_carry/3 *</a></h3>
+<div class="spec">
+<p><tt>bit_addition_with_carry(Bit1::binary(), Bit2::binary(), Carry_In::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ Adds two Bits with Carry In<br>
+ Returns: tuple {carry,result}<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="byte_addition_with_flags-2">byte_addition_with_flags/2 *</a></h3>
+<div class="spec">
+<p><tt>byte_addition_with_flags(Bits1, Bits0) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="byte_addition_with_flags-3">byte_addition_with_flags/3 *</a></h3>
+<div class="spec">
+<p><tt>byte_addition_with_flags(Bits1, Bits0, Carry_In) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="byte_addition_with_flags-5">byte_addition_with_flags/5 *</a></h3>
+<div class="spec">
+<p><tt>byte_addition_with_flags(Bits1, Bits0, Carry_In, Result, Carry_Array) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="complement_binary-1">complement_binary/1 *</a></h3>
+<div class="spec">
+<p><tt>complement_binary(Binary::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Complement a Binary<br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="duplicate_bit-2">duplicate_bit/2 *</a></h3>
+<div class="spec">
+<p><tt>duplicate_bit(Times::non_neg_integer(), Bit::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Duplicates a Bit<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="duplicate_bit-3">duplicate_bit/3 *</a></h3>
+<div class="spec">
+<p><tt>duplicate_bit(Times, Bit, ACC) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="each_bit-2">each_bit/2 *</a></h3>
+<div class="spec">
+<p><tt>each_bit(Fun::function(), Bits::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Performs the function Fun on each bit in Bits<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="each_bit-3">each_bit/3 *</a></h3>
+<div class="spec">
+<p><tt>each_bit(Fun, Bits, ACC) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="expand_to_size_with_expansion_bit-3">expand_to_size_with_expansion_bit/3 *</a></h3>
+<div class="spec">
+<p><tt>expand_to_size_with_expansion_bit(Size_To_Add, Bits, Expansion_Bit) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="expand_to_size_with_zeros-2">expand_to_size_with_zeros/2 *</a></h3>
+<div class="spec">
+<p><tt>expand_to_size_with_zeros(Bits::binary(), Size::non_neg_integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Zero extends a group of bits<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="generic_addition_with_flags-2">generic_addition_with_flags/2 *</a></h3>
+<div class="spec">
+<p><tt>generic_addition_with_flags(Bits1, Bits0) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="generic_addition_with_flags-3">generic_addition_with_flags/3 *</a></h3>
+<div class="spec">
+<p><tt>generic_addition_with_flags(Bits1, Bits0, Carry_In) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="generic_addition_with_flags-5">generic_addition_with_flags/5 *</a></h3>
+<div class="spec">
+<p><tt>generic_addition_with_flags(Bits1, Bits0, Carry_In, Result, Carry_Array) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="generic_subtraction_with_flags-2">generic_subtraction_with_flags/2 *</a></h3>
+<div class="spec">
+<p><tt>generic_subtraction_with_flags(Minuend, Subtrahend) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_bit-2">get_bit/2 *</a></h3>
+<div class="spec">
+<p><tt>get_bit(Byte, Num) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="inverter-1">inverter/1 *</a></h3>
+<div class="spec">
+<p><tt>inverter(Bit::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Inverts a Bit<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="nand_gate-2">nand_gate/2 *</a></h3>
+<div class="spec">
+<p><tt>nand_gate(Bit1::binary(), Bit2::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ NANDs two Bits<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="or_gate-2">or_gate/2 *</a></h3>
+<div class="spec">
+<p><tt>or_gate(Bit1::binary(), Bit2::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ ORs two Bits<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="set_bit-3">set_bit/3 *</a></h3>
+<div class="spec">
+<p><tt>set_bit(Byte, Num, Bit_Value) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="sign_extend-2">sign_extend/2 *</a></h3>
+<div class="spec">
+<p><tt>sign_extend(Bits::binary(), Size::non_neg_integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sign extends a group of bits to the requested size<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="twos_complement-1">twos_complement/1 *</a></h3>
+<div class="spec">
+<p><tt>twos_complement(Bits::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Convert the bits to their twos complement<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="twos_complement_inv-1">twos_complement_inv/1 *</a></h3>
+<div class="spec">
+<p><tt>twos_complement_inv(Bits::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Performs the inverse twos complement on the bits<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="xor_gate-2">xor_gate/2 *</a></h3>
+<div class="spec">
+<p><tt>xor_gate(Bit1::binary(), Bit2::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ XORs two Bits<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, Jan 2 2017, 10:30:46.</i></p>
+</body>
+</html>

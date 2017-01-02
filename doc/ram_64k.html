@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module ram_64k</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module ram_64k</h1>
+<ul class="index"><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+
+
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#clear_memory-1">clear_memory/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#code_change-3">code_change/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_byte_pos-2">get_byte_pos/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_memory-1">get_memory/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_pos-2">get_pos/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#handle_call-3">handle_call/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#handle_cast-2">handle_cast/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#handle_info-2">handle_info/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#init-1">init/1*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#initalized_memory-0">initalized_memory/0*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#initalized_memory-1">initalized_memory/1*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#memory_direct-2">memory_direct/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#memory_extended-3">memory_extended/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#memory_immediate-2">memory_immediate/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_byte_pos-3">set_byte_pos/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_memory-2">set_memory/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_pos_value-3">set_pos_value/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_word_pos-3">set_word_pos/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#shut_down-1">shut_down/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_link-1">start_link/1</a></td><td></td></tr>
+<tr><td valign="top"><a href="#terminate-2">terminate/2*</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="clear_memory-1">clear_memory/1</a></h3>
+<div class="spec">
+<p><tt>clear_memory(Name) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="code_change-3">code_change/3 *</a></h3>
+<div class="spec">
+<p><tt>code_change(OldVsn, State, Extra) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_byte_pos-2">get_byte_pos/2 *</a></h3>
+<div class="spec">
+<p><tt>get_byte_pos(Data, Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_memory-1">get_memory/1</a></h3>
+<div class="spec">
+<p><tt>get_memory(Name) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_pos-2">get_pos/2</a></h3>
+<div class="spec">
+<p><tt>get_pos(Name, Position) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="handle_call-3">handle_call/3 *</a></h3>
+<div class="spec">
+<p><tt>handle_call(X1, From, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="handle_cast-2">handle_cast/2 *</a></h3>
+<div class="spec">
+<p><tt>handle_cast(X1, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="handle_info-2">handle_info/2 *</a></h3>
+<div class="spec">
+<p><tt>handle_info(Info, State) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="init-1">init/1 *</a></h3>
+<div class="spec">
+<p><tt>init(Args) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="initalized_memory-0">initalized_memory/0 *</a></h3>
+<div class="spec">
+<p><tt>initalized_memory() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="initalized_memory-1">initalized_memory/1 *</a></h3>
+<div class="spec">
+<p><tt>initalized_memory(Size) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="memory_direct-2">memory_direct/2 *</a></h3>
+<div class="spec">
+<p><tt>memory_direct(Op_Code, Direct) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="memory_extended-3">memory_extended/3 *</a></h3>
+<div class="spec">
+<p><tt>memory_extended(Op_Code, Value, Location) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="memory_immediate-2">memory_immediate/2 *</a></h3>
+<div class="spec">
+<p><tt>memory_immediate(Op_Code, Immediate) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="set_byte_pos-3">set_byte_pos/3</a></h3>
+<div class="spec">
+<p><tt>set_byte_pos(Data, Byte, Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="set_memory-2">set_memory/2</a></h3>
+<div class="spec">
+<p><tt>set_memory(Name, Memory) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="set_pos_value-3">set_pos_value/3</a></h3>
+<div class="spec">
+<p><tt>set_pos_value(Name, Position, Value) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="set_word_pos-3">set_word_pos/3</a></h3>
+<div class="spec">
+<p><tt>set_word_pos(Data, Word, Position) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="shut_down-1">shut_down/1</a></h3>
+<div class="spec">
+<p><tt>shut_down(Name) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="start_link-1">start_link/1</a></h3>
+<div class="spec">
+<p><tt>start_link(Name) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="terminate-2">terminate/2 *</a></h3>
+<div class="spec">
+<p><tt>terminate(Reason, X2) -&gt; any()</tt></p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, Jan 2 2017, 10:30:46.</i></p>
+</body>
+</html>

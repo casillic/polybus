@@ -1,0 +1,3554 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module mc6309</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module mc6309</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>MC6309 CPU Emulator.
+
+
+<h2><a name="description">Description</a></h2>MC6309 CPU Emulator
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#abx_inherent_3a-3">abx_inherent_3a/3*</a></td><td>
+ ABX Instruction.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_a_accumulator-4">accumulator_offset_from_r_a_accumulator/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_a_accumulator_address_only-4">accumulator_offset_from_r_a_accumulator_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_b_accumulator-4">accumulator_offset_from_r_b_accumulator/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_b_accumulator_address_only-4">accumulator_offset_from_r_b_accumulator_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_d_accumulator-4">accumulator_offset_from_r_d_accumulator/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_d_accumulator_address_only-4">accumulator_offset_from_r_d_accumulator_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_e_accumulator-4">accumulator_offset_from_r_e_accumulator/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_e_accumulator_address_only-4">accumulator_offset_from_r_e_accumulator_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_f_accumulator-4">accumulator_offset_from_r_f_accumulator/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_f_accumulator_address_only-4">accumulator_offset_from_r_f_accumulator_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_w_accumulator-4">accumulator_offset_from_r_w_accumulator/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#accumulator_offset_from_r_w_accumulator_address_only-4">accumulator_offset_from_r_w_accumulator_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#adc_generic_part-7">adc_generic_part/7*</a></td><td>
+ ADC Instruction (8 Bit).</td></tr>
+<tr><td valign="top"><a href="#adca_direct_99-3">adca_direct_99/3*</a></td><td>
+ ADC(A).</td></tr>
+<tr><td valign="top"><a href="#adca_extended_b9-3">adca_extended_b9/3*</a></td><td>
+ ADC(A).</td></tr>
+<tr><td valign="top"><a href="#adca_immediate_89-3">adca_immediate_89/3*</a></td><td>
+ ADC(A).</td></tr>
+<tr><td valign="top"><a href="#adca_indexed_a9-3">adca_indexed_a9/3*</a></td><td>
+ ADC(A).</td></tr>
+<tr><td valign="top"><a href="#adcb_direct_d9-3">adcb_direct_d9/3*</a></td><td>
+ ADC(B).</td></tr>
+<tr><td valign="top"><a href="#adcb_extended_f9-3">adcb_extended_f9/3*</a></td><td>
+ ADC(B).</td></tr>
+<tr><td valign="top"><a href="#adcb_immediate_c9-3">adcb_immediate_c9/3*</a></td><td>
+ ADC(B).</td></tr>
+<tr><td valign="top"><a href="#adcb_indexed_e9-3">adcb_indexed_e9/3*</a></td><td>
+ ADC(B).</td></tr>
+<tr><td valign="top"><a href="#adcd_direct_1099-3">adcd_direct_1099/3*</a></td><td>
+ ADCD (6309 ONLY).</td></tr>
+<tr><td valign="top"><a href="#adcd_extended_10b9-3">adcd_extended_10b9/3*</a></td><td>
+ ADCD (6309 ONLY).</td></tr>
+<tr><td valign="top"><a href="#adcd_generic_part-5">adcd_generic_part/5*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#adcd_immediate_1089-3">adcd_immediate_1089/3*</a></td><td>
+ ADCD (6309 ONLY).</td></tr>
+<tr><td valign="top"><a href="#adcd_indexed_10a9-3">adcd_indexed_10a9/3*</a></td><td>
+ ADCD (6309 ONLY).</td></tr>
+<tr><td valign="top"><a href="#adcr_immediate_1031-3">adcr_immediate_1031/3*</a></td><td>
+ ADCR (6309 ONLY).</td></tr>
+<tr><td valign="top"><a href="#add_generic_part-7">add_generic_part/7*</a></td><td>
+ ADD Generic Part (8 and 16 Bit).</td></tr>
+<tr><td valign="top"><a href="#adda_direct_9b-3">adda_direct_9b/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#adda_extended_bb-3">adda_extended_bb/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#adda_immediate_8b-3">adda_immediate_8b/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#adda_indexed_ab-3">adda_indexed_ab/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addb_direct_db-3">addb_direct_db/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addb_extended_fb-3">addb_extended_fb/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addb_immediate_cb-3">addb_immediate_cb/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addb_indexed_eb-3">addb_indexed_eb/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addd_direct_d3-3">addd_direct_d3/3*</a></td><td>
+ ADD (16-bit).</td></tr>
+<tr><td valign="top"><a href="#addd_extended_f3-3">addd_extended_f3/3*</a></td><td>
+ ADD (16-bit).</td></tr>
+<tr><td valign="top"><a href="#addd_immediate_c3-3">addd_immediate_c3/3*</a></td><td>
+ ADD (16-bit).</td></tr>
+<tr><td valign="top"><a href="#addd_indexed_e3-3">addd_indexed_e3/3*</a></td><td>
+ ADD (16-bit).</td></tr>
+<tr><td valign="top"><a href="#adde_direct_119b-3">adde_direct_119b/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#adde_extended_11bb-3">adde_extended_11bb/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#adde_immediate_118b-3">adde_immediate_118b/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#adde_indexed_11ab-3">adde_indexed_11ab/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addf_direct_11db-3">addf_direct_11db/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addf_extended_11fb-3">addf_extended_11fb/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addf_immediate_11cb-3">addf_immediate_11cb/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addf_indexed_11eb-3">addf_indexed_11eb/3*</a></td><td>
+ ADD (8-bit).</td></tr>
+<tr><td valign="top"><a href="#addr_immediate_1030-3">addr_immediate_1030/3*</a></td><td>
+ ADDR (6309 ONLY).</td></tr>
+<tr><td valign="top"><a href="#addw_direct_109b-3">addw_direct_109b/3*</a></td><td>
+ ADD (16-bit).</td></tr>
+<tr><td valign="top"><a href="#addw_extended_10bb-3">addw_extended_10bb/3*</a></td><td>
+ ADD (16-bit).</td></tr>
+<tr><td valign="top"><a href="#addw_immediate_108b-3">addw_immediate_108b/3*</a></td><td>
+ ADD (16-bit).</td></tr>
+<tr><td valign="top"><a href="#addw_indexed_10ab-3">addw_indexed_10ab/3*</a></td><td>
+ ADD (16-bit).</td></tr>
+<tr><td valign="top"><a href="#aim_direct_02-3">aim_direct_02/3*</a></td><td>
+ AIM (6309 Only).</td></tr>
+<tr><td valign="top"><a href="#aim_extended_72-3">aim_extended_72/3*</a></td><td>
+ AIM (6309 Only).</td></tr>
+<tr><td valign="top"><a href="#aim_generic_part-7">aim_generic_part/7*</a></td><td>
+ AIM (6309 Only).</td></tr>
+<tr><td valign="top"><a href="#aim_indexed_62-3">aim_indexed_62/3*</a></td><td>
+ AIM (6309 Only).</td></tr>
+<tr><td valign="top"><a href="#and_generic_part-7">and_generic_part/7*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#anda_direct_94-3">anda_direct_94/3*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#anda_extended_b4-3">anda_extended_b4/3*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#anda_immediate_84-3">anda_immediate_84/3*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#anda_indexed_a4-3">anda_indexed_a4/3*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#andb_direct_d4-3">andb_direct_d4/3*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#andb_extended_f4-3">andb_extended_f4/3*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#andb_immediate_c4-3">andb_immediate_c4/3*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#andb_indexed_e4-3">andb_indexed_e4/3*</a></td><td>
+ AND (8-BIT).</td></tr>
+<tr><td valign="top"><a href="#andcc_immediate_1c-3">andcc_immediate_1c/3*</a></td><td>
+ ANDCC.</td></tr>
+<tr><td valign="top"><a href="#andd_direct_1094-3">andd_direct_1094/3*</a></td><td>
+ ANDD (6309).</td></tr>
+<tr><td valign="top"><a href="#andd_extended_10b4-3">andd_extended_10b4/3*</a></td><td>
+ ANDD (6309).</td></tr>
+<tr><td valign="top"><a href="#andd_generic_part-5">andd_generic_part/5*</a></td><td>
+ ANDD (6309).</td></tr>
+<tr><td valign="top"><a href="#andd_immediate_1084-3">andd_immediate_1084/3*</a></td><td>
+ ANDD (6309).</td></tr>
+<tr><td valign="top"><a href="#andd_indexed_10a4-3">andd_indexed_10a4/3*</a></td><td>
+ ANDD (6309).</td></tr>
+<tr><td valign="top"><a href="#andr_immediate_1034-3">andr_immediate_1034/3*</a></td><td>
+ ANDR (6309).</td></tr>
+<tr><td valign="top"><a href="#asl_direct_08-3">asl_direct_08/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asl_extended_78-3">asl_extended_78/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asl_generic_part-6">asl_generic_part/6*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asl_indexed_68-3">asl_indexed_68/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asla_inherent_48-3">asla_inherent_48/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#aslb_inherent_58-3">aslb_inherent_58/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asld_inherent_1048-3">asld_inherent_1048/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asr_direct_07-3">asr_direct_07/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asr_extended_77-3">asr_extended_77/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asr_generic_part-6">asr_generic_part/6*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asr_indexed_67-3">asr_indexed_67/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asra_inherent_47-3">asra_inherent_47/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asrb_inherent_57-3">asrb_inherent_57/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#asrd_inherent_1047-3">asrd_inherent_1047/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#auto_decrement_of_r_pre_decrement_by_1-4">auto_decrement_of_r_pre_decrement_by_1/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#auto_decrement_of_r_pre_decrement_by_1_address_only-4">auto_decrement_of_r_pre_decrement_by_1_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#auto_decrement_of_r_pre_decrement_by_2-4">auto_decrement_of_r_pre_decrement_by_2/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#auto_decrement_of_r_pre_decrement_by_2_address_only-4">auto_decrement_of_r_pre_decrement_by_2_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#auto_decrement_of_w_pre_decrement_by_2-4">auto_decrement_of_w_pre_decrement_by_2/4*</a></td><td>
+ Uses Register W.</td></tr>
+<tr><td valign="top"><a href="#auto_decrement_of_w_pre_decrement_by_2_address_only-4">auto_decrement_of_w_pre_decrement_by_2_address_only/4*</a></td><td>
+ Uses Register W.</td></tr>
+<tr><td valign="top"><a href="#auto_increment_of_r_post_increment_by_1-4">auto_increment_of_r_post_increment_by_1/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#auto_increment_of_r_post_increment_by_1_address_only-4">auto_increment_of_r_post_increment_by_1_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#auto_increment_of_r_post_increment_by_2-4">auto_increment_of_r_post_increment_by_2/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#auto_increment_of_r_post_increment_by_2_address_only-4">auto_increment_of_r_post_increment_by_2_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#auto_increment_of_w_post_increment_by_2-4">auto_increment_of_w_post_increment_by_2/4*</a></td><td>
+ Uses Register W.</td></tr>
+<tr><td valign="top"><a href="#auto_increment_of_w_post_increment_by_2_address_only-4">auto_increment_of_w_post_increment_by_2_address_only/4*</a></td><td>
+ Uses Register W.</td></tr>
+<tr><td valign="top"><a href="#band_direct_1130-3">band_direct_1130/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#band_reg_name_decode-1">band_reg_name_decode/1*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bcc_relative_24-3">bcc_relative_24/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bcs_relative_25-3">bcs_relative_25/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#beor_direct_1134-3">beor_direct_1134/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#beq_relative_27-3">beq_relative_27/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bge_relative_2c-3">bge_relative_2c/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bgt_relative_2e-3">bgt_relative_2e/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bhi_relative_22-3">bhi_relative_22/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bhs_relative_24-3">bhs_relative_24/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#biand_direct_1131-3">biand_direct_1131/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bieor_direct_1135-3">bieor_direct_1135/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bior_direct_1133-3">bior_direct_1133/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bit_generic_part-6">bit_generic_part/6*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bita_direct_95-3">bita_direct_95/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bita_extended_b5-3">bita_extended_b5/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bita_immediate_85-3">bita_immediate_85/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bita_indexed_a5-3">bita_indexed_a5/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitb_direct_d5-3">bitb_direct_d5/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitb_extended_f5-3">bitb_extended_f5/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitb_immediate_c5-3">bitb_immediate_c5/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitb_indexed_e5-3">bitb_indexed_e5/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitd_direct_1095-3">bitd_direct_1095/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitd_extended_10b5-3">bitd_extended_10b5/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitd_immediate_1085-3">bitd_immediate_1085/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitd_indexed_10a5-3">bitd_indexed_10a5/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bitmd_immediate_113c-3">bitmd_immediate_113c/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ble_relative_2f-3">ble_relative_2f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#blo_relative_25-3">blo_relative_25/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bls_relative_23-3">bls_relative_23/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#blt_relative_2d-3">blt_relative_2d/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bmi_relative_2b-3">bmi_relative_2b/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bne_relative_26-3">bne_relative_26/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bor_direct_1132-3">bor_direct_1132/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bpl_relative_2a-3">bpl_relative_2a/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bra_relative_20-3">bra_relative_20/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#brn_relative_21-3">brn_relative_21/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bsr_relative_8d-3">bsr_relative_8d/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bvc_relative_28-3">bvc_relative_28/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#bvs_relative_29-3">bvs_relative_29/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#check_cc_status_update-4">check_cc_status_update/4*</a></td><td>
+ Checks if Key (atom) is in the Map.</td></tr>
+<tr><td valign="top"><a href="#clr_direct_0f-3">clr_direct_0f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clr_extended_7f-3">clr_extended_7f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clr_generic_part-5">clr_generic_part/5*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clr_indexed_6f-3">clr_indexed_6f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clra_inherent_4f-3">clra_inherent_4f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clrb_inherent_5f-3">clrb_inherent_5f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clrd_inherent_104f-3">clrd_inherent_104f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clre_inherent_114f-3">clre_inherent_114f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clrf_inherent_115f-3">clrf_inherent_115f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clrw_inherent_105f-3">clrw_inherent_105f/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmp_generic_part-6">cmp_generic_part/6*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpa_direct_91-3">cmpa_direct_91/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpa_extended_b1-3">cmpa_extended_b1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpa_immediate_81-3">cmpa_immediate_81/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpa_indexed_a1-3">cmpa_indexed_a1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpb_direct_d1-3">cmpb_direct_d1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpb_extended_f1-3">cmpb_extended_f1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpb_immediate_c1-3">cmpb_immediate_c1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpb_indexed_e1-3">cmpb_indexed_e1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpd_direct_0093-3">cmpd_direct_0093/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpd_extended_00b3-3">cmpd_extended_00b3/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpd_immediate_0083-3">cmpd_immediate_0083/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpd_indexed_00a3-3">cmpd_indexed_00a3/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpe_direct_1191-3">cmpe_direct_1191/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpe_extended_11b1-3">cmpe_extended_11b1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpe_immediate_1181-3">cmpe_immediate_1181/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpe_indexed_11a1-3">cmpe_indexed_11a1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpf_direct_11d1-3">cmpf_direct_11d1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpf_extended_11f1-3">cmpf_extended_11f1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpf_immediate_11c1-3">cmpf_immediate_11c1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpf_indexed_11e1-3">cmpf_indexed_11e1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpr_immediate_1037-3">cmpr_immediate_1037/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmps_direct_019C-3">cmps_direct_019C/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmps_extended_01bc-3">cmps_extended_01bc/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmps_immediate_018C-3">cmps_immediate_018C/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmps_indexed_01ac-3">cmps_indexed_01ac/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpu_direct_0193-3">cmpu_direct_0193/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpu_extended_01b3-3">cmpu_extended_01b3/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpu_immediate_0183-3">cmpu_immediate_0183/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpu_indexed_01a3-3">cmpu_indexed_01a3/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpw_direct_0091-3">cmpw_direct_0091/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpw_extended_00b1-3">cmpw_extended_00b1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpw_immediate_0081-3">cmpw_immediate_0081/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpw_indexed_00a1-3">cmpw_indexed_00a1/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpx_direct_9c-3">cmpx_direct_9c/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpx_extended_bc-3">cmpx_extended_bc/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpx_immediate_8c-3">cmpx_immediate_8c/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpx_indexed_ac-3">cmpx_indexed_ac/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpy_direct_009c-3">cmpy_direct_009c/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpy_extended_00bc-3">cmpy_extended_00bc/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpy_immediate_008c-3">cmpy_immediate_008c/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cmpy_indexed_00ac-3">cmpy_indexed_00ac/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#com_generic_part-6">com_generic_part/6*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_pc_16_bit_offset-4">constant_offset_from_pc_16_bit_offset/4*</a></td><td>
+ Uses Register PC.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_pc_16_bit_offset_address_only-4">constant_offset_from_pc_16_bit_offset_address_only/4*</a></td><td>
+ Uses Register PC.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_pc_8_bit_offset-4">constant_offset_from_pc_8_bit_offset/4*</a></td><td>
+ Uses Register PC.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_pc_8_bit_offset_address_only-4">constant_offset_from_pc_8_bit_offset_address_only/4*</a></td><td>
+ Uses Register PC.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_r_16_bit_offset-4">constant_offset_from_r_16_bit_offset/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_r_16_bit_offset_address_only-4">constant_offset_from_r_16_bit_offset_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_r_5_bit_offset_direct-4">constant_offset_from_r_5_bit_offset_direct/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_r_5_bit_offset_direct_address_only-4">constant_offset_from_r_5_bit_offset_direct_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_r_8_bit_offset-4">constant_offset_from_r_8_bit_offset/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_r_8_bit_offset_address_only-4">constant_offset_from_r_8_bit_offset_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_r_no_offset-4">constant_offset_from_r_no_offset/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_r_no_offset_address_only-4">constant_offset_from_r_no_offset_address_only/4*</a></td><td>
+ Uses Register R which is encoded in the post-byte.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_w_16_bit_offset-4">constant_offset_from_w_16_bit_offset/4*</a></td><td>
+ Uses Register W.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_w_16_bit_offset_address_only-4">constant_offset_from_w_16_bit_offset_address_only/4*</a></td><td>
+ Uses Register W.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_w_no_offset-4">constant_offset_from_w_no_offset/4*</a></td><td>
+ Uses Register W.</td></tr>
+<tr><td valign="top"><a href="#constant_offset_from_w_no_offset_address_only-4">constant_offset_from_w_no_offset_address_only/4*</a></td><td>
+ Uses Register W.</td></tr>
+<tr><td valign="top"><a href="#cpu_clear-0">cpu_clear/0*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cpu_get_a-1">cpu_get_a/1*</a></td><td>
+ Gets the A Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_b-1">cpu_get_b/1*</a></td><td>
+ Gets the B Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc-1">cpu_get_cc/1*</a></td><td>
+ Gets the CC Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc_c-1">cpu_get_cc_c/1*</a></td><td>
+ Gets the CC Register C bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc_e-1">cpu_get_cc_e/1*</a></td><td>
+ Gets the CC Register E bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc_f-1">cpu_get_cc_f/1*</a></td><td>
+ Gets the CC Register F bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc_h-1">cpu_get_cc_h/1*</a></td><td>
+ Gets the CC Register H bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc_i-1">cpu_get_cc_i/1*</a></td><td>
+ Gets the CC Register I bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc_n-1">cpu_get_cc_n/1*</a></td><td>
+ Gets the CC Register N bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc_v-1">cpu_get_cc_v/1*</a></td><td>
+ Gets the CC Register V bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_cc_z-1">cpu_get_cc_z/1*</a></td><td>
+ Gets the CC Register Z bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_d-1">cpu_get_d/1*</a></td><td>
+ Gets the D Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_dp-1">cpu_get_dp/1*</a></td><td>
+ Gets the DP Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_e-1">cpu_get_e/1*</a></td><td>
+ Gets the E Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_f-1">cpu_get_f/1*</a></td><td>
+ Gets the F Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_firq-1">cpu_get_firq/1*</a></td><td>
+ Gets the FIRQ bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_halt-1">cpu_get_halt/1*</a></td><td>
+ Gets the HALT bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_irq-1">cpu_get_irq/1*</a></td><td>
+ Gets the IRQ bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_md-1">cpu_get_md/1*</a></td><td>
+ Gets the MD Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_md_div0-1">cpu_get_md_div0/1*</a></td><td>
+ Gets the MD Register DIV0 bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_md_fm-1">cpu_get_md_fm/1*</a></td><td>
+ Gets the MD Register FM bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_md_il-1">cpu_get_md_il/1*</a></td><td>
+ Gets the MD Register IL bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_md_nm-1">cpu_get_md_nm/1*</a></td><td>
+ Gets the MD Register NM bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_nmi-1">cpu_get_nmi/1*</a></td><td>
+ Gets the NMI bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_pc-1">cpu_get_pc/1*</a></td><td>
+ Gets the PC Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_q-1">cpu_get_q/1*</a></td><td>
+ Gets the Q Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_reserved-1">cpu_get_reserved/1*</a></td><td>
+ Gets the RESERVED bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_reset-1">cpu_get_reset/1*</a></td><td>
+ Gets the RESET bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_s-1">cpu_get_s/1*</a></td><td>
+ Gets the S Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_swi-1">cpu_get_swi/1*</a></td><td>
+ Gets the SWI bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_swi2-1">cpu_get_swi2/1*</a></td><td>
+ Gets the SWI2 bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_swi3-1">cpu_get_swi3/1*</a></td><td>
+ Gets the SWI3 bit from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_u-1">cpu_get_u/1*</a></td><td>
+ Gets the U Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_v-1">cpu_get_v/1*</a></td><td>
+ Gets the V Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_w-1">cpu_get_w/1*</a></td><td>
+ Gets the W Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_x-1">cpu_get_x/1*</a></td><td>
+ Gets the X Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_y-1">cpu_get_y/1*</a></td><td>
+ Gets the Y Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_get_zero-1">cpu_get_zero/1*</a></td><td>
+ Gets the Zero Register bits from CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_perform_actions-1">cpu_perform_actions/1*</a></td><td>
+ Performs a list of actions on the CPU.</td></tr>
+<tr><td valign="top"><a href="#cpu_perform_actions-2">cpu_perform_actions/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cpu_set_a-2">cpu_set_a/2*</a></td><td>
+ Sets the A Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_b-2">cpu_set_b/2*</a></td><td>
+ Sets the B Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc-2">cpu_set_cc/2*</a></td><td>
+ Sets the CC Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc_c-2">cpu_set_cc_c/2*</a></td><td>
+ Sets the CC Register C Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc_e-2">cpu_set_cc_e/2*</a></td><td>
+ Sets the CC Register E Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc_f-2">cpu_set_cc_f/2*</a></td><td>
+ Sets the CC Register F Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc_h-2">cpu_set_cc_h/2*</a></td><td>
+ Sets the CC Register H Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc_i-2">cpu_set_cc_i/2*</a></td><td>
+ Sets the CC Register I Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc_n-2">cpu_set_cc_n/2*</a></td><td>
+ Sets the CC Register N Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc_v-2">cpu_set_cc_v/2*</a></td><td>
+ Sets the CC Register V Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_cc_z-2">cpu_set_cc_z/2*</a></td><td>
+ Sets the CC Register Z Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_d-2">cpu_set_d/2*</a></td><td>
+ Sets the D Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_dp-2">cpu_set_dp/2*</a></td><td>
+ Sets the DP Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_e-2">cpu_set_e/2*</a></td><td>
+ Sets the E Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_f-2">cpu_set_f/2*</a></td><td>
+ Sets the F Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_firq-2">cpu_set_firq/2*</a></td><td>
+ Sets the FIRQ bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_halt-2">cpu_set_halt/2*</a></td><td>
+ Sets the HALT bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_irq-2">cpu_set_irq/2*</a></td><td>
+ Sets the IRQ bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_md-2">cpu_set_md/2*</a></td><td>
+ Sets the MD Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_md_div0-2">cpu_set_md_div0/2*</a></td><td>
+ Sets the MD Register DIV0 Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_md_fm-2">cpu_set_md_fm/2*</a></td><td>
+ Sets the MD Register FM Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_md_il-2">cpu_set_md_il/2*</a></td><td>
+ Sets the MD Register IL Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_md_nm-2">cpu_set_md_nm/2*</a></td><td>
+ Sets the MD Register NM Bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_nmi-2">cpu_set_nmi/2*</a></td><td>
+ Sets the NMI bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_pc-2">cpu_set_pc/2*</a></td><td>
+ Sets the PC Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_q-2">cpu_set_q/2*</a></td><td>
+ Sets the Q Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_reserved-2">cpu_set_reserved/2*</a></td><td>
+ Sets the RESERVED bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_reset-2">cpu_set_reset/2*</a></td><td>
+ Sets the Reset bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_s-2">cpu_set_s/2*</a></td><td>
+ Sets the S Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_swi-2">cpu_set_swi/2*</a></td><td>
+ Sets the SWI bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_swi2-2">cpu_set_swi2/2*</a></td><td>
+ Sets the SWI2 bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_swi3-2">cpu_set_swi3/2*</a></td><td>
+ Sets the SWI3 bit in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_u-2">cpu_set_u/2*</a></td><td>
+ Sets the U Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_v-2">cpu_set_v/2*</a></td><td>
+ Sets the V Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_w-2">cpu_set_w/2*</a></td><td>
+ Sets the W Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_x-2">cpu_set_x/2*</a></td><td>
+ Sets the X Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_y-2">cpu_set_y/2*</a></td><td>
+ Sets the Y Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#cpu_set_zero-2">cpu_set_zero/2*</a></td><td>
+ Sets the ZERO Register in CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#decode_inter_register_actual_source-3">decode_inter_register_actual_source/3*</a></td><td>
+ Decodes the Inter Register actual source value.</td></tr>
+<tr><td valign="top"><a href="#decode_inter_register_bits-1">decode_inter_register_bits/1*</a></td><td>
+ Decode an Inter Register Bit encoding to the corresponding register name (atom).</td></tr>
+<tr><td valign="top"><a href="#decode_inter_register_post_byte-1">decode_inter_register_post_byte/1*</a></td><td>
+ Decodes the inter register names from a post byte.</td></tr>
+<tr><td valign="top"><a href="#direct_1_address-3">direct_1_address/3*</a></td><td>
+ Get the value (8-bit) from a direct request.</td></tr>
+<tr><td valign="top"><a href="#direct_1_address_address_only-3">direct_1_address_address_only/3*</a></td><td>
+ Get the address only from a direct request.</td></tr>
+<tr><td valign="top"><a href="#direct_2_address-3">direct_2_address/3*</a></td><td>
+ Get the value (16-bit) from a direct request.</td></tr>
+<tr><td valign="top"><a href="#direct_2_address_address_only-3">direct_2_address_address_only/3*</a></td><td>
+ Get the address only from a direct request.</td></tr>
+<tr><td valign="top"><a href="#dont_care-0">dont_care/0*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#execution-2">execution/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#extended_indirect_16_bit_address-4">extended_indirect_16_bit_address/4*</a></td><td>
+ Used 16-bit address value from after the post-byte.</td></tr>
+<tr><td valign="top"><a href="#extended_indirect_16_bit_address_address_only-4">extended_indirect_16_bit_address_address_only/4*</a></td><td>
+ Used 16-bit address value from after the post-byte.</td></tr>
+<tr><td valign="top"><a href="#generate_n_z_flags_map-1">generate_n_z_flags_map/1*</a></td><td>
+ Get the flag map of the value for n and z flags.</td></tr>
+<tr><td valign="top"><a href="#get_byte_pos-2">get_byte_pos/2*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_lower_8_reg_16-1">get_lower_8_reg_16/1*</a></td><td>
+ Extracts the lower 8 bytes of a 16 bit register.</td></tr>
+<tr><td valign="top"><a href="#get_n_flag_of_value-1">get_n_flag_of_value/1*</a></td><td>
+ Get the Negative Flag from a value.</td></tr>
+<tr><td valign="top"><a href="#get_register_from_name-2">get_register_from_name/2*</a></td><td>
+ Gets the Register based on name (atom).</td></tr>
+<tr><td valign="top"><a href="#get_size_of_register-1">get_size_of_register/1*</a></td><td>
+ Get the bit size of a register (atom).</td></tr>
+<tr><td valign="top"><a href="#get_z_flag_of_value-1">get_z_flag_of_value/1*</a></td><td>
+ Get the Zero Flag from a value.</td></tr>
+<tr><td valign="top"><a href="#immediate_1_address-3">immediate_1_address/3*</a></td><td>
+ Get the immediate data (8-bit) at pos from the Data.</td></tr>
+<tr><td valign="top"><a href="#immediate_2_address-3">immediate_2_address/3*</a></td><td>
+ Get the immediate data (16-bit) at pos from the Data.</td></tr>
+<tr><td valign="top"><a href="#index_reg_set_value-3">index_reg_set_value/3*</a></td><td>
+ Set a value to a register determined by RR encoding.</td></tr>
+<tr><td valign="top"><a href="#index_reg_value-2">index_reg_value/2*</a></td><td>
+ Extracts the value of the encode Register RR from the provided CPU_Data.</td></tr>
+<tr><td valign="top"><a href="#indexed_1_address-3">indexed_1_address/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#indexed_1_address_address_only-3">indexed_1_address_address_only/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#indexed_2_address-3">indexed_2_address/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#indexed_2_address_address_only-3">indexed_2_address_address_only/3*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#indexed_address-4">indexed_address/4*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#indexed_address_address_only-4">indexed_address_address_only/4*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#pc_1_inc-1">pc_1_inc/1*</a></td><td>
+ Takes a CPU_Data and increases the PC value by 1.</td></tr>
+<tr><td valign="top"><a href="#pc_2_inc-1">pc_2_inc/1*</a></td><td>
+ Takes a CPU_Data and increases the PC value by 2.</td></tr>
+<tr><td valign="top"><a href="#pos_inc-1">pos_inc/1*</a></td><td>
+ Increase the POS Address by one.</td></tr>
+<tr><td valign="top"><a href="#pos_inc2-1">pos_inc2/1*</a></td><td>
+ Increase the POS Address by two.</td></tr>
+<tr><td valign="top"><a href="#pos_inc_n-2">pos_inc_n/2*</a></td><td>
+ Increase the POS Address by N.</td></tr>
+<tr><td valign="top"><a href="#post_byte_16_offset_pc_direct-1">post_byte_16_offset_pc_direct/1*</a></td><td>
+ Generates a Post-Byte for Indexed 16-bit Offset from PC Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_16_offset_pc_indirect-1">post_byte_16_offset_pc_indirect/1*</a></td><td>
+ Generates a Post-Byte for Indexed 16-bit Offset from PC Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_8_offset_pc_direct-1">post_byte_8_offset_pc_direct/1*</a></td><td>
+ Generates a Post-Byte for Indexed 8-bit Offset from PC Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_8_offset_pc_indirect-1">post_byte_8_offset_pc_indirect/1*</a></td><td>
+ Generates a Post-Byte for Indexed 8-bit Offset from PC Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_extended_16_address_indirect-1">post_byte_extended_16_address_indirect/1*</a></td><td>
+ Generates a Post-Byte for Extended 16-bit Offset Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_16_offset_r_direct-2">post_byte_indexed_16_offset_r_direct/2*</a></td><td>
+ Generates a Post-Byte for Indexed 16-bit Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_16_offset_r_indirect-2">post_byte_indexed_16_offset_r_indirect/2*</a></td><td>
+ Generates a Post-Byte for Indexed 16-bit Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_16_offset_w_direct-1">post_byte_indexed_16_offset_w_direct/1*</a></td><td>
+ Generates a Post-Byte for Indexed 16-bit Offset from W Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_16_offset_w_indirect-1">post_byte_indexed_16_offset_w_indirect/1*</a></td><td>
+ Generates a Post-Byte for Indexed 16-bit Offset from W Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_5_offset_r_direct-2">post_byte_indexed_5_offset_r_direct/2*</a></td><td>
+ Generates a Post-Byte for Indexed 5-bit Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_8_offset_r_direct-2">post_byte_indexed_8_offset_r_direct/2*</a></td><td>
+ Generates a Post-Byte for Indexed 8-bit Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_8_offset_r_indirect-2">post_byte_indexed_8_offset_r_indirect/2*</a></td><td>
+ Generates a Post-Byte for Indexed 8-bit Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_a_offset_r_direct-1">post_byte_indexed_a_offset_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Register A Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_a_offset_r_indirect-1">post_byte_indexed_a_offset_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Register A Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_b_offset_r_direct-1">post_byte_indexed_b_offset_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Register B Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_b_offset_r_indirect-1">post_byte_indexed_b_offset_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Register B Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_d_offset_r_direct-1">post_byte_indexed_d_offset_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Register D Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_d_offset_r_indirect-1">post_byte_indexed_d_offset_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Register D Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_e_offset_r_direct-1">post_byte_indexed_e_offset_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Register E Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_e_offset_r_indirect-1">post_byte_indexed_e_offset_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Register E Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_f_offset_r_direct-1">post_byte_indexed_f_offset_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Register F Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_f_offset_r_indirect-1">post_byte_indexed_f_offset_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Register F Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_no_offset_r_direct-1">post_byte_indexed_no_offset_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Indexed No Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_no_offset_r_indirect-1">post_byte_indexed_no_offset_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Indexed No Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_no_offset_w_direct-0">post_byte_indexed_no_offset_w_direct/0*</a></td><td>
+ Generates a Post-Byte for Indexed No Offset from W Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_no_offset_w_indirect-0">post_byte_indexed_no_offset_w_indirect/0*</a></td><td>
+ Generates a Post-Byte for Indexed No Offset from W Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_w_offset_r_direct-1">post_byte_indexed_w_offset_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Register W Offset from R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_indexed_w_offset_r_indirect-1">post_byte_indexed_w_offset_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Register W Offset from R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_post_increment_1_r_direct-1">post_byte_post_increment_1_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Post Increment 1 of R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_post_increment_2_r_direct-1">post_byte_post_increment_2_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Post Increment 2 of R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_post_increment_2_r_indirect-1">post_byte_post_increment_2_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Post Increment 2 of R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_post_increment_2_w_direct-0">post_byte_post_increment_2_w_direct/0*</a></td><td>
+ Generates a Post-Byte for Post Increment 2 of W Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_post_increment_2_w_indirect-0">post_byte_post_increment_2_w_indirect/0*</a></td><td>
+ Generates a Post-Byte for Post Increment 2 of W Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_pre_decrement_1_r_direct-1">post_byte_pre_decrement_1_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Pre Decrement 1 of R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_pre_decrement_2_r_direct-1">post_byte_pre_decrement_2_r_direct/1*</a></td><td>
+ Generates a Post-Byte for Pre Decrement 2 of R Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_pre_decrement_2_r_indirect-1">post_byte_pre_decrement_2_r_indirect/1*</a></td><td>
+ Generates a Post-Byte for Pre Decrement 2 of R Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_pre_decrement_2_w_direct-0">post_byte_pre_decrement_2_w_direct/0*</a></td><td>
+ Generates a Post-Byte for Pre Decrement 2 of W Direct Addressing.</td></tr>
+<tr><td valign="top"><a href="#post_byte_pre_decrement_2_w_indirect-0">post_byte_pre_decrement_2_w_indirect/0*</a></td><td>
+ Generates a Post-Byte for Pre Decrement 2 of W Indirect Addressing.</td></tr>
+<tr><td valign="top"><a href="#pretty_print-1">pretty_print/1*</a></td><td></td></tr>
+<tr><td valign="top"><a href="#rr_from_r-1">rr_from_r/1*</a></td><td>
+ Generates RR Register encoding from register name (atom).</td></tr>
+<tr><td valign="top"><a href="#set_register_from_name-3">set_register_from_name/3*</a></td><td>
+ Set the Register based on name (atom) with value.</td></tr>
+<tr><td valign="top"><a href="#update_condition_codes_from_map-2">update_condition_codes_from_map/2*</a></td><td>
+ Updates the conditions codes via the Map.</td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="abx_inherent_3a-3">abx_inherent_3a/3 *</a></h3>
+<div class="spec">
+<p><tt>abx_inherent_3a(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ABX Instruction<br>
+ Add Accumulator B to Index Register X<br>
+ X' = X + ACCB<br>
+ The ABX instruction performs an unsigned addition of the contents of Accumulator B<br>
+ with the contents of Index Register X. The 16-bit result is placed into Index Register<br>
+ X. None of the Condition Code flags are affected<br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_a_accumulator-4">accumulator_offset_from_r_a_accumulator/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_a_accumulator(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit signed value from register A <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_a_accumulator_address_only-4">accumulator_offset_from_r_a_accumulator_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_a_accumulator_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit signed value from register A <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_b_accumulator-4">accumulator_offset_from_r_b_accumulator/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_b_accumulator(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit signed value from register B <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_b_accumulator_address_only-4">accumulator_offset_from_r_b_accumulator_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_b_accumulator_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit signed value from register B <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_d_accumulator-4">accumulator_offset_from_r_d_accumulator/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_d_accumulator(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 16-bit signed value from register D <br>
+ Direct mode the effective address is the value in R + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_d_accumulator_address_only-4">accumulator_offset_from_r_d_accumulator_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_d_accumulator_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), _Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 16-bit signed value from register D <br>
+ Direct mode the effective address is the value in R + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_e_accumulator-4">accumulator_offset_from_r_e_accumulator/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_e_accumulator(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit signed value from register E <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_e_accumulator_address_only-4">accumulator_offset_from_r_e_accumulator_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_e_accumulator_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit signed value from register E <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_f_accumulator-4">accumulator_offset_from_r_f_accumulator/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_f_accumulator(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit signed value from register F <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_f_accumulator_address_only-4">accumulator_offset_from_r_f_accumulator_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_f_accumulator_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit signed value from register F <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_w_accumulator-4">accumulator_offset_from_r_w_accumulator/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_w_accumulator(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 16-bit signed value from register W <br>
+ Direct mode the effective address is the value in R + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="accumulator_offset_from_r_w_accumulator_address_only-4">accumulator_offset_from_r_w_accumulator_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>accumulator_offset_from_r_w_accumulator_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 16-bit signed value from register W <br>
+ Direct mode the effective address is the value in R + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adc_generic_part-7">adc_generic_part/7 *</a></h3>
+<div class="spec">
+<p><tt>adc_generic_part(_Pos::binary(), Data::binary(), New_CPU_Data::binary(), Memory_Data::binary(), Get_Reg_Fun::function(), Set_Reg_Fun::function(), New_Pos::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC Instruction (8 Bit)<br>
+ Add Memory Byte plus Carry with Accumulator A or B<br>
+ r' = r + (M) + C<br>
+ These instructions add the contents of a byte in memory plus the contents of the Carry<br>
+ flag with either Accumulator A or B. The 8-bit result is placed back into the specified<br>
+ accumulator.<br>
+ <br>
+ H The Half-Carry flag is set if a carry into bit 4 occurred; cleared otherwise.<br>
+ N The Negative flag is set equal to the new value of bit 7 of the accumulator<br>
+ Z The Zero flag is set if the new accumulator value is zero; cleared otherwise.<br>
+ V The Overflow flag is set if an overflow occurred; cleared otherwise.<br>
+ C The Carry flag is set if a carry out of bit 7 occured; cleared otherwise.<br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adca_direct_99-3">adca_direct_99/3 *</a></h3>
+<div class="spec">
+<p><tt>adca_direct_99(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC(A) <br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adca_extended_b9-3">adca_extended_b9/3 *</a></h3>
+<div class="spec">
+<p><tt>adca_extended_b9(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC(A) <br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adca_immediate_89-3">adca_immediate_89/3 *</a></h3>
+<div class="spec">
+<p><tt>adca_immediate_89(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC(A) <br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adca_indexed_a9-3">adca_indexed_a9/3 *</a></h3>
+<div class="spec">
+<p><tt>adca_indexed_a9(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC(A) <br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcb_direct_d9-3">adcb_direct_d9/3 *</a></h3>
+<div class="spec">
+<p><tt>adcb_direct_d9(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC(B) <br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcb_extended_f9-3">adcb_extended_f9/3 *</a></h3>
+<div class="spec">
+<p><tt>adcb_extended_f9(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC(B) <br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcb_immediate_c9-3">adcb_immediate_c9/3 *</a></h3>
+<div class="spec">
+<p><tt>adcb_immediate_c9(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC(B) <br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcb_indexed_e9-3">adcb_indexed_e9/3 *</a></h3>
+<div class="spec">
+<p><tt>adcb_indexed_e9(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADC(B) <br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcd_direct_1099-3">adcd_direct_1099/3 *</a></h3>
+<div class="spec">
+<p><tt>adcd_direct_1099(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADCD (6309 ONLY)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcd_extended_10b9-3">adcd_extended_10b9/3 *</a></h3>
+<div class="spec">
+<p><tt>adcd_extended_10b9(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADCD (6309 ONLY)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcd_generic_part-5">adcd_generic_part/5 *</a></h3>
+<div class="spec">
+<p><tt>adcd_generic_part(Pos, Data, New_CPU_Data, Memory_Data, New_Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="adcd_immediate_1089-3">adcd_immediate_1089/3 *</a></h3>
+<div class="spec">
+<p><tt>adcd_immediate_1089(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADCD (6309 ONLY)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcd_indexed_10a9-3">adcd_indexed_10a9/3 *</a></h3>
+<div class="spec">
+<p><tt>adcd_indexed_10a9(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADCD (6309 ONLY)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adcr_immediate_1031-3">adcr_immediate_1031/3 *</a></h3>
+<div class="spec">
+<p><tt>adcr_immediate_1031(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADCR (6309 ONLY)<br>
+ Add Source Register plus Carry to Destination Register<br>
+ r1' = r1 + r0 + c<br>
+ The ADCR instruction adds the contents of a source register plus the contents of the <br>
+ Carry flag with the contents of a destination register. The result is placed into the <br>
+ destination register<br>
+ <br>
+ H The Half-Carry flag is not affected by the ADCR instruction<br>
+ N The Negative flag is set equal to the value of the result's high-order bit<br>
+ Z The Zero flag is set if the new value of the destination register is zero; cleared otherwise<br>
+ V The Overflow flag is set if an overflow occurred; cleared otherwise.<br>
+ C The Carry flag is set if a carry out of the high-order bit occured; cleared otherwise.<br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="add_generic_part-7">add_generic_part/7 *</a></h3>
+<div class="spec">
+<p><tt>add_generic_part(_Pos::binary(), Data::binary(), New_CPU_Data::binary(), Memory_Data::binary(), Get_Reg_Fun::function(), Set_Reg_Fun::function(), New_Pos::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD Generic Part (8 and 16 Bit)<br>
+ ----------------------------------------------------------------------------------------<br>
+ ADD Instruction (8 Bit)<br>
+ r' = r + (M) <br>
+ <br>
+ These instructions add the content of a byte in memory with one of the 8-bit <br>
+ accumulators (A,B,E,F). The 8-bit result is placed back into the specified accumulator<br>
+ <br>
+ H The Half-Carry flag is set if a carry into bit 4 occurred; cleared otherwise.<br>
+ N The Negative flag is set equal to the new value of bit 7 of the accumulator<br>
+ Z The Zero flag is set if the new accumulator value is zero; cleared otherwise.<br>
+ V The Overflow flag is set if an overflow occurred; cleared otherwise.<br>
+ C The Carry flag is set if a carry out of bit 7 occured; cleared otherwise.<br>
+ <br>
+ The 8-bit ADD instructions are used for single-byte addition, and for addition of the <br>
+ least-significant byte in multi-byte additions. Since the 6x09 also provides a 16-bit ADD<br>
+ instructions, it is not necessary to use the 8-bit ADD and ADC instructions for performing<br>
+ 16-bit addition.<br>
+ <br>
+ ----------------------------------------------------------------------------------------<br>
+ ADD (16 Bit)<br>
+ Add Memory Word to 16-Bit Accumulator<br>
+ r' = r + (M:M+1) <br>
+ These instructions add the content of a double-byte value in memory with one of the 16-bit <br>
+ accumulators (D,W). The 16-bit result is placed back into the specified accumulator.<br>
+ <br>
+ H The Half-Carry flag is not affected by these instructions.<br>
+ N The Negative flag is set equal to the new value of bit 15 of the accumulator.<br>
+ Z The Zero flag is set if the new accumulator value is zero; cleared otherwise.<br>
+ V The Overflow flag is set if an overflow occured; cleared otherwise.<br>
+ C The Carry flag is set if a carry out of bit 15 occured; cleared otherwise.<br>
+ <br>
+ The 16-bit ADD instructions are used for double-byte addition, and for addition of the<br>
+ least-significant word of multi-byte additions. See the description of the ADCD<br>
+ instruction for an example of how 32-bit addition can be performed on a 6309 processor.<br>
+ <br>
+ ---- Unit-Tested ----<br>
+  =======================================================================================</p>
+
+<h3 class="function"><a name="adda_direct_9b-3">adda_direct_9b/3 *</a></h3>
+<div class="spec">
+<p><tt>adda_direct_9b(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adda_extended_bb-3">adda_extended_bb/3 *</a></h3>
+<div class="spec">
+<p><tt>adda_extended_bb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adda_immediate_8b-3">adda_immediate_8b/3 *</a></h3>
+<div class="spec">
+<p><tt>adda_immediate_8b(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adda_indexed_ab-3">adda_indexed_ab/3 *</a></h3>
+<div class="spec">
+<p><tt>adda_indexed_ab(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addb_direct_db-3">addb_direct_db/3 *</a></h3>
+<div class="spec">
+<p><tt>addb_direct_db(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addb_extended_fb-3">addb_extended_fb/3 *</a></h3>
+<div class="spec">
+<p><tt>addb_extended_fb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addb_immediate_cb-3">addb_immediate_cb/3 *</a></h3>
+<div class="spec">
+<p><tt>addb_immediate_cb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addb_indexed_eb-3">addb_indexed_eb/3 *</a></h3>
+<div class="spec">
+<p><tt>addb_indexed_eb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addd_direct_d3-3">addd_direct_d3/3 *</a></h3>
+<div class="spec">
+<p><tt>addd_direct_d3(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (16-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addd_extended_f3-3">addd_extended_f3/3 *</a></h3>
+<div class="spec">
+<p><tt>addd_extended_f3(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (16-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addd_immediate_c3-3">addd_immediate_c3/3 *</a></h3>
+<div class="spec">
+<p><tt>addd_immediate_c3(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (16-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addd_indexed_e3-3">addd_indexed_e3/3 *</a></h3>
+<div class="spec">
+<p><tt>addd_indexed_e3(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (16-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adde_direct_119b-3">adde_direct_119b/3 *</a></h3>
+<div class="spec">
+<p><tt>adde_direct_119b(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adde_extended_11bb-3">adde_extended_11bb/3 *</a></h3>
+<div class="spec">
+<p><tt>adde_extended_11bb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adde_immediate_118b-3">adde_immediate_118b/3 *</a></h3>
+<div class="spec">
+<p><tt>adde_immediate_118b(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="adde_indexed_11ab-3">adde_indexed_11ab/3 *</a></h3>
+<div class="spec">
+<p><tt>adde_indexed_11ab(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addf_direct_11db-3">addf_direct_11db/3 *</a></h3>
+<div class="spec">
+<p><tt>addf_direct_11db(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addf_extended_11fb-3">addf_extended_11fb/3 *</a></h3>
+<div class="spec">
+<p><tt>addf_extended_11fb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addf_immediate_11cb-3">addf_immediate_11cb/3 *</a></h3>
+<div class="spec">
+<p><tt>addf_immediate_11cb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addf_indexed_11eb-3">addf_indexed_11eb/3 *</a></h3>
+<div class="spec">
+<p><tt>addf_indexed_11eb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (8-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addr_immediate_1030-3">addr_immediate_1030/3 *</a></h3>
+<div class="spec">
+<p><tt>addr_immediate_1030(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADDR (6309 ONLY)<br>
+ Add Source Register to Destination Register<br>
+ r1' = r1 + r0 <br>
+ The ADDR instruction adds the contents of a source register plus the contents of the <br>
+ destination register. The result is placed into the destination register<br>
+ <br>
+ H The Half-Carry flag is not affected by the ADDR instruction<br>
+ N The Negative flag is set equal to the value of the result's high-order bit<br>
+ Z The Zero flag is set if the new value of the destination register is zero; cleared otherwise<br>
+ V The Overflow flag is set if an overflow occurred; cleared otherwise.<br>
+ C The Carry flag is set if a carry out of the high-order bit occured; cleared otherwise.<br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addw_direct_109b-3">addw_direct_109b/3 *</a></h3>
+<div class="spec">
+<p><tt>addw_direct_109b(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (16-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addw_extended_10bb-3">addw_extended_10bb/3 *</a></h3>
+<div class="spec">
+<p><tt>addw_extended_10bb(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (16-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addw_immediate_108b-3">addw_immediate_108b/3 *</a></h3>
+<div class="spec">
+<p><tt>addw_immediate_108b(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (16-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="addw_indexed_10ab-3">addw_indexed_10ab/3 *</a></h3>
+<div class="spec">
+<p><tt>addw_indexed_10ab(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ADD (16-bit)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="aim_direct_02-3">aim_direct_02/3 *</a></h3>
+<div class="spec">
+<p><tt>aim_direct_02(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AIM (6309 Only)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="aim_extended_72-3">aim_extended_72/3 *</a></h3>
+<div class="spec">
+<p><tt>aim_extended_72(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AIM (6309 Only)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="aim_generic_part-7">aim_generic_part/7 *</a></h3>
+<div class="spec">
+<p><tt>aim_generic_part(_Pos::binary(), Data::binary(), New_CPU_Data::binary(), Memory_Data::binary(), Immediate_Byte::binary(), Designated_Memory_Location::binary(), New_Pos::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AIM (6309 Only)<br>
+ Logical AND of Immediate Value with Memory Byte <br>
+ M' = (M) AND IMM <br>
+ The AIM instruction logically ANDs the contents of a byte in memory with an 8-bit <br>
+ immediate value, The resulting value is placed back into the designated memory location. <br>
+ <br>
+  N The Negative flag is set equal to the new value of bit 7 of the memory byte. <br>
+  Z The Zero flag is set if the new value of the memory byte is zero; cleared otherwise. <br>
+  V The Overflow flag is cleared by this instruction. <br>
+  C The Carry flag is not affected by this instruction. <br>
+ <br>
+ AIM  is one of the more useful additions to the 6309 instruction set. It takes three separate <br>
+ instructions to perform the same operation on a 6809. <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="aim_indexed_62-3">aim_indexed_62/3 *</a></h3>
+<div class="spec">
+<p><tt>aim_indexed_62(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AIM (6309 Only)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="and_generic_part-7">and_generic_part/7 *</a></h3>
+<div class="spec">
+<p><tt>and_generic_part(_Pos::binary(), Data::binary(), New_CPU_Data::binary(), Memory_Data::binary(), Get_Reg_Fun::function(), Set_Reg_Fun::function(), New_Pos::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ Logically AND Memory Byte with Accumulator A or B <br>
+ R' = R AND (M) <br>
+ These instructions logically AND the contents of a byte in memory with either <br>
+ Accumulator A or B. The 8-bit result is then placed in the specified accumulator. <br>
+ <br>
+ N The Negative flag is set equal to the new value of bit 7 of the accumulator.<br>
+ Z The Zero flag is set if the new value of the accumulator is zero; cleared otherwise. <br>
+ V The Overflow flas is cleared by this instruction. <br>
+ C The Carry flag is not affected by this instruction. <br>
+ <br>
+ The AND instructions are commonly used for clearing bits and for testing bits.<br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="anda_direct_94-3">anda_direct_94/3 *</a></h3>
+<div class="spec">
+<p><tt>anda_direct_94(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="anda_extended_b4-3">anda_extended_b4/3 *</a></h3>
+<div class="spec">
+<p><tt>anda_extended_b4(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="anda_immediate_84-3">anda_immediate_84/3 *</a></h3>
+<div class="spec">
+<p><tt>anda_immediate_84(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="anda_indexed_a4-3">anda_indexed_a4/3 *</a></h3>
+<div class="spec">
+<p><tt>anda_indexed_a4(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andb_direct_d4-3">andb_direct_d4/3 *</a></h3>
+<div class="spec">
+<p><tt>andb_direct_d4(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andb_extended_f4-3">andb_extended_f4/3 *</a></h3>
+<div class="spec">
+<p><tt>andb_extended_f4(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andb_immediate_c4-3">andb_immediate_c4/3 *</a></h3>
+<div class="spec">
+<p><tt>andb_immediate_c4(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andb_indexed_e4-3">andb_indexed_e4/3 *</a></h3>
+<div class="spec">
+<p><tt>andb_indexed_e4(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ AND (8-BIT)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andcc_immediate_1c-3">andcc_immediate_1c/3 *</a></h3>
+<div class="spec">
+<p><tt>andcc_immediate_1c(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ANDCC<br>
+ Logically AND Immediate Value with the CC Register <br>
+ CC' = CC AND IMM <br>
+ <br>
+ This instruction logically ANDs the contents of the Condition Codes register with the <br>
+ immediate byte specified in the instruction. The result is placed back in the Condition <br>
+ Codes register. <br>
+ <br>
+ The ANDCC instruction provides a method to clear specific flags in the Condition Codes <br>
+ register. All flags that correspond to "0" bits in the immediate operand are cleared, while <br>
+ those corresponding with "1"s are left unchanged.<br>
+ <br>
+ The bit numbers for each flag are shown below:<br>
+ <br>
+ |7|6|5|4|3|2|1|0| <br>
+ |E|F|H|I|N|Z|V|C| <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andd_direct_1094-3">andd_direct_1094/3 *</a></h3>
+<div class="spec">
+<p><tt>andd_direct_1094(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ANDD (6309)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andd_extended_10b4-3">andd_extended_10b4/3 *</a></h3>
+<div class="spec">
+<p><tt>andd_extended_10b4(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ANDD (6309)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andd_generic_part-5">andd_generic_part/5 *</a></h3>
+<div class="spec">
+<p><tt>andd_generic_part(_Pos::binary(), Data::binary(), New_CPU_Data::binary(), Memory_Data::binary(), New_Pos::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ANDD (6309)<br>
+ Logically AND Memory Word with Accumulator D <br>
+ ACCD' = ACCD AND (M:M+1) <br>
+ The ANDD instruction logically ANDs the contents of a double-byte value in memory <br>
+ with the contents of Accumulator D. The 16-bit result is placed back into Accumulator D. <br>
+ N The Negative flag is set equal to the new value of bit 15 of Accumulator D. <br>
+ Z The Zero flag is set if the new value of the Accumulator D is zero; cleared otherwise. <br>
+ V The Overflow flag is cleared by this instruction. <br>
+ C The Carry flag is not affected by this instruction. <br>
+ <br>
+ One use for the ANDD instruction is to truncate bits of an address value. <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andd_immediate_1084-3">andd_immediate_1084/3 *</a></h3>
+<div class="spec">
+<p><tt>andd_immediate_1084(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ANDD (6309)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andd_indexed_10a4-3">andd_indexed_10a4/3 *</a></h3>
+<div class="spec">
+<p><tt>andd_indexed_10a4(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ANDD (6309)<br>
+ See Generic Part for details <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="andr_immediate_1034-3">andr_immediate_1034/3 *</a></h3>
+<div class="spec">
+<p><tt>andr_immediate_1034(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary()}</tt><br></p>
+</div><p>
+ ANDR (6309)<br>
+ Logically AND Source Register with Destination Register <br>
+ R1' = R1 AND R0 <br>
+ The ANDR instruction logically ANDs the contents of a source register with the contents <br>
+ of a destination register. The result is placed into the destination register. <br>
+ <br>
+ N The Negative flag is set equal to the value of the result's high-order bit. <br>
+ Z The Zero flag is set if the new value of the destination register is zero; cleared otherwise. <br>
+ V The Overflow flag is cleared by this instruction. <br>
+ C The Carry flag is not affected by this instruction. <br>
+ <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="asl_direct_08-3">asl_direct_08/3 *</a></h3>
+<div class="spec">
+<p><tt>asl_direct_08(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asl_extended_78-3">asl_extended_78/3 *</a></h3>
+<div class="spec">
+<p><tt>asl_extended_78(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asl_generic_part-6">asl_generic_part/6 *</a></h3>
+<div class="spec">
+<p><tt>asl_generic_part(Pos, Data, New_CPU_Data, Memory_Data, Designated_Memory_Location, New_Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asl_indexed_68-3">asl_indexed_68/3 *</a></h3>
+<div class="spec">
+<p><tt>asl_indexed_68(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asla_inherent_48-3">asla_inherent_48/3 *</a></h3>
+<div class="spec">
+<p><tt>asla_inherent_48(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="aslb_inherent_58-3">aslb_inherent_58/3 *</a></h3>
+<div class="spec">
+<p><tt>aslb_inherent_58(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asld_inherent_1048-3">asld_inherent_1048/3 *</a></h3>
+<div class="spec">
+<p><tt>asld_inherent_1048(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asr_direct_07-3">asr_direct_07/3 *</a></h3>
+<div class="spec">
+<p><tt>asr_direct_07(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asr_extended_77-3">asr_extended_77/3 *</a></h3>
+<div class="spec">
+<p><tt>asr_extended_77(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asr_generic_part-6">asr_generic_part/6 *</a></h3>
+<div class="spec">
+<p><tt>asr_generic_part(Pos, Data, New_CPU_Data, Memory_Data, Designated_Memory_Location, New_Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asr_indexed_67-3">asr_indexed_67/3 *</a></h3>
+<div class="spec">
+<p><tt>asr_indexed_67(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asra_inherent_47-3">asra_inherent_47/3 *</a></h3>
+<div class="spec">
+<p><tt>asra_inherent_47(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asrb_inherent_57-3">asrb_inherent_57/3 *</a></h3>
+<div class="spec">
+<p><tt>asrb_inherent_57(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="asrd_inherent_1047-3">asrd_inherent_1047/3 *</a></h3>
+<div class="spec">
+<p><tt>asrd_inherent_1047(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="auto_decrement_of_r_pre_decrement_by_1-4">auto_decrement_of_r_pre_decrement_by_1/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_decrement_of_r_pre_decrement_by_1(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ First the value of R is decreased by 1 automatically <br>
+ Direct mode the effective address is the value in R <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_decrement_of_r_pre_decrement_by_1_address_only-4">auto_decrement_of_r_pre_decrement_by_1_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_decrement_of_r_pre_decrement_by_1_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ First the value of R is decreased by 1 automatically <br>
+ Direct mode the effective address is the value in R <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_decrement_of_r_pre_decrement_by_2-4">auto_decrement_of_r_pre_decrement_by_2/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_decrement_of_r_pre_decrement_by_2(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ First the value of R is decreased by 2 automatically <br>
+ Direct mode the effective address is the value in R <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_decrement_of_r_pre_decrement_by_2_address_only-4">auto_decrement_of_r_pre_decrement_by_2_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_decrement_of_r_pre_decrement_by_2_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ First the value of R is decreased by 2 automatically <br>
+ Direct mode the effective address is the value in R <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_decrement_of_w_pre_decrement_by_2-4">auto_decrement_of_w_pre_decrement_by_2/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_decrement_of_w_pre_decrement_by_2(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register W <br>
+ First the value of W is decreased by 2 automatically <br>
+ Direct mode the effective address is the value in W <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of W, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_decrement_of_w_pre_decrement_by_2_address_only-4">auto_decrement_of_w_pre_decrement_by_2_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_decrement_of_w_pre_decrement_by_2_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register W <br>
+ First the value of W is decreased by 2 automatically <br>
+ Direct mode the effective address is the value in W <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of W, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_increment_of_r_post_increment_by_1-4">auto_increment_of_r_post_increment_by_1/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_increment_of_r_post_increment_by_1(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ Direct mode the effective address is the value in R <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ After this the value of R is increased by 1 automatically <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_increment_of_r_post_increment_by_1_address_only-4">auto_increment_of_r_post_increment_by_1_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_increment_of_r_post_increment_by_1_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ Direct mode the effective address is the value in R <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ After this the value of R is increased by 1 automatically <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_increment_of_r_post_increment_by_2-4">auto_increment_of_r_post_increment_by_2/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_increment_of_r_post_increment_by_2(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ Direct mode the effective address is the value in R <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ After this the value of R is increased by 2 automatically <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_increment_of_r_post_increment_by_2_address_only-4">auto_increment_of_r_post_increment_by_2_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_increment_of_r_post_increment_by_2_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ Direct mode the effective address is the value in R <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ After this the value of R is increased by 2 automatically <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_increment_of_w_post_increment_by_2-4">auto_increment_of_w_post_increment_by_2/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_increment_of_w_post_increment_by_2(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register W  <br>
+ Direct mode the effective address is the value in W <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of W, and then getting<br>
+ an another address from that memory location <br>
+ After this the value of W is increased by 2 automatically <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="auto_increment_of_w_post_increment_by_2_address_only-4">auto_increment_of_w_post_increment_by_2_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>auto_increment_of_w_post_increment_by_2_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register W  <br>
+ Direct mode the effective address is the value in W <br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of W, and then getting<br>
+ an another address from that memory location <br>
+ After this the value of W is increased by 2 automatically <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="band_direct_1130-3">band_direct_1130/3 *</a></h3>
+<div class="spec">
+<p><tt>band_direct_1130(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="band_reg_name_decode-1">band_reg_name_decode/1 *</a></h3>
+<div class="spec">
+<p><tt>band_reg_name_decode(RR::non_neg_integer()) -&gt; atom()</tt><br></p>
+</div>
+
+<h3 class="function"><a name="bcc_relative_24-3">bcc_relative_24/3 *</a></h3>
+<div class="spec">
+<p><tt>bcc_relative_24(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bcs_relative_25-3">bcs_relative_25/3 *</a></h3>
+<div class="spec">
+<p><tt>bcs_relative_25(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="beor_direct_1134-3">beor_direct_1134/3 *</a></h3>
+<div class="spec">
+<p><tt>beor_direct_1134(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="beq_relative_27-3">beq_relative_27/3 *</a></h3>
+<div class="spec">
+<p><tt>beq_relative_27(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bge_relative_2c-3">bge_relative_2c/3 *</a></h3>
+<div class="spec">
+<p><tt>bge_relative_2c(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bgt_relative_2e-3">bgt_relative_2e/3 *</a></h3>
+<div class="spec">
+<p><tt>bgt_relative_2e(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bhi_relative_22-3">bhi_relative_22/3 *</a></h3>
+<div class="spec">
+<p><tt>bhi_relative_22(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bhs_relative_24-3">bhs_relative_24/3 *</a></h3>
+<div class="spec">
+<p><tt>bhs_relative_24(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="biand_direct_1131-3">biand_direct_1131/3 *</a></h3>
+<div class="spec">
+<p><tt>biand_direct_1131(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bieor_direct_1135-3">bieor_direct_1135/3 *</a></h3>
+<div class="spec">
+<p><tt>bieor_direct_1135(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bior_direct_1133-3">bior_direct_1133/3 *</a></h3>
+<div class="spec">
+<p><tt>bior_direct_1133(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bit_generic_part-6">bit_generic_part/6 *</a></h3>
+<div class="spec">
+<p><tt>bit_generic_part(Pos, Data, New_CPU_Data, Memory_Data, Get_Reg_Fun, New_Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bita_direct_95-3">bita_direct_95/3 *</a></h3>
+<div class="spec">
+<p><tt>bita_direct_95(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bita_extended_b5-3">bita_extended_b5/3 *</a></h3>
+<div class="spec">
+<p><tt>bita_extended_b5(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bita_immediate_85-3">bita_immediate_85/3 *</a></h3>
+<div class="spec">
+<p><tt>bita_immediate_85(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bita_indexed_a5-3">bita_indexed_a5/3 *</a></h3>
+<div class="spec">
+<p><tt>bita_indexed_a5(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitb_direct_d5-3">bitb_direct_d5/3 *</a></h3>
+<div class="spec">
+<p><tt>bitb_direct_d5(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitb_extended_f5-3">bitb_extended_f5/3 *</a></h3>
+<div class="spec">
+<p><tt>bitb_extended_f5(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitb_immediate_c5-3">bitb_immediate_c5/3 *</a></h3>
+<div class="spec">
+<p><tt>bitb_immediate_c5(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitb_indexed_e5-3">bitb_indexed_e5/3 *</a></h3>
+<div class="spec">
+<p><tt>bitb_indexed_e5(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitd_direct_1095-3">bitd_direct_1095/3 *</a></h3>
+<div class="spec">
+<p><tt>bitd_direct_1095(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitd_extended_10b5-3">bitd_extended_10b5/3 *</a></h3>
+<div class="spec">
+<p><tt>bitd_extended_10b5(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitd_immediate_1085-3">bitd_immediate_1085/3 *</a></h3>
+<div class="spec">
+<p><tt>bitd_immediate_1085(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitd_indexed_10a5-3">bitd_indexed_10a5/3 *</a></h3>
+<div class="spec">
+<p><tt>bitd_indexed_10a5(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bitmd_immediate_113c-3">bitmd_immediate_113c/3 *</a></h3>
+<div class="spec">
+<p><tt>bitmd_immediate_113c(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="ble_relative_2f-3">ble_relative_2f/3 *</a></h3>
+<div class="spec">
+<p><tt>ble_relative_2f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="blo_relative_25-3">blo_relative_25/3 *</a></h3>
+<div class="spec">
+<p><tt>blo_relative_25(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bls_relative_23-3">bls_relative_23/3 *</a></h3>
+<div class="spec">
+<p><tt>bls_relative_23(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="blt_relative_2d-3">blt_relative_2d/3 *</a></h3>
+<div class="spec">
+<p><tt>blt_relative_2d(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bmi_relative_2b-3">bmi_relative_2b/3 *</a></h3>
+<div class="spec">
+<p><tt>bmi_relative_2b(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bne_relative_26-3">bne_relative_26/3 *</a></h3>
+<div class="spec">
+<p><tt>bne_relative_26(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bor_direct_1132-3">bor_direct_1132/3 *</a></h3>
+<div class="spec">
+<p><tt>bor_direct_1132(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bpl_relative_2a-3">bpl_relative_2a/3 *</a></h3>
+<div class="spec">
+<p><tt>bpl_relative_2a(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bra_relative_20-3">bra_relative_20/3 *</a></h3>
+<div class="spec">
+<p><tt>bra_relative_20(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="brn_relative_21-3">brn_relative_21/3 *</a></h3>
+<div class="spec">
+<p><tt>brn_relative_21(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bsr_relative_8d-3">bsr_relative_8d/3 *</a></h3>
+<div class="spec">
+<p><tt>bsr_relative_8d(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bvc_relative_28-3">bvc_relative_28/3 *</a></h3>
+<div class="spec">
+<p><tt>bvc_relative_28(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="bvs_relative_29-3">bvs_relative_29/3 *</a></h3>
+<div class="spec">
+<p><tt>bvs_relative_29(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="check_cc_status_update-4">check_cc_status_update/4 *</a></h3>
+<div class="spec">
+<p><tt>check_cc_status_update(Map::#{}, CPU_Data::binary(), Key::atom(), Fun::function()) -&gt; binary()</tt><br></p>
+</div><p>
+ Checks if Key (atom) is in the Map<br>
+ If it is extract its value from the Map and update the condition code for that key<br>
+ Returns the updated CPU representation<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="clr_direct_0f-3">clr_direct_0f/3 *</a></h3>
+<div class="spec">
+<p><tt>clr_direct_0f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clr_extended_7f-3">clr_extended_7f/3 *</a></h3>
+<div class="spec">
+<p><tt>clr_extended_7f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clr_generic_part-5">clr_generic_part/5 *</a></h3>
+<div class="spec">
+<p><tt>clr_generic_part(Pos, Data, New_CPU_Data, Designated_Memory_Location, New_Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clr_indexed_6f-3">clr_indexed_6f/3 *</a></h3>
+<div class="spec">
+<p><tt>clr_indexed_6f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clra_inherent_4f-3">clra_inherent_4f/3 *</a></h3>
+<div class="spec">
+<p><tt>clra_inherent_4f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clrb_inherent_5f-3">clrb_inherent_5f/3 *</a></h3>
+<div class="spec">
+<p><tt>clrb_inherent_5f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clrd_inherent_104f-3">clrd_inherent_104f/3 *</a></h3>
+<div class="spec">
+<p><tt>clrd_inherent_104f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clre_inherent_114f-3">clre_inherent_114f/3 *</a></h3>
+<div class="spec">
+<p><tt>clre_inherent_114f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clrf_inherent_115f-3">clrf_inherent_115f/3 *</a></h3>
+<div class="spec">
+<p><tt>clrf_inherent_115f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="clrw_inherent_105f-3">clrw_inherent_105f/3 *</a></h3>
+<div class="spec">
+<p><tt>clrw_inherent_105f(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmp_generic_part-6">cmp_generic_part/6 *</a></h3>
+<div class="spec">
+<p><tt>cmp_generic_part(Pos, Data, New_CPU_Data, Memory_Data, Get_Reg_Fun, New_Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpa_direct_91-3">cmpa_direct_91/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpa_direct_91(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpa_extended_b1-3">cmpa_extended_b1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpa_extended_b1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpa_immediate_81-3">cmpa_immediate_81/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpa_immediate_81(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpa_indexed_a1-3">cmpa_indexed_a1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpa_indexed_a1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpb_direct_d1-3">cmpb_direct_d1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpb_direct_d1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpb_extended_f1-3">cmpb_extended_f1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpb_extended_f1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpb_immediate_c1-3">cmpb_immediate_c1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpb_immediate_c1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpb_indexed_e1-3">cmpb_indexed_e1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpb_indexed_e1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpd_direct_0093-3">cmpd_direct_0093/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpd_direct_0093(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpd_extended_00b3-3">cmpd_extended_00b3/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpd_extended_00b3(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpd_immediate_0083-3">cmpd_immediate_0083/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpd_immediate_0083(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpd_indexed_00a3-3">cmpd_indexed_00a3/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpd_indexed_00a3(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpe_direct_1191-3">cmpe_direct_1191/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpe_direct_1191(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpe_extended_11b1-3">cmpe_extended_11b1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpe_extended_11b1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpe_immediate_1181-3">cmpe_immediate_1181/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpe_immediate_1181(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpe_indexed_11a1-3">cmpe_indexed_11a1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpe_indexed_11a1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpf_direct_11d1-3">cmpf_direct_11d1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpf_direct_11d1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpf_extended_11f1-3">cmpf_extended_11f1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpf_extended_11f1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpf_immediate_11c1-3">cmpf_immediate_11c1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpf_immediate_11c1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpf_indexed_11e1-3">cmpf_indexed_11e1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpf_indexed_11e1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpr_immediate_1037-3">cmpr_immediate_1037/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpr_immediate_1037(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmps_direct_019C-3">cmps_direct_019C/3 *</a></h3>
+<div class="spec">
+<p><tt>cmps_direct_019C(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmps_extended_01bc-3">cmps_extended_01bc/3 *</a></h3>
+<div class="spec">
+<p><tt>cmps_extended_01bc(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmps_immediate_018C-3">cmps_immediate_018C/3 *</a></h3>
+<div class="spec">
+<p><tt>cmps_immediate_018C(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmps_indexed_01ac-3">cmps_indexed_01ac/3 *</a></h3>
+<div class="spec">
+<p><tt>cmps_indexed_01ac(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpu_direct_0193-3">cmpu_direct_0193/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpu_direct_0193(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpu_extended_01b3-3">cmpu_extended_01b3/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpu_extended_01b3(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpu_immediate_0183-3">cmpu_immediate_0183/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpu_immediate_0183(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpu_indexed_01a3-3">cmpu_indexed_01a3/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpu_indexed_01a3(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpw_direct_0091-3">cmpw_direct_0091/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpw_direct_0091(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpw_extended_00b1-3">cmpw_extended_00b1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpw_extended_00b1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpw_immediate_0081-3">cmpw_immediate_0081/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpw_immediate_0081(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpw_indexed_00a1-3">cmpw_indexed_00a1/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpw_indexed_00a1(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpx_direct_9c-3">cmpx_direct_9c/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpx_direct_9c(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpx_extended_bc-3">cmpx_extended_bc/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpx_extended_bc(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpx_immediate_8c-3">cmpx_immediate_8c/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpx_immediate_8c(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpx_indexed_ac-3">cmpx_indexed_ac/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpx_indexed_ac(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpy_direct_009c-3">cmpy_direct_009c/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpy_direct_009c(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpy_extended_00bc-3">cmpy_extended_00bc/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpy_extended_00bc(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpy_immediate_008c-3">cmpy_immediate_008c/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpy_immediate_008c(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cmpy_indexed_00ac-3">cmpy_indexed_00ac/3 *</a></h3>
+<div class="spec">
+<p><tt>cmpy_indexed_00ac(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="com_generic_part-6">com_generic_part/6 *</a></h3>
+<div class="spec">
+<p><tt>com_generic_part(Pos, Data, New_CPU_Data, Get_Reg_Fun, Set_Reg_Fun, New_Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="constant_offset_from_pc_16_bit_offset-4">constant_offset_from_pc_16_bit_offset/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_pc_16_bit_offset(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register PC <br>
+ and an 16-bit signed value from after the post-byte <br>
+ Direct mode the effective address is the value in PC + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of PC + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_pc_16_bit_offset_address_only-4">constant_offset_from_pc_16_bit_offset_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_pc_16_bit_offset_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), _Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register PC <br>
+ and an 16-bit signed value from after the post-byte <br>
+ Direct mode the effective address is the value in PC + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of PC + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_pc_8_bit_offset-4">constant_offset_from_pc_8_bit_offset/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_pc_8_bit_offset(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register PC <br>
+ and an 8-bit signed value from after the post-byte <br>
+ Direct mode the effective address is the value in PC + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of PC + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_pc_8_bit_offset_address_only-4">constant_offset_from_pc_8_bit_offset_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_pc_8_bit_offset_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register PC <br>
+ and an 8-bit signed value from after the post-byte <br>
+ Direct mode the effective address is the value in PC + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of PC + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_r_16_bit_offset-4">constant_offset_from_r_16_bit_offset/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_r_16_bit_offset(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 16-bit value encode after the post-byte <br>
+ Direct mode the effective address is the value in R + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_r_16_bit_offset_address_only-4">constant_offset_from_r_16_bit_offset_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_r_16_bit_offset_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 16-bit value encode after the post-byte <br>
+ Direct mode the effective address is the value in R + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_r_5_bit_offset_direct-4">constant_offset_from_r_5_bit_offset_direct/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_r_5_bit_offset_direct(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and a signed 5-bit offset which is also encoded in the post-byte<br>
+ The effective address is calculated by R + 5-bit offset <br>
+ This address mode supports direct addressing only <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_r_5_bit_offset_direct_address_only-4">constant_offset_from_r_5_bit_offset_direct_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_r_5_bit_offset_direct_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and a signed 5-bit offset which is also encoded in the post-byte<br>
+ The effective address is calculated by R + 5-bit offset <br>
+ This address mode supports direct addressing only <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_r_8_bit_offset-4">constant_offset_from_r_8_bit_offset/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_r_8_bit_offset(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit value encode after the post-byte <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_r_8_bit_offset_address_only-4">constant_offset_from_r_8_bit_offset_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_r_8_bit_offset_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ and an 8-bit value encode after the post-byte <br>
+ Direct mode the effective address is the value in R + 8-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R + 8-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_r_no_offset-4">constant_offset_from_r_no_offset/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_r_no_offset(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ Direct mode the effective address is the value in R<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_r_no_offset_address_only-4">constant_offset_from_r_no_offset_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_r_no_offset_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register R which is encoded in the post-byte <br>
+ Direct mode the effective address is the value in R<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of R, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_w_16_bit_offset-4">constant_offset_from_w_16_bit_offset/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_w_16_bit_offset(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register W<br>
+ and an 16-bit value encode after the post-byte <br>
+ Direct mode the effective address is the value in W + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of W + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_w_16_bit_offset_address_only-4">constant_offset_from_w_16_bit_offset_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_w_16_bit_offset_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register W<br>
+ and an 16-bit value encode after the post-byte <br>
+ Direct mode the effective address is the value in W + 16-bit value<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of W + 16-bit value, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_w_no_offset-4">constant_offset_from_w_no_offset/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_w_no_offset(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register W <br>
+ Direct mode the effective address is the value in W<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of W, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="constant_offset_from_w_no_offset_address_only-4">constant_offset_from_w_no_offset_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>constant_offset_from_w_no_offset_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Uses Register W <br>
+ Direct mode the effective address is the value in W<br>
+ Indirect mode the effective address is determine by<br>
+ first getting an address from the value of W, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_clear-0">cpu_clear/0 *</a></h3>
+<div class="spec">
+<p><tt>cpu_clear() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cpu_get_a-1">cpu_get_a/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_a(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the A Register bits from CPU_Data<br>
+ Returns: 8 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_b-1">cpu_get_b/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_b(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the B Register bits from CPU_Data<br>
+ Returns: 8 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc-1">cpu_get_cc/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register bits from CPU_Data<br>
+ Returns: 8 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc_c-1">cpu_get_cc_c/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc_c(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register C bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc_e-1">cpu_get_cc_e/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc_e(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register E bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc_f-1">cpu_get_cc_f/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc_f(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register F bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc_h-1">cpu_get_cc_h/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc_h(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register H bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc_i-1">cpu_get_cc_i/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc_i(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register I bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc_n-1">cpu_get_cc_n/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc_n(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register N bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc_v-1">cpu_get_cc_v/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc_v(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register V bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_cc_z-1">cpu_get_cc_z/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_cc_z(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the CC Register Z bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_d-1">cpu_get_d/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_d(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the D Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_dp-1">cpu_get_dp/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_dp(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the DP Register bits from CPU_Data<br>
+ Returns: 8 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_e-1">cpu_get_e/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_e(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the E Register bits from CPU_Data<br>
+ Returns: 8 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_f-1">cpu_get_f/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_f(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the F Register bits from CPU_Data<br>
+ Returns: 8 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_firq-1">cpu_get_firq/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_firq(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the FIRQ bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_halt-1">cpu_get_halt/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_halt(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the HALT bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_irq-1">cpu_get_irq/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_irq(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the IRQ bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_md-1">cpu_get_md/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_md(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the MD Register bits from CPU_Data<br>
+ Returns: 8 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_md_div0-1">cpu_get_md_div0/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_md_div0(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the MD Register DIV0 bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_md_fm-1">cpu_get_md_fm/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_md_fm(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the MD Register FM bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_md_il-1">cpu_get_md_il/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_md_il(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the MD Register IL bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_md_nm-1">cpu_get_md_nm/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_md_nm(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the MD Register NM bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_nmi-1">cpu_get_nmi/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_nmi(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the NMI bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_pc-1">cpu_get_pc/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_pc(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the PC Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_q-1">cpu_get_q/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_q(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the Q Register bits from CPU_Data<br>
+ Returns: 32 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_reserved-1">cpu_get_reserved/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_reserved(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the RESERVED bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_reset-1">cpu_get_reset/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_reset(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the RESET bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_s-1">cpu_get_s/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_s(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the S Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_swi-1">cpu_get_swi/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_swi(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the SWI bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_swi2-1">cpu_get_swi2/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_swi2(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the SWI2 bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_swi3-1">cpu_get_swi3/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_swi3(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the SWI3 bit from CPU_Data<br>
+ Returns: 1 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_u-1">cpu_get_u/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_u(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the U Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_v-1">cpu_get_v/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_v(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the V Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_w-1">cpu_get_w/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_w(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the W Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_x-1">cpu_get_x/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_x(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the X Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_y-1">cpu_get_y/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_y(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the Y Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_get_zero-1">cpu_get_zero/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_get_zero(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the Zero Register bits from CPU_Data<br>
+ Returns: 16 bit binary<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_perform_actions-1">cpu_perform_actions/1 *</a></h3>
+<div class="spec">
+<p><tt>cpu_perform_actions(Fun_List::[function()]) -&gt; binary()</tt><br></p>
+</div><p>
+ Performs a list of actions on the CPU<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_perform_actions-2">cpu_perform_actions/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_perform_actions(Funs, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="cpu_set_a-2">cpu_set_a/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_a(A::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the A Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_b-2">cpu_set_b/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_b(B::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the B Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc-2">cpu_set_cc/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc(CC::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc_c-2">cpu_set_cc_c/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc_c(CC_C::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register C Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc_e-2">cpu_set_cc_e/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc_e(CC_E::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register E Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc_f-2">cpu_set_cc_f/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc_f(CC_F::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register F Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc_h-2">cpu_set_cc_h/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc_h(CC_H::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register H Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc_i-2">cpu_set_cc_i/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc_i(CC_I::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register I Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc_n-2">cpu_set_cc_n/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc_n(CC_N::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register N Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc_v-2">cpu_set_cc_v/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc_v(CC_V::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register V Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_cc_z-2">cpu_set_cc_z/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_cc_z(CC_Z::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the CC Register Z Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_d-2">cpu_set_d/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_d(D::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the D Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_dp-2">cpu_set_dp/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_dp(DP::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the DP Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_e-2">cpu_set_e/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_e(E::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the E Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_f-2">cpu_set_f/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_f(F::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the F Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_firq-2">cpu_set_firq/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_firq(FIRQ::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the FIRQ bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_halt-2">cpu_set_halt/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_halt(Halt::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the HALT bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_irq-2">cpu_set_irq/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_irq(IRQ::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the IRQ bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_md-2">cpu_set_md/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_md(MD::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the MD Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_md_div0-2">cpu_set_md_div0/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_md_div0(MD_Div0::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the MD Register DIV0 Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_md_fm-2">cpu_set_md_fm/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_md_fm(MD_FM::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the MD Register FM Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_md_il-2">cpu_set_md_il/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_md_il(MD_IL::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the MD Register IL Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_md_nm-2">cpu_set_md_nm/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_md_nm(MD_NM::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the MD Register NM Bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_nmi-2">cpu_set_nmi/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_nmi(NMI::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the NMI bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_pc-2">cpu_set_pc/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_pc(PC::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the PC Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_q-2">cpu_set_q/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_q(Q::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the Q Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_reserved-2">cpu_set_reserved/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_reserved(Reserved::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the RESERVED bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_reset-2">cpu_set_reset/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_reset(Reset::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the Reset bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_s-2">cpu_set_s/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_s(S::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the S Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_swi-2">cpu_set_swi/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_swi(SWI::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the SWI bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_swi2-2">cpu_set_swi2/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_swi2(SWI2::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the SWI2 bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_swi3-2">cpu_set_swi3/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_swi3(SWI3::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the SWI3 bit in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_u-2">cpu_set_u/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_u(U::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the U Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_v-2">cpu_set_v/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_v(V::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the V Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_w-2">cpu_set_w/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_w(W::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the W Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_x-2">cpu_set_x/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_x(X::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the X Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_y-2">cpu_set_y/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_y(Y::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the Y Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="cpu_set_zero-2">cpu_set_zero/2 *</a></h3>
+<div class="spec">
+<p><tt>cpu_set_zero(Zero::binary(), CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Sets the ZERO Register in CPU_Data<br>
+ Returns: Updated CPU Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="decode_inter_register_actual_source-3">decode_inter_register_actual_source/3 *</a></h3>
+<div class="spec">
+<p><tt>decode_inter_register_actual_source(Source_Reg::atom(), Destination_Size::non_neg_integer(), CPU::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Decodes the Inter Register actual source value <br>
+ Based on the destination size and source register <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="decode_inter_register_bits-1">decode_inter_register_bits/1 *</a></h3>
+<div class="spec">
+<p><tt>decode_inter_register_bits(Bits::binary()) -&gt; atom()</tt><br></p>
+</div><p>
+ Decode an Inter Register Bit encoding to the corresponding register name (atom)<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="decode_inter_register_post_byte-1">decode_inter_register_post_byte/1 *</a></h3>
+<div class="spec">
+<p><tt>decode_inter_register_post_byte(Post_Byte::binary()) -&gt; {atom(), atom()}</tt><br></p>
+</div><p>
+ Decodes the inter register names from a post byte <br>
+ Returns: a tuple with the register names as atoms<br>
+ E.g. {d,a} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="direct_1_address-3">direct_1_address/3 *</a></h3>
+<div class="spec">
+<p><tt>direct_1_address(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Get the value (8-bit) from a direct request<br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="direct_1_address_address_only-3">direct_1_address_address_only/3 *</a></h3>
+<div class="spec">
+<p><tt>direct_1_address_address_only(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Get the address only from a direct request<br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="direct_2_address-3">direct_2_address/3 *</a></h3>
+<div class="spec">
+<p><tt>direct_2_address(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Get the value (16-bit) from a direct request<br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="direct_2_address_address_only-3">direct_2_address_address_only/3 *</a></h3>
+<div class="spec">
+<p><tt>direct_2_address_address_only(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Get the address only from a direct request<br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="dont_care-0">dont_care/0 *</a></h3>
+<div class="spec">
+<p><tt>dont_care() -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="execution-2">execution/2 *</a></h3>
+<div class="spec">
+<p><tt>execution(Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="extended_indirect_16_bit_address-4">extended_indirect_16_bit_address/4 *</a></h3>
+<div class="spec">
+<p><tt>extended_indirect_16_bit_address(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Used 16-bit address value from after the post-byte <br>
+ Indirect mode only in which the effective address is determined by<br>
+ first getting an address from the value of the 16-bits, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {value, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="extended_indirect_16_bit_address_address_only-4">extended_indirect_16_bit_address_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>extended_indirect_16_bit_address_address_only(Pos::binary(), Data::binary(), CPU_Data::binary(), Number_Of_Bytes::non_neg_integer()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Used 16-bit address value from after the post-byte <br>
+ Indirect mode only in which the effective address is determined by<br>
+ first getting an address from the value of the 16-bits, and then getting<br>
+ an another address from that memory location <br>
+ Returns: {address, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="generate_n_z_flags_map-1">generate_n_z_flags_map/1 *</a></h3>
+<div class="spec">
+<p><tt>generate_n_z_flags_map(Value::binary()) -&gt; #{}</tt><br></p>
+</div><p>
+ Get the flag map of the value for n and z flags<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="get_byte_pos-2">get_byte_pos/2 *</a></h3>
+<div class="spec">
+<p><tt>get_byte_pos(Data, Pos) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="get_lower_8_reg_16-1">get_lower_8_reg_16/1 *</a></h3>
+<div class="spec">
+<p><tt>get_lower_8_reg_16(Reg_16_Binary::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Extracts the lower 8 bytes of a 16 bit register<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="get_n_flag_of_value-1">get_n_flag_of_value/1 *</a></h3>
+<div class="spec">
+<p><tt>get_n_flag_of_value(Value::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Get the Negative Flag from a value<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="get_register_from_name-2">get_register_from_name/2 *</a></h3>
+<div class="spec">
+<p><tt>get_register_from_name(Reg_Name::atom(), CPU::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Gets the Register based on name (atom)<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="get_size_of_register-1">get_size_of_register/1 *</a></h3>
+<div class="spec">
+<p><tt>get_size_of_register(Reg::atom()) -&gt; non_neg_integer()</tt><br></p>
+</div><p>
+ Get the bit size of a register (atom)<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="get_z_flag_of_value-1">get_z_flag_of_value/1 *</a></h3>
+<div class="spec">
+<p><tt>get_z_flag_of_value(Value::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Get the Zero Flag from a value<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="immediate_1_address-3">immediate_1_address/3 *</a></h3>
+<div class="spec">
+<p><tt>immediate_1_address(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Get the immediate data (8-bit) at pos from the Data<br>
+ Returns: {immediate_data_8, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="immediate_2_address-3">immediate_2_address/3 *</a></h3>
+<div class="spec">
+<p><tt>immediate_2_address(Pos::binary(), Data::binary(), CPU_Data::binary()) -&gt; {binary(), binary(), binary()}</tt><br></p>
+</div><p>
+ Get the immediate data (16-bit) at pos from the Data<br>
+ Returns: {immediate_data_16, CPU_Data, New_Position} <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="index_reg_set_value-3">index_reg_set_value/3 *</a></h3>
+<div class="spec">
+<p><tt>index_reg_set_value(RR::non_neg_integer(), CPU_Data::binary(), Value::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Set a value to a register determined by RR encoding<br>
+ Returns: updated CPU_Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="index_reg_value-2">index_reg_value/2 *</a></h3>
+<div class="spec">
+<p><tt>index_reg_value(RR::non_neg_integer(), CPU_Data::binary()) -&gt; integer()</tt><br></p>
+</div><p>
+ Extracts the value of the encode Register RR from the provided CPU_Data<br>
+ Returns: Integer Value not binary value<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="indexed_1_address-3">indexed_1_address/3 *</a></h3>
+<div class="spec">
+<p><tt>indexed_1_address(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="indexed_1_address_address_only-3">indexed_1_address_address_only/3 *</a></h3>
+<div class="spec">
+<p><tt>indexed_1_address_address_only(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="indexed_2_address-3">indexed_2_address/3 *</a></h3>
+<div class="spec">
+<p><tt>indexed_2_address(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="indexed_2_address_address_only-3">indexed_2_address_address_only/3 *</a></h3>
+<div class="spec">
+<p><tt>indexed_2_address_address_only(Pos, Data, CPU_Data) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="indexed_address-4">indexed_address/4 *</a></h3>
+<div class="spec">
+<p><tt>indexed_address(Pos, Data, CPU_Data, Number_Of_Bytes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="indexed_address_address_only-4">indexed_address_address_only/4 *</a></h3>
+<div class="spec">
+<p><tt>indexed_address_address_only(Pos, Data, CPU_Data, Number_Of_Bytes) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="pc_1_inc-1">pc_1_inc/1 *</a></h3>
+<div class="spec">
+<p><tt>pc_1_inc(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Takes a CPU_Data and increases the PC value by 1<br>
+ Returns: updated CPU_Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="pc_2_inc-1">pc_2_inc/1 *</a></h3>
+<div class="spec">
+<p><tt>pc_2_inc(CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Takes a CPU_Data and increases the PC value by 2<br>
+ Returns: updated CPU_Data<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="pos_inc-1">pos_inc/1 *</a></h3>
+<div class="spec">
+<p><tt>pos_inc(Pos::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Increase the POS Address by one<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="pos_inc2-1">pos_inc2/1 *</a></h3>
+<div class="spec">
+<p><tt>pos_inc2(Pos::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Increase the POS Address by two<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="pos_inc_n-2">pos_inc_n/2 *</a></h3>
+<div class="spec">
+<p><tt>pos_inc_n(Pos::binary(), N::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Increase the POS Address by N <br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_16_offset_pc_direct-1">post_byte_16_offset_pc_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_16_offset_pc_direct(Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 16-bit Offset from PC Direct Addressing<br>
+ Returns: Post_Byte size 3<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_16_offset_pc_indirect-1">post_byte_16_offset_pc_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_16_offset_pc_indirect(Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 16-bit Offset from PC Indirect Addressing<br>
+ Returns: Post_Byte size 3<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_8_offset_pc_direct-1">post_byte_8_offset_pc_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_8_offset_pc_direct(Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 8-bit Offset from PC Direct Addressing<br>
+ Returns: Post_Byte size 2<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_8_offset_pc_indirect-1">post_byte_8_offset_pc_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_8_offset_pc_indirect(Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 8-bit Offset from PC Indirect Addressing<br>
+ Returns: Post_Byte size 2<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_extended_16_address_indirect-1">post_byte_extended_16_address_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_extended_16_address_indirect(Address::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Extended 16-bit Offset Indirect Addressing<br>
+ Returns: Post_Byte size 3<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_16_offset_r_direct-2">post_byte_indexed_16_offset_r_direct/2 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_16_offset_r_direct(R::atom(), Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 16-bit Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 3<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_16_offset_r_indirect-2">post_byte_indexed_16_offset_r_indirect/2 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_16_offset_r_indirect(R::atom(), Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 16-bit Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 3<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_16_offset_w_direct-1">post_byte_indexed_16_offset_w_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_16_offset_w_direct(Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 16-bit Offset from W Direct Addressing<br>
+ Returns: Post_Byte size 3<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_16_offset_w_indirect-1">post_byte_indexed_16_offset_w_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_16_offset_w_indirect(Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 16-bit Offset from W Indirect Addressing<br>
+ Returns: Post_Byte size 3<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_5_offset_r_direct-2">post_byte_indexed_5_offset_r_direct/2 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_5_offset_r_direct(R::atom(), Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 5-bit Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_8_offset_r_direct-2">post_byte_indexed_8_offset_r_direct/2 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_8_offset_r_direct(R::atom(), Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 8-bit Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 2<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_8_offset_r_indirect-2">post_byte_indexed_8_offset_r_indirect/2 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_8_offset_r_indirect(R::atom(), Offset::integer()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed 8-bit Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 2<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_a_offset_r_direct-1">post_byte_indexed_a_offset_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_a_offset_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register A Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_a_offset_r_indirect-1">post_byte_indexed_a_offset_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_a_offset_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register A Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_b_offset_r_direct-1">post_byte_indexed_b_offset_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_b_offset_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register B Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_b_offset_r_indirect-1">post_byte_indexed_b_offset_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_b_offset_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register B Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_d_offset_r_direct-1">post_byte_indexed_d_offset_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_d_offset_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register D Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_d_offset_r_indirect-1">post_byte_indexed_d_offset_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_d_offset_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register D Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_e_offset_r_direct-1">post_byte_indexed_e_offset_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_e_offset_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register E Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_e_offset_r_indirect-1">post_byte_indexed_e_offset_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_e_offset_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register E Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_f_offset_r_direct-1">post_byte_indexed_f_offset_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_f_offset_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register F Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_f_offset_r_indirect-1">post_byte_indexed_f_offset_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_f_offset_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register F Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_no_offset_r_direct-1">post_byte_indexed_no_offset_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_no_offset_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed No Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_no_offset_r_indirect-1">post_byte_indexed_no_offset_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_no_offset_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed No Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_no_offset_w_direct-0">post_byte_indexed_no_offset_w_direct/0 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_no_offset_w_direct() -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed No Offset from W Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_no_offset_w_indirect-0">post_byte_indexed_no_offset_w_indirect/0 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_no_offset_w_indirect() -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Indexed No Offset from W Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_w_offset_r_direct-1">post_byte_indexed_w_offset_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_w_offset_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register W Offset from R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_indexed_w_offset_r_indirect-1">post_byte_indexed_w_offset_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_indexed_w_offset_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Register W Offset from R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_post_increment_1_r_direct-1">post_byte_post_increment_1_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_post_increment_1_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Post Increment 1 of R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_post_increment_2_r_direct-1">post_byte_post_increment_2_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_post_increment_2_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Post Increment 2 of R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_post_increment_2_r_indirect-1">post_byte_post_increment_2_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_post_increment_2_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Post Increment 2 of R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_post_increment_2_w_direct-0">post_byte_post_increment_2_w_direct/0 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_post_increment_2_w_direct() -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Post Increment 2 of W Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_post_increment_2_w_indirect-0">post_byte_post_increment_2_w_indirect/0 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_post_increment_2_w_indirect() -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Post Increment 2 of W Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_pre_decrement_1_r_direct-1">post_byte_pre_decrement_1_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_pre_decrement_1_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Pre Decrement 1 of R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_pre_decrement_2_r_direct-1">post_byte_pre_decrement_2_r_direct/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_pre_decrement_2_r_direct(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Pre Decrement 2 of R Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_pre_decrement_2_r_indirect-1">post_byte_pre_decrement_2_r_indirect/1 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_pre_decrement_2_r_indirect(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Pre Decrement 2 of R Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_pre_decrement_2_w_direct-0">post_byte_pre_decrement_2_w_direct/0 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_pre_decrement_2_w_direct() -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Pre Decrement 2 of W Direct Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="post_byte_pre_decrement_2_w_indirect-0">post_byte_pre_decrement_2_w_indirect/0 *</a></h3>
+<div class="spec">
+<p><tt>post_byte_pre_decrement_2_w_indirect() -&gt; binary()</tt><br></p>
+</div><p>
+ Generates a Post-Byte for Pre Decrement 2 of W Indirect Addressing<br>
+ Returns: Post_Byte size 1<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="pretty_print-1">pretty_print/1 *</a></h3>
+<div class="spec">
+<p><tt>pretty_print(CPU) -&gt; any()</tt></p>
+</div>
+
+<h3 class="function"><a name="rr_from_r-1">rr_from_r/1 *</a></h3>
+<div class="spec">
+<p><tt>rr_from_r(R::atom()) -&gt; binary()</tt><br></p>
+</div><p>
+ Generates RR Register encoding from register name (atom)<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="set_register_from_name-3">set_register_from_name/3 *</a></h3>
+<div class="spec">
+<p><tt>set_register_from_name(Reg_Name::atom(), Value::binary(), CPU::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Set the Register based on name (atom) with value<br>
+ ---- Unit-Tested ----<br></p>
+
+<h3 class="function"><a name="update_condition_codes_from_map-2">update_condition_codes_from_map/2 *</a></h3>
+<div class="spec">
+<p><tt>update_condition_codes_from_map(Map::#{}, CPU_Data::binary()) -&gt; binary()</tt><br></p>
+</div><p>
+ Updates the conditions codes via the Map<br>
+ Returns the updated CPU representation<br>
+ ---- Unit-Tested ----<br></p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc, Jan 2 2017, 10:30:46.</i></p>
+</body>
+</html>

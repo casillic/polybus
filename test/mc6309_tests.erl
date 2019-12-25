@@ -1606,7 +1606,7 @@ update_condition_codes_from_map_4_test() ->
 	tester(Expected,mc6309:update_condition_codes_from_map(Map,CPU_Data),?PRINT).
 
 %%=============================================================================
-%% abx_inherent_3a(Pos,Data,CPU_Data) 
+%% abx_inherent_3a(Pos, Data, CPU_Data) 
 %%=============================================================================
 abx_inherent_3a_1_test() -> 
 
@@ -1627,7 +1627,7 @@ abx_inherent_3a_1_test() ->
 													?SET_B(<<255:8>>)
 												]
 											),
-	tester(Expected,mc6309:abx_inherent_3a(Pos,Data,CPU_Data),?PRINT).
+	tester(Expected, mc6309:abx_inherent_3a(Pos, Data, CPU_Data), ?PRINT).
 
 %%-----------------------------------------------------------------------------
 abx_inherent_3a_2_test() -> 

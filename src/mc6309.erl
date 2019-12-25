@@ -218,7 +218,7 @@ pretty_print(CPU) ->
 %%%=======================================================================================
 cpu_get_q(CPU_Data) ->
 
-	<<Q:?SIZE_Q,_/binary>> = CPU_Data,
+	<<Q:?SIZE_Q, _/binary>> = CPU_Data,
  	<<Q:?SIZE_Q>>.
 
 %%%=======================================================================================
@@ -231,7 +231,7 @@ cpu_get_q(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_d(CPU_Data) ->
 
-	<<D:?SIZE_D,_/binary>> = CPU_Data,
+	<<D:?SIZE_D, _/binary>> = CPU_Data,
 	<<D:?SIZE_D>>.
 
 %%%=======================================================================================
@@ -244,7 +244,7 @@ cpu_get_d(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_a(CPU_Data) ->
 
-	<<A:?SIZE_A,_/binary>> = CPU_Data,
+	<<A:?SIZE_A, _/binary>> = CPU_Data,
 	<<A:?SIZE_A>>.
 
 %%%=======================================================================================
@@ -257,7 +257,7 @@ cpu_get_a(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_b(CPU_Data) ->
 
-	<<_A:?SIZE_A,B:?SIZE_B,_/binary>> = CPU_Data,
+	<<_A:?SIZE_A, B:?SIZE_B, _/binary>> = CPU_Data,
 	<<B:?SIZE_B>>.
 
 %%%=======================================================================================
@@ -270,7 +270,7 @@ cpu_get_b(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_w(CPU_Data) ->
 
-	<<_D:?SIZE_D,W:?SIZE_W,_/binary>> = CPU_Data,
+	<<_D:?SIZE_D, W:?SIZE_W,_/binary>> = CPU_Data,
 	<<W:?SIZE_W>>.
 
 %%%=======================================================================================
@@ -282,7 +282,7 @@ cpu_get_w(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_e(CPU_Data) ->
 
-	<<_D:?SIZE_D,E:?SIZE_E,_/binary>> = CPU_Data,
+	<<_D:?SIZE_D, E:?SIZE_E,_/binary>> = CPU_Data,
 	<<E:?SIZE_E>>.
 
 %%%=======================================================================================
@@ -294,7 +294,7 @@ cpu_get_e(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_f(CPU_Data) ->
 
-	<<_D:?SIZE_D,_E:?SIZE_E,F:?SIZE_F,_/binary>> = CPU_Data,
+	<<_D:?SIZE_D, _E:?SIZE_E, F:?SIZE_F,_/binary>> = CPU_Data,
 	<<F:?SIZE_F>>.
 
 %%%=======================================================================================
@@ -306,7 +306,7 @@ cpu_get_f(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_x(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,X:?SIZE_X,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, X:?SIZE_X, _/binary>> = CPU_Data,
 	<<X:?SIZE_X>>.
 
 %%%=======================================================================================
@@ -318,7 +318,7 @@ cpu_get_x(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_y(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,Y:?SIZE_Y,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, Y:?SIZE_Y, _/binary>> = CPU_Data,
 	<<Y:?SIZE_Y>>.
 
 %%%=======================================================================================
@@ -330,7 +330,7 @@ cpu_get_y(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_u(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,U:?SIZE_U,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, U:?SIZE_U,_/binary>> = CPU_Data,
 	<<U:?SIZE_U>>.
 
 %%%=======================================================================================
@@ -342,7 +342,7 @@ cpu_get_u(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_s(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,S:?SIZE_S,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, S:?SIZE_S, _/binary>> = CPU_Data,
 	<<S:?SIZE_S>>.
 
 %%%=======================================================================================
@@ -354,7 +354,7 @@ cpu_get_s(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_pc(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,PC:?SIZE_PC,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, PC:?SIZE_PC, _/binary>> = CPU_Data,
 	<<PC:?SIZE_PC>>.
 
 %%%=======================================================================================
@@ -366,7 +366,7 @@ cpu_get_pc(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_v(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,V:?SIZE_V,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, V:?SIZE_V, _/binary>> = CPU_Data,
 	<<V:?SIZE_V>>.
 
 %%%=======================================================================================
@@ -378,7 +378,7 @@ cpu_get_v(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_zero(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,Zero:?SIZE_ZERO,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, Zero:?SIZE_ZERO, _/binary>> = CPU_Data,
 	<<Zero:?SIZE_ZERO>>.
 
 %%%=======================================================================================
@@ -390,7 +390,7 @@ cpu_get_zero(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_dp(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,DP:?SIZE_DP,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, DP:?SIZE_DP, _/binary>> = CPU_Data,
 	<<DP:?SIZE_DP>>.
 
 %%%=======================================================================================
@@ -402,7 +402,7 @@ cpu_get_dp(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
 	<<CC:?SIZE_CC>>.
 
 %%%=======================================================================================
@@ -414,8 +414,8 @@ cpu_get_cc(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc_e(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
-	<<CC_E:?SIZE_CC_E,_:7>> = <<CC>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
+	<<CC_E:?SIZE_CC_E, _:7>> = <<CC>>,
 	<<CC_E:?SIZE_CC_E>>.
 
 %%%=======================================================================================
@@ -427,8 +427,8 @@ cpu_get_cc_e(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc_f(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
-	<<_CC_E:?SIZE_CC_E,CC_F:?SIZE_CC_F,_:6>> = <<CC>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
+	<<_CC_E:?SIZE_CC_E, CC_F:?SIZE_CC_F, _:6>> = <<CC>>,
 	<<CC_F:?SIZE_CC_F>>.
 
 %%%=======================================================================================
@@ -440,8 +440,8 @@ cpu_get_cc_f(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc_h(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
-	<<_CC_E:?SIZE_CC_E,_CC_F:?SIZE_CC_F,CC_H:?SIZE_CC_H,_:5>> = <<CC>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
+	<<_CC_E:?SIZE_CC_E, _CC_F:?SIZE_CC_F, CC_H:?SIZE_CC_H, _:5>> = <<CC>>,
 	<<CC_H:?SIZE_CC_H>>.
 
 %%%=======================================================================================
@@ -453,8 +453,8 @@ cpu_get_cc_h(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc_i(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
-	<<_CC_E:?SIZE_CC_E,_CC_F:?SIZE_CC_F,_CC_H:?SIZE_CC_H,CC_I:?SIZE_CC_I,_:4>> = <<CC>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
+	<<_CC_E:?SIZE_CC_E, _CC_F:?SIZE_CC_F, _CC_H:?SIZE_CC_H, CC_I:?SIZE_CC_I, _:4>> = <<CC>>,
 	<<CC_I:?SIZE_CC_I>>.
 
 %%%=======================================================================================
@@ -466,8 +466,8 @@ cpu_get_cc_i(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc_n(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
-	<<_CC_E:?SIZE_CC_E,_CC_F:?SIZE_CC_F,_CC_H:?SIZE_CC_H,_CC_I:?SIZE_CC_I,CC_N:?SIZE_CC_N,_:3>> = <<CC>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
+	<<_CC_E:?SIZE_CC_E, _CC_F:?SIZE_CC_F, _CC_H:?SIZE_CC_H, _CC_I:?SIZE_CC_I, CC_N:?SIZE_CC_N, _:3>> = <<CC>>,
 	<<CC_N:?SIZE_CC_N>>.
 
 %%%=======================================================================================
@@ -479,8 +479,8 @@ cpu_get_cc_n(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc_z(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
-	<<_CC_E:?SIZE_CC_E,_CC_F:?SIZE_CC_F,_CC_H:?SIZE_CC_H,_CC_I:?SIZE_CC_I,_CC_N:?SIZE_CC_N,CC_Z:?SIZE_CC_Z,_:2>> = <<CC>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
+	<<_CC_E:?SIZE_CC_E, _CC_F:?SIZE_CC_F, _CC_H:?SIZE_CC_H, _CC_I:?SIZE_CC_I, _CC_N:?SIZE_CC_N, CC_Z:?SIZE_CC_Z, _:2>> = <<CC>>,
 	<<CC_Z:?SIZE_CC_Z>>.
 
 %%%=======================================================================================
@@ -492,8 +492,8 @@ cpu_get_cc_z(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc_v(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
-	<<_CC_E:?SIZE_CC_E,_CC_F:?SIZE_CC_F,_CC_H:?SIZE_CC_H,_CC_I:?SIZE_CC_I,_CC_N:?SIZE_CC_N,_CC_Z:?SIZE_CC_Z,CC_V:?SIZE_CC_V,_:1>> = <<CC>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
+	<<_CC_E:?SIZE_CC_E, _CC_F:?SIZE_CC_F, _CC_H:?SIZE_CC_H, _CC_I:?SIZE_CC_I, _CC_N:?SIZE_CC_N, _CC_Z:?SIZE_CC_Z, CC_V:?SIZE_CC_V, _:1>> = <<CC>>,
 	<<CC_V:?SIZE_CC_V>>.
 
 %%%=======================================================================================
@@ -505,8 +505,8 @@ cpu_get_cc_v(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_cc_c(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,CC:?SIZE_CC,_/binary>> = CPU_Data,
-	<<_CC_E:?SIZE_CC_E,_CC_F:?SIZE_CC_F,_CC_H:?SIZE_CC_H,_CC_I:?SIZE_CC_I,_CC_N:?SIZE_CC_N,_CC_Z:?SIZE_CC_Z,_CC_V:?SIZE_CC_V,CC_C:?SIZE_CC_C>> = <<CC>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, CC:?SIZE_CC, _/binary>> = CPU_Data,
+	<<_CC_E:?SIZE_CC_E, _CC_F:?SIZE_CC_F, _CC_H:?SIZE_CC_H, _CC_I:?SIZE_CC_I, _CC_N:?SIZE_CC_N, _CC_Z:?SIZE_CC_Z, _CC_V:?SIZE_CC_V, CC_C:?SIZE_CC_C>> = <<CC>>,
 	<<CC_C:?SIZE_CC_C>>.
 
 %%%=======================================================================================
@@ -518,7 +518,7 @@ cpu_get_cc_c(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_md(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,MD:?SIZE_MD,_/binary>> = CPU_Data,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, MD:?SIZE_MD, _/binary>> = CPU_Data,
 	<<MD:?SIZE_MD>>.
 
 %%%=======================================================================================
@@ -530,8 +530,8 @@ cpu_get_md(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_md_div0(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,MD:?SIZE_MD,_/binary>> = CPU_Data,
-	<<MD_Div0:?SIZE_MD_DIV0,_:7>> = <<MD>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, MD:?SIZE_MD, _/binary>> = CPU_Data,
+	<<MD_Div0:?SIZE_MD_DIV0, _:7>> = <<MD>>,
 	<<MD_Div0:?SIZE_MD_DIV0>>.
 
 %%%=======================================================================================
@@ -543,8 +543,8 @@ cpu_get_md_div0(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_md_il(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,MD:?SIZE_MD,_/binary>> = CPU_Data,
-	<<_MD_Div0:?SIZE_MD_DIV0,MD_IL:?SIZE_MD_IL,_:6>> = <<MD>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, MD:?SIZE_MD, _/binary>> = CPU_Data,
+	<<_MD_Div0:?SIZE_MD_DIV0, MD_IL:?SIZE_MD_IL, _:6>> = <<MD>>,
 	<<MD_IL:?SIZE_MD_IL>>.
 
 %%%=======================================================================================
@@ -556,8 +556,8 @@ cpu_get_md_il(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_md_fm(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,MD:?SIZE_MD,_/binary>> = CPU_Data,
-	<<_MD_Div0:?SIZE_MD_DIV0,_MD_IL:?SIZE_MD_IL,_:4,MD_FM:?SIZE_MD_FM,_:1>> = <<MD>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, MD:?SIZE_MD, _/binary>> = CPU_Data,
+	<<_MD_Div0:?SIZE_MD_DIV0, _MD_IL:?SIZE_MD_IL, _:4, MD_FM:?SIZE_MD_FM, _:1>> = <<MD>>,
 	<<MD_FM:?SIZE_MD_FM>>.
 
 %%%=======================================================================================
@@ -569,8 +569,8 @@ cpu_get_md_fm(CPU_Data) ->
 %%%=======================================================================================
 cpu_get_md_nm(CPU_Data) ->
 
-	<<_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,MD:?SIZE_MD,_/binary>> = CPU_Data,
-	<<_MD_Div0:?SIZE_MD_DIV0,_MD_IL:?SIZE_MD_IL,_:4,_MD_FM:?SIZE_MD_FM,MD_NM:?SIZE_MD_NM>> = <<MD>>,
+	<<_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, MD:?SIZE_MD, _/binary>> = CPU_Data,
+	<<_MD_Div0:?SIZE_MD_DIV0, _MD_IL:?SIZE_MD_IL, _:4, _MD_FM:?SIZE_MD_FM, MD_NM:?SIZE_MD_NM>> = <<MD>>,
 	<<MD_NM:?SIZE_MD_NM>>.
 
 %%%=======================================================================================
@@ -583,8 +583,8 @@ cpu_get_md_nm(CPU_Data) ->
 cpu_get_reset(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		Reset:?SIZE_RESET,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		Reset:?SIZE_RESET, _/bits
 	>> = CPU_Data,
 	<<Reset:?SIZE_RESET>>.
 
@@ -598,8 +598,8 @@ cpu_get_reset(CPU_Data) ->
 cpu_get_nmi(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		_Reset:?SIZE_RESET,NMI:?SIZE_NMI,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		_Reset:?SIZE_RESET, NMI:?SIZE_NMI, _/bits
 	>> = CPU_Data,
 	<<NMI:?SIZE_NMI>>.
 
@@ -613,8 +613,8 @@ cpu_get_nmi(CPU_Data) ->
 cpu_get_swi(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		_Reset:?SIZE_RESET,_NMI:?SIZE_NMI,SWI:?SIZE_SWI,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		_Reset:?SIZE_RESET, _NMI:?SIZE_NMI, SWI:?SIZE_SWI, _/bits
 	>> = CPU_Data,
 	<<SWI:?SIZE_SWI>>.
 
@@ -628,8 +628,8 @@ cpu_get_swi(CPU_Data) ->
 cpu_get_irq(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		_Reset:?SIZE_RESET,_NMI:?SIZE_NMI,_SWI:?SIZE_SWI,IRQ:?SIZE_IRQ,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		_Reset:?SIZE_RESET, _NMI:?SIZE_NMI, _SWI:?SIZE_SWI, IRQ:?SIZE_IRQ, _/bits
 	>> = CPU_Data,
 	<<IRQ:?SIZE_IRQ>>.
 
@@ -643,8 +643,8 @@ cpu_get_irq(CPU_Data) ->
 cpu_get_firq(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		_Reset:?SIZE_RESET,_NMI:?SIZE_NMI,_SWI:?SIZE_SWI,_IRQ:?SIZE_IRQ,FIRQ:?SIZE_FIRQ,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		_Reset:?SIZE_RESET, _NMI:?SIZE_NMI, _SWI:?SIZE_SWI, _IRQ:?SIZE_IRQ, FIRQ:?SIZE_FIRQ, _/bits
 	>> = CPU_Data,
 	<<FIRQ:?SIZE_FIRQ>>.
 
@@ -658,8 +658,8 @@ cpu_get_firq(CPU_Data) ->
 cpu_get_swi2(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		_Reset:?SIZE_RESET,_NMI:?SIZE_NMI,_SWI:?SIZE_SWI,_IRQ:?SIZE_IRQ,_FIRQ:?SIZE_FIRQ,SWI2:?SIZE_SWI2,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		_Reset:?SIZE_RESET, _NMI:?SIZE_NMI, _SWI:?SIZE_SWI, _IRQ:?SIZE_IRQ, _FIRQ:?SIZE_FIRQ, SWI2:?SIZE_SWI2, _/bits
 	>> = CPU_Data,
 	<<SWI2:?SIZE_SWI2>>.
 
@@ -673,8 +673,8 @@ cpu_get_swi2(CPU_Data) ->
 cpu_get_swi3(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		_Reset:?SIZE_RESET,_NMI:?SIZE_NMI,_SWI:?SIZE_SWI,_IRQ:?SIZE_IRQ,_FIRQ:?SIZE_FIRQ,_SWI2:?SIZE_SWI2,SWI3:?SIZE_SWI3,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		_Reset:?SIZE_RESET, _NMI:?SIZE_NMI, _SWI:?SIZE_SWI, _IRQ:?SIZE_IRQ, _FIRQ:?SIZE_FIRQ, _SWI2:?SIZE_SWI2, SWI3:?SIZE_SWI3, _/bits
 	>> = CPU_Data,
 	<<SWI3:?SIZE_SWI3>>.
 
@@ -688,8 +688,8 @@ cpu_get_swi3(CPU_Data) ->
 cpu_get_reserved(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		_Reset:?SIZE_RESET,_NMI:?SIZE_NMI,_SWI:?SIZE_SWI,_IRQ:?SIZE_IRQ,_FIRQ:?SIZE_FIRQ,_SWI2:?SIZE_SWI2,_SWI3:?SIZE_SWI3,Reserved:?SIZE_RESERVED,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		_Reset:?SIZE_RESET, _NMI:?SIZE_NMI, _SWI:?SIZE_SWI, _IRQ:?SIZE_IRQ, _FIRQ:?SIZE_FIRQ, _SWI2:?SIZE_SWI2, _SWI3:?SIZE_SWI3, Reserved:?SIZE_RESERVED, _/bits
 	>> = CPU_Data,
 	<<Reserved:?SIZE_RESERVED>>.
 
@@ -703,9 +703,9 @@ cpu_get_reserved(CPU_Data) ->
 cpu_get_halt(CPU_Data) ->
 
 	<<
-		_Q:?SIZE_Q,_X:?SIZE_X,_Y:?SIZE_Y,_U:?SIZE_U,_S:?SIZE_S,_PC:?SIZE_PC,_V:?SIZE_V,_Zero:?SIZE_ZERO,_DP:?SIZE_DP,_CC:?SIZE_CC,_MD:?SIZE_MD,
-		_Reset:?SIZE_RESET,_NMI:?SIZE_NMI,_SWI:?SIZE_SWI,_IRQ:?SIZE_IRQ,_FIRQ:?SIZE_FIRQ,_SWI2:?SIZE_SWI2,_SWI3:?SIZE_SWI3,_Reserved:?SIZE_RESERVED,
-		Halt:?SIZE_HALT,_/bits
+		_Q:?SIZE_Q, _X:?SIZE_X, _Y:?SIZE_Y, _U:?SIZE_U, _S:?SIZE_S, _PC:?SIZE_PC, _V:?SIZE_V, _Zero:?SIZE_ZERO, _DP:?SIZE_DP, _CC:?SIZE_CC, _MD:?SIZE_MD,
+		_Reset:?SIZE_RESET, _NMI:?SIZE_NMI, _SWI:?SIZE_SWI, _IRQ:?SIZE_IRQ, _FIRQ:?SIZE_FIRQ, _SWI2:?SIZE_SWI2, _SWI3:?SIZE_SWI3, _Reserved:?SIZE_RESERVED,
+		Halt:?SIZE_HALT, _/bits
 	>> = CPU_Data,
 	<<Halt:?SIZE_HALT>>.
 

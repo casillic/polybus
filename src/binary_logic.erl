@@ -4,12 +4,14 @@
 -module(binary_logic).
 -compile(export_all).
 
+-type bit_type() :: <<_:1>>.
+
 %%%=======================================================================================
 %% @doc 
 % Inverts a Bit<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec inverter(Bit::binary()) -> binary().
+-spec inverter(Bit::bit_type()) -> bit_type().
 %%%=======================================================================================
 inverter(Bit) ->
 
@@ -24,16 +26,16 @@ inverter(Bit) ->
 % ANDs two Bits<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec and_gate(Bit1::binary(),Bit2::binary()) -> binary().
+-spec and_gate(Bit1::bit_type(), Bit2::bit_type()) -> bit_type().
 %%%=======================================================================================
-and_gate(Bit1,Bit2) ->
+and_gate(Bit1, Bit2) ->
 
-	case [Bit1,Bit2] of
+	case [Bit1, Bit2] of
 
-		[<<0:1>>,<<0:1>>] -> <<0:1>>;
-		[<<0:1>>,<<1:1>>] -> <<0:1>>;
-		[<<1:1>>,<<0:1>>] -> <<0:1>>;
-		[<<1:1>>,<<1:1>>] -> <<1:1>>
+		[<<0:1>>, <<0:1>>] -> <<0:1>>;
+		[<<0:1>>, <<1:1>>] -> <<0:1>>;
+		[<<1:1>>, <<0:1>>] -> <<0:1>>;
+		[<<1:1>>, <<1:1>>] -> <<1:1>>
 	end.
 
 %%%=======================================================================================
@@ -41,9 +43,9 @@ and_gate(Bit1,Bit2) ->
 % ORs two Bits<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec or_gate(Bit1::binary(),Bit2::binary()) -> binary().
+-spec or_gate(Bit1::bit_type(), Bit2::bit_type()) -> bit_type().
 %%%=======================================================================================
-or_gate(Bit1,Bit2) ->
+or_gate(Bit1, Bit2) ->
 
 	case [Bit1,Bit2] of
 
@@ -58,11 +60,11 @@ or_gate(Bit1,Bit2) ->
 % XORs two Bits<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec xor_gate(Bit1::binary(),Bit2::binary()) -> binary().
+-spec xor_gate(Bit1::bit_type(), Bit2::bit_type()) -> bit_type().
 %%%=======================================================================================
-xor_gate(Bit1,Bit2) ->
+xor_gate(Bit1, Bit2) ->
 
-	case [Bit1,Bit2] of
+	case [Bit1, Bit2] of
 
 		[<<0:1>>,<<0:1>>] -> <<0:1>>;
 		[<<0:1>>,<<1:1>>] -> <<1:1>>;
@@ -75,7 +77,7 @@ xor_gate(Bit1,Bit2) ->
 % NANDs two Bits<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec nand_gate(Bit1::binary(),Bit2::binary()) -> binary().
+-spec nand_gate(Bit1::bit_type(), Bit2::bit_type()) -> bit_type().
 %%%=======================================================================================
 nand_gate(Bit1,Bit2) ->
 
@@ -92,20 +94,24 @@ nand_gate(Bit1,Bit2) ->
 % Adds two Bits<br/>
 % Returns: tuple {carry,result}<br/>
 % ---- Unit-Tested ----<br/>
--spec bit_addition_with_carry(Bit1::binary(),Bit2::binary()) -> {binary(),binary()}.
+-spec bit_addition_with_carry(Bit1::bit_type(), Bit2::bit_type()) -> {bit_type(), bit_type()}.
 %%%=======================================================================================
 bit_addition_with_carry(Bit1,Bit0) ->
 
-	bit_addition_with_carry(Bit1,Bit0,0).
+	bit_addition_with_carry(Bit1, Bit0, <<0:1>>).
 
 %%%=======================================================================================
 %% @doc 
 % Adds two Bits with Carry In<br/>
 % Returns: tuple {carry,result}<br/>
 % ---- Unit-Tested ----<br/>
--spec bit_addition_with_carry(Bit1::binary(),Bit2::binary(),Carry_In::binary()) -> {binary(),binary()}.
+-spec bit_addition_with_carry(
+								Bit1 		::bit_type(),
+								Bit2 		::bit_type(),
+								Carry_In 	::bit_type()
+							  ) -> {bit_type(), bit_type()}.
 %%%=======================================================================================
-bit_addition_with_carry(Bit1,Bit0,Carry_In) ->
+bit_addition_with_carry(Bit1, Bit0, Carry_In) ->
 
 	{Carry,Result} = case [Bit1,Bit0,Carry_In] of
 
@@ -122,16 +128,16 @@ bit_addition_with_carry(Bit1,Bit0,Carry_In) ->
 	{Carry,Result}.
 
 %%-----------------------------------------------------------------------------
-generic_addition_with_flags(Bits1,Bits0) ->
+generic_addition_with_flags(Bits1, Bits0) ->
 	
-	generic_addition_with_flags(Bits1,Bits0,<<0:1>>).
+	generic_addition_with_flags(Bits1, Bits0, <<0:1>>).
 
 %%-----------------------------------------------------------------------------
-generic_addition_with_flags(Bits1,Bits0,Carry_In) ->
+generic_addition_with_flags(Bits1, Bits0, Carry_In) ->
 
 	generic_addition_with_flags(Bits1,Bits0,Carry_In,<<>>,[]).
 
-generic_addition_with_flags(<<>>,<<>>,Carry_In,Result,Carry_Array) ->
+generic_addition_with_flags(<<>>, <<>>, Carry_In, Result, Carry_Array) ->
 
 	[Cs,Cp|_] 			= Carry_Array,
 
@@ -263,7 +269,7 @@ byte_addition_with_flags(Bits1,Bits0,Carry_In,Results,Carry_Array) ->
 %% @doc 
 % Performs the function Fun on each bit in Bits<br/>
 % ---- Unit-Tested ----<br/>
--spec each_bit(Fun::fun(),Bits::binary()) -> binary().
+-spec each_bit(Fun::fun(), Bits::binary()) -> binary().
 %%%=======================================================================================
 each_bit(Fun,Bits) ->
 
@@ -285,28 +291,28 @@ each_bit(Fun,Bits,ACC) ->
 %% @doc 
 % Duplicates a Bit<br/>
 % ---- Unit-Tested ----<br/>
--spec duplicate_bit(Times::non_neg_integer(),Bit::binary()) -> binary().
+-spec duplicate_bit(Times::non_neg_integer(), Bit::<<_:1>>) -> binary().
 %%%=======================================================================================
-duplicate_bit(Times,Bit) ->
+duplicate_bit(Times, Bit) ->
 	
-	duplicate_bit(Times,Bit,<<>>).
+	duplicate_bit(Times, Bit, <<>>).
 
 %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-duplicate_bit(0,_Bit,ACC) ->
+duplicate_bit(0, _Bit, ACC) ->
 
 	ACC;
 
-duplicate_bit(Times,Bit,ACC) ->
+duplicate_bit(Times, Bit, ACC) ->
 
-	duplicate_bit(Times - 1, Bit, <<ACC/bits, Bit/bits>>).
+	duplicate_bit((Times - 1), Bit, <<ACC/bits, Bit/bits>>).
 
 %%%=======================================================================================
 %% @doc 
 % Zero extends a group of bits<br/>
 % ---- Unit-Tested ----<br/>
--spec expand_to_size_with_zeros(Bits::binary(),Size::non_neg_integer()) -> binary().
+-spec expand_to_size_with_zeros(Bits::<<_:_*1>>, Size::non_neg_integer()) -> <<_:_*1>>.
 %%%=======================================================================================
-expand_to_size_with_zeros(Bits,Size) ->
+expand_to_size_with_zeros(Bits, Size) ->
 
 	Bit_Size 		= bit_size(Bits),
 
@@ -316,16 +322,17 @@ expand_to_size_with_zeros(Bits,Size) ->
 						_ 	 -> 0
 						end,
 
-	expand_to_size_with_expansion_bit(Size_To_Add,Bits,<<0:1>>). 
+	expand_to_size_with_expansion_bit(Size_To_Add, Bits, <<0:1>>). 
 
 %%----Unit_Tested-------------------------------------------------------------------------
-expand_to_size_with_expansion_bit(0,Bits,_Expansion_Bit) ->
+expand_to_size_with_expansion_bit(0, Bits, _Expansion_Bit) ->
 
 	Bits;
 
-expand_to_size_with_expansion_bit(Size_To_Add,Bits,Expansion_Bit) ->
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+expand_to_size_with_expansion_bit(Size_To_Add, Bits, Expansion_Bit) ->
 	
-	expand_to_size_with_expansion_bit(Size_To_Add - 1 , << Expansion_Bit/bits, Bits/bits>>, Expansion_Bit).
+	expand_to_size_with_expansion_bit((Size_To_Add - 1) , << (Expansion_Bit)/bits, (Bits)/bits>>, Expansion_Bit).
 
 %%%=======================================================================================
 %% @doc 
@@ -353,17 +360,17 @@ sign_extend(Bits,Size) when Size >= 0->
 %% @doc 
 % Convert the bits to their twos complement<br/>
 % ---- Unit-Tested ----<br/>
--spec twos_complement(Bits::binary()) -> binary().
+-spec twos_complement(Bits::binary()) -> <<_:1,_:_*1>>.
 %%%=======================================================================================
 twos_complement(Bits) ->
 
 	Bit_Size 				= bit_size(Bits),
 
-	Inverted_Bits 			= each_bit(fun inverter/1,Bits),
+	Inverted_Bits 			= each_bit(fun inverter/1, Bits),
 
-	One_Bits 				= expand_to_size_with_zeros(<<1:1>>,Bit_Size),
+	One_Bits 				= expand_to_size_with_zeros(<<1:1>>, Bit_Size),
 
-	{_Carry,Result,_Flags} 	= generic_addition_with_flags(Inverted_Bits,One_Bits),
+	{_Carry, Result,_Flags} = generic_addition_with_flags(Inverted_Bits, One_Bits),
 
 	Result.
 
@@ -371,15 +378,15 @@ twos_complement(Bits) ->
 %% @doc 
 % Performs the inverse twos complement on the bits<br/>
 % ---- Unit-Tested ----<br/>
--spec twos_complement_inv(Bits::binary()) -> binary().
+-spec twos_complement_inv(Bits::<<_:_*1>>) -> <<_:_*1>>.
 %%%=======================================================================================
 twos_complement_inv(Bits) ->
 
 	Bit_Size 				= bit_size(Bits),
 
-	Neg_One 				= duplicate_bit(Bit_Size,<<1:1>>),
+	Neg_One 				= duplicate_bit(Bit_Size, <<1:1>>),
 
-	{_Carry,Result,_Flags} 	= generic_addition_with_flags(Bits,Neg_One),
+	{_Carry, Result,_Flags} = generic_addition_with_flags(Bits, Neg_One),
 
 	each_bit(fun inverter/1, Result).
 
@@ -395,34 +402,36 @@ generic_subtraction_with_flags(Minuend,Subtrahend) ->
 % Performs Bitwise AND on two binaries<br/>
 % The binaries must be the same length<br/>
 % ---- Unit-Tested ----<br/>
--spec and_binary(Binary1::binary(),Binary2::binary()) -> binary().
+-spec and_binary(Binary1::<<_:_*1>>, Binary2::<<_:_*1>>) -> <<_:_*1>>.
 %%%=======================================================================================
-and_binary(Binary1,Binary2) 
+and_binary(Binary1, Binary2) 
 	when 
 			bit_size(Binary1) =:= bit_size(Binary2)
 	->
 
-	and_binary(Binary1,Binary2,<<>>).
+	and_binary(Binary1, Binary2, <<>>).
 
-and_binary(<<>>,_,Result) ->
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+and_binary(<<>>, _, Result) ->
 
 	Result;
 
-and_binary(Binary1,Binary2,Result) ->
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+and_binary(Binary1, Binary2, Result) ->
 
-	<<Bit1:1,New_Binary1/bits>> 	= Binary1,
-	<<Bit2:1,New_Binary2/bits>> 	= Binary2,
+	<<Bit1:1, New_Binary1/bits>> 	= Binary1,
+	<<Bit2:1, New_Binary2/bits>> 	= Binary2,
 
-	AND_Result 						= and_gate(<<Bit1:1>>,<<Bit2:1>>),
+	AND_Result 						= and_gate(<<Bit1:1>>, <<Bit2:1>>),
 
-	and_binary(New_Binary1,New_Binary2,<<Result/bits,AND_Result/bits>>).
+	and_binary(New_Binary1, New_Binary2, <<Result/bits, AND_Result/bits>>).
 
 %%%=======================================================================================
 %% @doc 
 % Performs Arithmetic Shift Lift ASL<br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec asl_binary_with_flags(Binary::binary()) -> { binary(), binary(), map()}.
+-spec asl_binary_with_flags(Binary::binary()) -> { <<_:1>>, binary(), map()}.
 %%%=======================================================================================
 asl_binary_with_flags(Binary) ->
 
@@ -453,14 +462,14 @@ asl_binary_with_flags(Binary) ->
 													c => Carry_Flag
 											   },
 
-	{<<Carry_Flag:1>>,Result,Flags}.
+	{<<Carry_Flag:1>>, Result, Flags}.
 
 %%%=======================================================================================
 %% @doc 
 % Performs Arithmetic Shift Right ASL<br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec asr_binary_with_flags(Binary::binary()) -> { binary(), binary(), map()}.
+-spec asr_binary_with_flags(Binary::<<_:1,_:_*1>>) -> {<<_:1>>,<<_:1,_:_*1>>,#{'c':=0 | 1, 'n':=0 | 1, 'z':=0 | 1}}.
 %%%=======================================================================================
 asr_binary_with_flags(Binary) ->
 

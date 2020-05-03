@@ -869,9 +869,9 @@ immediate_1_address_1_test() ->
 
 	Expected 	= {<<255>>, <<>>, <<2:16>>},
 	Pos 	 	= <<1:16>>,
-	Data 		= <<0,255,0,0>>,
+	Data 		= <<0, 255, 0, 0>>,
 	CPU_Data 	= <<>>,
-	tester(Expected,mc6309:immediate_1_address(Pos,Data,CPU_Data),?PRINT).
+	tester(Expected,mc6309:immediate_1_address(Pos, Data, CPU_Data),?PRINT).
 
 %%=============================================================================
 %% immediate_2_address(Pos,Data,CPU_Data)
@@ -893,7 +893,7 @@ direct_1_address_1_test() ->
 	Pos 		= <<1:16>>,
 	Data 		= <<0,5,0,0,0,255,0,0,0>>,
 	CPU_Data 	= mc6309:cpu_clear(),
-	tester(Expected,mc6309:direct_1_address(Pos,Data,CPU_Data),?PRINT).
+	tester(Expected,mc6309:direct_1_address(Pos, Data, CPU_Data),?PRINT).
 
 %%=============================================================================
 %% direct_2_address(Pos,Data,CPU_Data)
@@ -2209,7 +2209,6 @@ adcd_generic_part_1_test() ->
 												New_Pos
 											 ),?PRINT).
 
-
 %%=============================================================================
 %% constant_offset_from_r_5_bit_offset_direct(
 %												Pos,
@@ -2284,13 +2283,13 @@ constant_offset_from_r_no_offset_1_test() -> % 1 octet, direct
 													),
 
 	Expected 			= {
-							<<5:8>>,
+							<<6:8>>,
 							CPU,
 							<<1:16>>
 				  		  },
 
 	Pos 				= <<0:16>>,
-	Data 				= <<2#10000100,0,0,0,0,5>>,
+	Data 				= <<2#10000100,0,0,0,0,6>>,
 	CPU_Data  			= CPU,
 	Number_Of_Bytes		= 1,
 	tester(Expected,mc6309:constant_offset_from_r_no_offset(
@@ -2310,13 +2309,13 @@ constant_offset_from_r_no_offset_2_test() -> % 2 octet, direct
 													),
 
 	Expected 			= {
-							<<5:8,6:8>>,
+							<<6:8,7:8>>,
 							CPU,
 							<<1:16>>
 				  		  },
 
 	Pos 				= <<0:16>>,
-	Data 				= <<2#10000100,0,0,0,0,5,6>>,
+	Data 				= <<2#10000100,0,0,0,0,6,7>>,
 	CPU_Data  			= CPU,
 	Number_Of_Bytes		= 2,
 	tester(Expected,mc6309:constant_offset_from_r_no_offset(
@@ -2336,13 +2335,13 @@ constant_offset_from_r_no_offset_3_test() -> % 1 octet, indirect
 													),
 
 	Expected 			= {
-							<<5:8>>,
+							<<6:8>>,
 							CPU,
 							<<1:16>>
 				  		  },
 
 	Pos 				= <<0:16>>,
-	Data 				= <<2#10010100,5,0,0,0,0,1>>,
+	Data 				= <<2#10010100,6,0,0,0,0,1>>,
 	CPU_Data  			= CPU,
 	Number_Of_Bytes		= 1,
 	tester(Expected,mc6309:constant_offset_from_r_no_offset(
@@ -2362,13 +2361,13 @@ constant_offset_from_r_no_offset_4_test() -> % 2 octet, indirect
 													),
 
 	Expected 			= {
-							<<5:8,6:8>>,
+							<<6:8,7:8>>,
 							CPU,
 							<<1:16>>
 				  		  },
 
 	Pos 				= <<0:16>>,
-	Data 				= <<2#10010100,5,6,0,0,0,1>>,
+	Data 				= <<2#10010100,6,7,0,0,0,1>>,
 	CPU_Data  			= CPU,
 	Number_Of_Bytes		= 2,
 	tester(Expected,mc6309:constant_offset_from_r_no_offset(
@@ -12976,3 +12975,315 @@ com_generic_part_1_test() ->
 												Set_Reg_Fun,
 												New_Pos
 											),?PRINT).
+
+%%=============================================================================
+% coma_inherent_43(Pos, Data, CPU_Data)
+%%=============================================================================
+coma_inherent_43_1_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_A(<<2#11111111:?SIZE_A>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<1:?SIZE_PC>>),
+														?SET_A(<<2#00000000:?SIZE_A>>),
+														?SET_CC_N(<<0:?SIZE_CC_N>>),
+														?SET_CC_Z(<<1:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:coma_inherent_43(Pos, Data, CPU_Data), ?PRINT).
+
+%%-----------------------------------------------------------------------------
+coma_inherent_43_2_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_A(<<2#00000000:?SIZE_A>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<1:?SIZE_PC>>),
+														?SET_A(<<2#11111111:?SIZE_A>>),
+														?SET_CC_N(<<1:?SIZE_CC_N>>),
+														?SET_CC_Z(<<0:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:coma_inherent_43(Pos, Data, CPU_Data), ?PRINT).
+
+%%=============================================================================
+% comb_inherent_53(Pos, Data, CPU_Data)
+%%=============================================================================
+comb_inherent_53_1_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_B(<<2#11111111:?SIZE_A>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<1:?SIZE_PC>>),
+														?SET_B(<<2#00000000:?SIZE_A>>),
+														?SET_CC_N(<<0:?SIZE_CC_N>>),
+														?SET_CC_Z(<<1:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:comb_inherent_53(Pos, Data, CPU_Data), ?PRINT).
+
+%%-----------------------------------------------------------------------------
+comb_inherent_53_2_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_B(<<2#00000000:?SIZE_A>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<1:?SIZE_PC>>),
+														?SET_B(<<2#11111111:?SIZE_A>>),
+														?SET_CC_N(<<1:?SIZE_CC_N>>),
+														?SET_CC_Z(<<0:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:comb_inherent_53(Pos, Data, CPU_Data), ?PRINT).
+
+%%=============================================================================
+% comd_inherent_1043(Pos, Data, CPU_Data)
+%%=============================================================================
+comd_inherent_1043_1_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_D(<<16#0:?SIZE_D>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_D(<<2#1111111111111111:?SIZE_D>>),
+														?SET_CC_N(<<1:?SIZE_CC_N>>),
+														?SET_CC_Z(<<0:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:comd_inherent_1043(Pos, Data, CPU_Data), ?PRINT).
+
+%%-----------------------------------------------------------------------------
+comd_inherent_1043_2_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_D(<<2#1111111111111111:?SIZE_D>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_D(<<16#0:?SIZE_D>>),
+														?SET_CC_N(<<0:?SIZE_CC_N>>),
+														?SET_CC_Z(<<1:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:comd_inherent_1043(Pos, Data, CPU_Data), ?PRINT).
+
+%%=============================================================================
+% come_inherent_1143(Pos,Data,CPU_Data)
+%%=============================================================================
+come_inherent_1143_1_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_E(<<16#0:?SIZE_E>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_E(<<2#11111111:?SIZE_E>>),
+														?SET_CC_N(<<1:?SIZE_CC_N>>),
+														?SET_CC_Z(<<0:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:come_inherent_1143(Pos, Data, CPU_Data), ?PRINT).
+
+%%-----------------------------------------------------------------------------
+come_inherent_1143_2_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_E(<<2#11111111:?SIZE_E>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_E(<<16#0:?SIZE_E>>),
+														?SET_CC_N(<<0:?SIZE_CC_N>>),
+														?SET_CC_Z(<<1:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:come_inherent_1143(Pos, Data, CPU_Data), ?PRINT).
+
+%%=============================================================================
+% comf_inherent_1153(Pos,Data,CPU_Data)
+%%=============================================================================
+comf_inherent_1153_1_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_F(<<16#0:?SIZE_F>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_F(<<2#11111111:?SIZE_F>>),
+														?SET_CC_N(<<1:?SIZE_CC_N>>),
+														?SET_CC_Z(<<0:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:comf_inherent_1153(Pos, Data, CPU_Data), ?PRINT).
+
+%%-----------------------------------------------------------------------------
+comf_inherent_1153_2_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_F(<<2#11111111:?SIZE_F>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_F(<<16#0:?SIZE_F>>),
+														?SET_CC_N(<<0:?SIZE_CC_N>>),
+														?SET_CC_Z(<<1:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:comf_inherent_1153(Pos, Data, CPU_Data), ?PRINT).
+
+%%=============================================================================
+% comw_inherent_1053(Pos, Data, CPU_Data)
+%%=============================================================================
+comw_inherent_1053_1_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_W(<<16#0:?SIZE_W>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_W(<<2#1111111111111111:?SIZE_W>>),
+														?SET_CC_N(<<1:?SIZE_CC_N>>),
+														?SET_CC_Z(<<0:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:comw_inherent_1053(Pos, Data, CPU_Data), ?PRINT).
+
+%%-----------------------------------------------------------------------------
+comw_inherent_1053_2_test() ->
+
+	Pos 		= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+													?SET_W(<<2#1111111111111111:?SIZE_W>>)
+												]
+											),
+	Expected 	= {
+						Data,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_W(<<16#0:?SIZE_W>>),
+														?SET_CC_N(<<0:?SIZE_CC_N>>),
+														?SET_CC_Z(<<1:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:comw_inherent_1053(Pos, Data, CPU_Data), ?PRINT).

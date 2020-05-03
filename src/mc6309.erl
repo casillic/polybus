@@ -53,14 +53,67 @@
 
 -define(UPDATE_FLAGS(MAP), 		fun(CPU) -> update_condition_codes_from_map(MAP,CPU) end).
 
+-type cpu_type() 			:: <<_:184>>.
+-type position_type() 		:: <<_:16>>.
+-type address_type() 		:: <<_:16>>.
+-type q_reg_type() 			:: <<_:32>>.
+-type d_reg_type() 			:: <<_:16>>.
+-type a_reg_type() 			:: <<_:8>>.
+-type b_reg_type() 			:: <<_:8>>.
+-type w_reg_type() 			:: <<_:16>>.
+-type e_reg_type() 			:: <<_:8>>.
+-type f_reg_type() 			:: <<_:8>>.
+-type x_reg_type() 			:: <<_:16>>.
+-type y_reg_type() 			:: <<_:16>>.
+-type u_reg_type() 			:: <<_:16>>.
+-type s_reg_type() 			:: <<_:16>>.
+-type pc_reg_type() 		:: <<_:16>>.
+-type v_reg_type() 			:: <<_:16>>.
+-type zero_reg_type() 		:: <<_:16>>.
+-type dp_reg_type() 		:: <<_:8>>.
+-type cc_reg_type() 		:: <<_:8>>.
+-type cc_e_reg_type() 		:: <<_:1>>.
+-type cc_f_reg_type() 		:: <<_:1>>.
+-type cc_h_reg_type() 		:: <<_:1>>.
+-type cc_i_reg_type() 		:: <<_:1>>.
+-type cc_n_reg_type() 		:: <<_:1>>.
+-type cc_z_reg_type() 		:: <<_:1>>.
+-type cc_v_reg_type() 		:: <<_:1>>.
+-type cc_c_reg_type() 		:: <<_:1>>.
+-type md_reg_type() 		:: <<_:8>>.
+-type md_div0_reg_type() 	:: <<_:1>>.
+-type md_il_reg_type() 		:: <<_:1>>.
+-type md_fm_reg_type() 		:: <<_:1>>.
+-type md_nm_reg_type() 		:: <<_:1>>.
+-type reset_reg_type() 		:: <<_:1>>.
+-type nmi_reg_type() 		:: <<_:1>>.
+-type swi_reg_type() 		:: <<_:1>>.
+-type irq_reg_type() 		:: <<_:1>>.
+-type firq_reg_type() 		:: <<_:1>>.
+-type swi2_reg_type() 		:: <<_:1>>.
+-type swi3_reg_type() 		:: <<_:1>>.
+-type reserved_reg_type() 	:: <<_:1>>.
+-type halt_reg_type() 		:: <<_:1>>.
+
 %%%----------------------------------------------------------------------------
-get_byte_pos(Data,Pos) ->
+get_byte_pos(Data, Pos) ->
 
 	<<Position:16>> = Pos,
 
-	binary:part(Data,Position,1).
+	binary:part(Data, Position, 1).
 
-%%%----Unit_Tested------------------------------------------------------------------------
+%%-----------------------------------------------------------------------------
+set_byte_pos(Data, Byte, Position) ->
+
+	ram_64k:set_byte_pos(
+							Data,
+							Byte,
+							Position
+						  ).
+
+%%=============================================================================
+-spec cpu_clear() -> cpu_type().
+%%----Unit_Tested--------------------------------------------------------------
 cpu_clear() ->
 						<<  %=========================================================================|
 							% |-----------------------Q----------------------|
@@ -214,7 +267,7 @@ pretty_print(CPU) ->
 % Returns: 32 bit binary<br/>
 % ---- Unit-Tested ----<br/>
 %% @end
--spec cpu_get_q(CPU_Data::binary()) -> binary().
+-spec cpu_get_q(CPU_Data::cpu_type()) -> q_reg_type().
 %%%=======================================================================================
 cpu_get_q(CPU_Data) ->
 
@@ -227,7 +280,7 @@ cpu_get_q(CPU_Data) ->
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
 %% @end
--spec cpu_get_d(CPU_Data::binary()) -> binary().
+-spec cpu_get_d(CPU_Data::cpu_type()) -> d_reg_type().
 %%%=======================================================================================
 cpu_get_d(CPU_Data) ->
 
@@ -240,7 +293,7 @@ cpu_get_d(CPU_Data) ->
 % Returns: 8 bit binary<br/>
 % ---- Unit-Tested ----<br/>
 %% @end
--spec cpu_get_a(CPU_Data::binary()) -> binary().
+-spec cpu_get_a(CPU_Data::cpu_type()) -> a_reg_type().
 %%%=======================================================================================
 cpu_get_a(CPU_Data) ->
 
@@ -253,7 +306,7 @@ cpu_get_a(CPU_Data) ->
 % Returns: 8 bit binary<br/>
 % ---- Unit-Tested ----<br/>
 %% @end
--spec cpu_get_b(CPU_Data::binary()) -> binary().
+-spec cpu_get_b(CPU_Data::cpu_type()) -> b_reg_type().
 %%%=======================================================================================
 cpu_get_b(CPU_Data) ->
 
@@ -266,7 +319,7 @@ cpu_get_b(CPU_Data) ->
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
 %% @end
--spec cpu_get_w(CPU_Data::binary()) -> binary().
+-spec cpu_get_w(CPU_Data::cpu_type()) -> w_reg_type().
 %%%=======================================================================================
 cpu_get_w(CPU_Data) ->
 
@@ -278,7 +331,7 @@ cpu_get_w(CPU_Data) ->
 % Gets the E Register bits from CPU_Data<br/>
 % Returns: 8 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_e(CPU_Data::binary()) -> binary().
+-spec cpu_get_e(CPU_Data::cpu_type()) -> e_reg_type().
 %%%=======================================================================================
 cpu_get_e(CPU_Data) ->
 
@@ -290,7 +343,7 @@ cpu_get_e(CPU_Data) ->
 % Gets the F Register bits from CPU_Data<br/>
 % Returns: 8 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_f(CPU_Data::binary()) -> binary().
+-spec cpu_get_f(CPU_Data::cpu_type()) -> f_reg_type().
 %%%=======================================================================================
 cpu_get_f(CPU_Data) ->
 
@@ -302,7 +355,7 @@ cpu_get_f(CPU_Data) ->
 % Gets the X Register bits from CPU_Data<br/>
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_x(CPU_Data::binary()) -> binary().
+-spec cpu_get_x(CPU_Data::cpu_type()) -> x_reg_type().
 %%%=======================================================================================
 cpu_get_x(CPU_Data) ->
 
@@ -314,7 +367,7 @@ cpu_get_x(CPU_Data) ->
 % Gets the Y Register bits from CPU_Data<br/>
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_y(CPU_Data::binary()) -> binary().
+-spec cpu_get_y(CPU_Data::cpu_type()) -> y_reg_type().
 %%%=======================================================================================
 cpu_get_y(CPU_Data) ->
 
@@ -326,7 +379,7 @@ cpu_get_y(CPU_Data) ->
 % Gets the U Register bits from CPU_Data<br/>
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_u(CPU_Data::binary()) -> binary().
+-spec cpu_get_u(CPU_Data::cpu_type()) -> u_reg_type().
 %%%=======================================================================================
 cpu_get_u(CPU_Data) ->
 
@@ -338,7 +391,7 @@ cpu_get_u(CPU_Data) ->
 % Gets the S Register bits from CPU_Data<br/>
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_s(CPU_Data::binary()) -> binary().
+-spec cpu_get_s(CPU_Data::cpu_type()) -> s_reg_type().
 %%%=======================================================================================
 cpu_get_s(CPU_Data) ->
 
@@ -350,7 +403,7 @@ cpu_get_s(CPU_Data) ->
 % Gets the PC Register bits from CPU_Data<br/>
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_pc(CPU_Data::binary()) -> binary().
+-spec cpu_get_pc(CPU_Data::cpu_type()) -> pc_reg_type().
 %%%=======================================================================================
 cpu_get_pc(CPU_Data) ->
 
@@ -362,7 +415,7 @@ cpu_get_pc(CPU_Data) ->
 % Gets the V Register bits from CPU_Data<br/>
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_v(CPU_Data::binary()) -> binary().
+-spec cpu_get_v(CPU_Data::cpu_type()) -> v_reg_type().
 %%%=======================================================================================
 cpu_get_v(CPU_Data) ->
 
@@ -374,7 +427,7 @@ cpu_get_v(CPU_Data) ->
 % Gets the Zero Register bits from CPU_Data<br/>
 % Returns: 16 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_zero(CPU_Data::binary()) -> binary().
+-spec cpu_get_zero(CPU_Data::cpu_type()) -> zero_reg_type().
 %%%=======================================================================================
 cpu_get_zero(CPU_Data) ->
 
@@ -386,7 +439,7 @@ cpu_get_zero(CPU_Data) ->
 % Gets the DP Register bits from CPU_Data<br/>
 % Returns: 8 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_dp(CPU_Data::binary()) -> binary().
+-spec cpu_get_dp(CPU_Data::cpu_type()) -> dp_reg_type().
 %%%=======================================================================================
 cpu_get_dp(CPU_Data) ->
 
@@ -398,7 +451,7 @@ cpu_get_dp(CPU_Data) ->
 % Gets the CC Register bits from CPU_Data<br/>
 % Returns: 8 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc(CPU_Data::cpu_type()) -> cc_reg_type().
 %%%=======================================================================================
 cpu_get_cc(CPU_Data) ->
 
@@ -410,7 +463,7 @@ cpu_get_cc(CPU_Data) ->
 % Gets the CC Register E bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc_e(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc_e(CPU_Data::cpu_type()) -> cc_e_reg_type().
 %%%=======================================================================================
 cpu_get_cc_e(CPU_Data) ->
 
@@ -423,7 +476,7 @@ cpu_get_cc_e(CPU_Data) ->
 % Gets the CC Register F bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc_f(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc_f(CPU_Data::cpu_type()) -> cc_f_reg_type().
 %%%=======================================================================================
 cpu_get_cc_f(CPU_Data) ->
 
@@ -436,7 +489,7 @@ cpu_get_cc_f(CPU_Data) ->
 % Gets the CC Register H bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc_h(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc_h(CPU_Data::cpu_type()) -> cc_h_reg_type().
 %%%=======================================================================================
 cpu_get_cc_h(CPU_Data) ->
 
@@ -449,7 +502,7 @@ cpu_get_cc_h(CPU_Data) ->
 % Gets the CC Register I bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc_i(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc_i(CPU_Data::cpu_type()) -> cc_i_reg_type().
 %%%=======================================================================================
 cpu_get_cc_i(CPU_Data) ->
 
@@ -462,7 +515,7 @@ cpu_get_cc_i(CPU_Data) ->
 % Gets the CC Register N bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc_n(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc_n(CPU_Data::cpu_type()) -> cc_n_reg_type().
 %%%=======================================================================================
 cpu_get_cc_n(CPU_Data) ->
 
@@ -475,7 +528,7 @@ cpu_get_cc_n(CPU_Data) ->
 % Gets the CC Register Z bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc_z(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc_z(CPU_Data::cpu_type()) -> cc_z_reg_type().
 %%%=======================================================================================
 cpu_get_cc_z(CPU_Data) ->
 
@@ -488,7 +541,7 @@ cpu_get_cc_z(CPU_Data) ->
 % Gets the CC Register V bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc_v(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc_v(CPU_Data::cpu_type()) -> cc_v_reg_type().
 %%%=======================================================================================
 cpu_get_cc_v(CPU_Data) ->
 
@@ -501,7 +554,7 @@ cpu_get_cc_v(CPU_Data) ->
 % Gets the CC Register C bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_cc_c(CPU_Data::binary()) -> binary().
+-spec cpu_get_cc_c(CPU_Data::cpu_type()) -> cc_c_reg_type().
 %%%=======================================================================================
 cpu_get_cc_c(CPU_Data) ->
 
@@ -514,7 +567,7 @@ cpu_get_cc_c(CPU_Data) ->
 % Gets the MD Register bits from CPU_Data<br/>
 % Returns: 8 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_md(CPU_Data::binary()) -> binary().
+-spec cpu_get_md(CPU_Data::cpu_type()) -> md_reg_type().
 %%%=======================================================================================
 cpu_get_md(CPU_Data) ->
 
@@ -526,7 +579,7 @@ cpu_get_md(CPU_Data) ->
 % Gets the MD Register DIV0 bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_md_div0(CPU_Data::binary()) -> binary().
+-spec cpu_get_md_div0(CPU_Data::cpu_type()) -> md_div0_reg_type().
 %%%=======================================================================================
 cpu_get_md_div0(CPU_Data) ->
 
@@ -539,7 +592,7 @@ cpu_get_md_div0(CPU_Data) ->
 % Gets the MD Register IL bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_md_il(CPU_Data::binary()) -> binary().
+-spec cpu_get_md_il(CPU_Data::cpu_type()) -> md_il_reg_type().
 %%%=======================================================================================
 cpu_get_md_il(CPU_Data) ->
 
@@ -552,7 +605,7 @@ cpu_get_md_il(CPU_Data) ->
 % Gets the MD Register FM bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_md_fm(CPU_Data::binary()) -> binary().
+-spec cpu_get_md_fm(CPU_Data::cpu_type()) -> md_fm_reg_type().
 %%%=======================================================================================
 cpu_get_md_fm(CPU_Data) ->
 
@@ -565,7 +618,7 @@ cpu_get_md_fm(CPU_Data) ->
 % Gets the MD Register NM bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_md_nm(CPU_Data::binary()) -> binary().
+-spec cpu_get_md_nm(CPU_Data::cpu_type()) -> md_nm_reg_type().
 %%%=======================================================================================
 cpu_get_md_nm(CPU_Data) ->
 
@@ -578,7 +631,7 @@ cpu_get_md_nm(CPU_Data) ->
 % Gets the RESET bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_reset(CPU_Data::binary()) -> binary().
+-spec cpu_get_reset(CPU_Data::cpu_type()) -> reset_reg_type().
 %%%=======================================================================================
 cpu_get_reset(CPU_Data) ->
 
@@ -593,7 +646,7 @@ cpu_get_reset(CPU_Data) ->
 % Gets the NMI bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_nmi(CPU_Data::binary()) -> binary().
+-spec cpu_get_nmi(CPU_Data::cpu_type()) -> nmi_reg_type().
 %%%=======================================================================================
 cpu_get_nmi(CPU_Data) ->
 
@@ -608,7 +661,7 @@ cpu_get_nmi(CPU_Data) ->
 % Gets the SWI bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_swi(CPU_Data::binary()) -> binary().
+-spec cpu_get_swi(CPU_Data::cpu_type()) -> swi_reg_type().
 %%%=======================================================================================
 cpu_get_swi(CPU_Data) ->
 
@@ -623,7 +676,7 @@ cpu_get_swi(CPU_Data) ->
 % Gets the IRQ bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_irq(CPU_Data::binary()) -> binary().
+-spec cpu_get_irq(CPU_Data::cpu_type()) -> irq_reg_type().
 %%%=======================================================================================
 cpu_get_irq(CPU_Data) ->
 
@@ -638,7 +691,7 @@ cpu_get_irq(CPU_Data) ->
 % Gets the FIRQ bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_firq(CPU_Data::binary()) -> binary().
+-spec cpu_get_firq(CPU_Data::cpu_type()) -> firq_reg_type().
 %%%=======================================================================================
 cpu_get_firq(CPU_Data) ->
 
@@ -653,7 +706,7 @@ cpu_get_firq(CPU_Data) ->
 % Gets the SWI2 bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_swi2(CPU_Data::binary()) -> binary().
+-spec cpu_get_swi2(CPU_Data::cpu_type()) -> swi2_reg_type().
 %%%=======================================================================================
 cpu_get_swi2(CPU_Data) ->
 
@@ -668,7 +721,7 @@ cpu_get_swi2(CPU_Data) ->
 % Gets the SWI3 bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_swi3(CPU_Data::binary()) -> binary().
+-spec cpu_get_swi3(CPU_Data::cpu_type()) -> swi3_reg_type().
 %%%=======================================================================================
 cpu_get_swi3(CPU_Data) ->
 
@@ -683,7 +736,7 @@ cpu_get_swi3(CPU_Data) ->
 % Gets the RESERVED bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_reserved(CPU_Data::binary()) -> binary().
+-spec cpu_get_reserved(CPU_Data::cpu_type()) -> reserved_reg_type().
 %%%=======================================================================================
 cpu_get_reserved(CPU_Data) ->
 
@@ -698,7 +751,7 @@ cpu_get_reserved(CPU_Data) ->
 % Gets the HALT bit from CPU_Data<br/>
 % Returns: 1 bit binary<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_get_halt(CPU_Data::binary()) -> binary().
+-spec cpu_get_halt(CPU_Data::cpu_type()) -> halt_reg_type().
 %%%=======================================================================================
 cpu_get_halt(CPU_Data) ->
 
@@ -714,9 +767,9 @@ cpu_get_halt(CPU_Data) ->
 % Sets the Reset bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_reset(Reset::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_reset(Reset::reset_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
-cpu_set_reset(Reset,CPU_Data) when bit_size(Reset) =:= 1 ->
+cpu_set_reset(Reset, CPU_Data) when bit_size(Reset) =:= 1 ->
 
 	<<
 		Q:32,X:16,Y:16,U:16,S:16,PC:16,V:16,Zero:16,DP:8,CC:8,MD:8,
@@ -735,7 +788,7 @@ cpu_set_reset(Reset,CPU_Data) when bit_size(Reset) =:= 1 ->
 % Sets the NMI bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_nmi(NMI::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_nmi(NMI::nmi_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_nmi(NMI,CPU_Data) when bit_size(NMI) =:= 1 ->
 
@@ -756,7 +809,7 @@ cpu_set_nmi(NMI,CPU_Data) when bit_size(NMI) =:= 1 ->
 % Sets the SWI bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_swi(SWI::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_swi(SWI::swi_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_swi(SWI,CPU_Data) when bit_size(SWI) =:= 1 ->
 
@@ -777,7 +830,7 @@ cpu_set_swi(SWI,CPU_Data) when bit_size(SWI) =:= 1 ->
 % Sets the IRQ bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_irq(IRQ::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_irq(IRQ::irq_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_irq(IRQ,CPU_Data) when bit_size(IRQ) =:= 1 ->
 
@@ -798,7 +851,7 @@ cpu_set_irq(IRQ,CPU_Data) when bit_size(IRQ) =:= 1 ->
 % Sets the FIRQ bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_firq(FIRQ::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_firq(FIRQ::firq_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_firq(FIRQ,CPU_Data) when bit_size(FIRQ) =:= 1 ->
 
@@ -819,7 +872,7 @@ cpu_set_firq(FIRQ,CPU_Data) when bit_size(FIRQ) =:= 1 ->
 % Sets the SWI2 bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_swi2(SWI2::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_swi2(SWI2::swi2_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_swi2(SWI2,CPU_Data) when bit_size(SWI2) =:= 1 ->
 
@@ -840,7 +893,7 @@ cpu_set_swi2(SWI2,CPU_Data) when bit_size(SWI2) =:= 1 ->
 % Sets the SWI3 bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_swi3(SWI3::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_swi3(SWI3::swi2_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_swi3(SWI3,CPU_Data) when bit_size(SWI3) =:= 1 ->
 
@@ -861,7 +914,7 @@ cpu_set_swi3(SWI3,CPU_Data) when bit_size(SWI3) =:= 1 ->
 % Sets the RESERVED bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_reserved(Reserved::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_reserved(Reserved::reserved_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_reserved(Reserved,CPU_Data) when bit_size(Reserved) =:= 1 ->
 
@@ -882,7 +935,7 @@ cpu_set_reserved(Reserved,CPU_Data) when bit_size(Reserved) =:= 1 ->
 % Sets the HALT bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_halt(Halt::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_halt(Halt::halt_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_halt(Halt,CPU_Data) when bit_size(Halt) =:= 1 ->
 
@@ -903,7 +956,7 @@ cpu_set_halt(Halt,CPU_Data) when bit_size(Halt) =:= 1 ->
 % Sets the Q Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_q(Q::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_q(Q::q_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_q(Q,CPU_Data) when bit_size(Q) =:= 32 ->
 
@@ -916,7 +969,7 @@ cpu_set_q(Q,CPU_Data) when bit_size(Q) =:= 32 ->
 % Sets the D Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_d(D::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_d(D::d_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_d(D,CPU_Data) when bit_size(D) =:= 16 ->
 
@@ -929,7 +982,7 @@ cpu_set_d(D,CPU_Data) when bit_size(D) =:= 16 ->
 % Sets the W Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_w(W::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_w(W::w_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_w(W,CPU_Data) when bit_size(W) =:= 16 ->
 
@@ -942,7 +995,7 @@ cpu_set_w(W,CPU_Data) when bit_size(W) =:= 16 ->
 % Sets the A Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_a(A::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_a(A::a_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_a(A,CPU_Data) when bit_size(A) =:= 8 ->
 
@@ -955,7 +1008,7 @@ cpu_set_a(A,CPU_Data) when bit_size(A) =:= 8 ->
 % Sets the B Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_b(B::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_b(B::b_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_b(B,CPU_Data) when bit_size(B) =:= 8 ->
 
@@ -968,7 +1021,7 @@ cpu_set_b(B,CPU_Data) when bit_size(B) =:= 8 ->
 % Sets the E Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_e(E::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_e(E::e_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_e(E,CPU_Data) when bit_size(E) =:= 8 ->
 
@@ -981,7 +1034,7 @@ cpu_set_e(E,CPU_Data) when bit_size(E) =:= 8 ->
 % Sets the F Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_f(F::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_f(F::f_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_f(F,CPU_Data) when bit_size(F) =:= 8 ->
 
@@ -994,7 +1047,7 @@ cpu_set_f(F,CPU_Data) when bit_size(F) =:= 8 ->
 % Sets the X Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_x(X::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_x(X::x_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_x(X,CPU_Data) when bit_size(X) =:= 16 ->
 
@@ -1007,7 +1060,7 @@ cpu_set_x(X,CPU_Data) when bit_size(X) =:= 16 ->
 % Sets the Y Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_y(Y::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_y(Y::y_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_y(Y,CPU_Data) when bit_size(Y) =:= 16 ->
 
@@ -1020,7 +1073,7 @@ cpu_set_y(Y,CPU_Data) when bit_size(Y) =:= 16 ->
 % Sets the U Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_u(U::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_u(U::u_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_u(U,CPU_Data) when bit_size(U) =:= 16 ->
 
@@ -1033,7 +1086,7 @@ cpu_set_u(U,CPU_Data) when bit_size(U) =:= 16 ->
 % Sets the S Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_s(S::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_s(S::s_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_s(S,CPU_Data) when bit_size(S) =:= 16 ->
 
@@ -1046,7 +1099,7 @@ cpu_set_s(S,CPU_Data) when bit_size(S) =:= 16 ->
 % Sets the PC Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_pc(PC::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_pc(PC::pc_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_pc(PC,CPU_Data) when bit_size(PC) =:= 16 ->
 
@@ -1059,7 +1112,7 @@ cpu_set_pc(PC,CPU_Data) when bit_size(PC) =:= 16 ->
 % Sets the V Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_v(V::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_v(V::v_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_v(V,CPU_Data) when bit_size(V) =:= 16 ->
 
@@ -1072,7 +1125,7 @@ cpu_set_v(V,CPU_Data) when bit_size(V) =:= 16 ->
 % Sets the ZERO Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_zero(Zero::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_zero(Zero::zero_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_zero(Zero,CPU_Data) when bit_size(Zero) =:= 16 ->
 
@@ -1085,7 +1138,7 @@ cpu_set_zero(Zero,CPU_Data) when bit_size(Zero) =:= 16 ->
 % Sets the DP Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_dp(DP::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_dp(DP::dp_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_dp(DP,CPU_Data) when bit_size(DP) =:= 8 ->
 
@@ -1098,7 +1151,7 @@ cpu_set_dp(DP,CPU_Data) when bit_size(DP) =:= 8 ->
 % Sets the CC Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc(CC::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc(CC::cc_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_cc(CC,CPU_Data) when bit_size(CC) =:= 8 ->
 
@@ -1111,7 +1164,7 @@ cpu_set_cc(CC,CPU_Data) when bit_size(CC) =:= 8 ->
 % Sets the CC Register E Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc_e(CC_E::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc_e(CC_E::cc_e_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_cc_e(CC_E,CPU_Data) when bit_size(CC_E) =:= 1 ->
 
@@ -1130,7 +1183,7 @@ cpu_set_cc_e(CC_E,CPU_Data) when bit_size(CC_E) =:= 1 ->
 % Sets the CC Register F Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc_f(CC_F::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc_f(CC_F::cc_f_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_cc_f(CC_F,CPU_Data) when bit_size(CC_F) =:= 1 ->
 
@@ -1149,7 +1202,7 @@ cpu_set_cc_f(CC_F,CPU_Data) when bit_size(CC_F) =:= 1 ->
 % Sets the CC Register H Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc_h(CC_H::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc_h(CC_H::cc_h_reg_type(), CPU_Data::cpu_type()) -> cc_reg_type().
 %%%=======================================================================================
 cpu_set_cc_h(CC_H,CPU_Data) when bit_size(CC_H) =:= 1 ->
 
@@ -1168,7 +1221,7 @@ cpu_set_cc_h(CC_H,CPU_Data) when bit_size(CC_H) =:= 1 ->
 % Sets the CC Register I Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc_i(CC_I::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc_i(CC_I::cc_i_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_cc_i(CC_I,CPU_Data) when bit_size(CC_I) =:= 1 ->
 
@@ -1187,7 +1240,7 @@ cpu_set_cc_i(CC_I,CPU_Data) when bit_size(CC_I) =:= 1 ->
 % Sets the CC Register N Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc_n(CC_N::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc_n(CC_N::cc_n_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_cc_n(CC_N,CPU_Data) when bit_size(CC_N) =:= 1 ->
 
@@ -1206,7 +1259,7 @@ cpu_set_cc_n(CC_N,CPU_Data) when bit_size(CC_N) =:= 1 ->
 % Sets the CC Register Z Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc_z(CC_Z::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc_z(CC_Z::cc_z_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_cc_z(CC_Z,CPU_Data) when bit_size(CC_Z) =:= 1 ->
 
@@ -1225,7 +1278,7 @@ cpu_set_cc_z(CC_Z,CPU_Data) when bit_size(CC_Z) =:= 1 ->
 % Sets the CC Register V Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc_v(CC_V::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc_v(CC_V::cc_v_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_cc_v(CC_V,CPU_Data) when bit_size(CC_V) =:= 1 ->
 
@@ -1244,7 +1297,7 @@ cpu_set_cc_v(CC_V,CPU_Data) when bit_size(CC_V) =:= 1 ->
 % Sets the CC Register C Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_cc_c(CC_C::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_cc_c(CC_C::cc_c_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_cc_c(CC_C,CPU_Data) when bit_size(CC_C) =:= 1 ->
 
@@ -1263,7 +1316,7 @@ cpu_set_cc_c(CC_C,CPU_Data) when bit_size(CC_C) =:= 1 ->
 % Sets the MD Register in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_md(MD::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_md(MD::md_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_md(MD,CPU_Data) when bit_size(MD) =:= 8 ->
 
@@ -1277,7 +1330,7 @@ cpu_set_md(MD,CPU_Data) when bit_size(MD) =:= 8 ->
 % Sets the MD Register DIV0 Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_md_div0(MD_Div0::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_md_div0(MD_Div0::md_div0_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_md_div0(MD_Div0,CPU_Data) when bit_size(MD_Div0) =:= 1 ->
 
@@ -1296,7 +1349,7 @@ cpu_set_md_div0(MD_Div0,CPU_Data) when bit_size(MD_Div0) =:= 1 ->
 % Sets the MD Register IL Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_md_il(MD_IL::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_md_il(MD_IL::md_il_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_md_il(MD_IL,CPU_Data) when bit_size(MD_IL) =:= 1 ->
 
@@ -1315,7 +1368,7 @@ cpu_set_md_il(MD_IL,CPU_Data) when bit_size(MD_IL) =:= 1 ->
 % Sets the MD Register FM Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_md_fm(MD_FM::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_md_fm(MD_FM::md_fm_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_md_fm(MD_FM,CPU_Data) when bit_size(MD_FM) =:= 1 ->
 
@@ -1334,7 +1387,7 @@ cpu_set_md_fm(MD_FM,CPU_Data) when bit_size(MD_FM) =:= 1 ->
 % Sets the MD Register NM Bit in CPU_Data<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_set_md_nm(MD_NM::binary(),CPU_Data::binary()) -> binary().
+-spec cpu_set_md_nm(MD_NM::md_nm_reg_type(), CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 cpu_set_md_nm(MD_NM,CPU_Data) when bit_size(MD_NM) =:= 1 ->
 
@@ -1353,56 +1406,54 @@ cpu_set_md_nm(MD_NM,CPU_Data) when bit_size(MD_NM) =:= 1 ->
 % Performs a list of actions on the CPU<br/>
 % Returns: Updated CPU Data<br/>
 % ---- Unit-Tested ----<br/>
--spec cpu_perform_actions(Fun_List::list(fun())) -> binary().
+-spec cpu_perform_actions(Fun_List::list(fun())) -> cpu_type().
 %%%=======================================================================================
 cpu_perform_actions(Fun_List) ->
 
-	cpu_perform_actions(Fun_List,cpu_clear()).
+	cpu_perform_actions(Fun_List, cpu_clear()).
 
 %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-cpu_perform_actions([],CPU_Data) ->
+cpu_perform_actions([], CPU_Data) ->
 
 	CPU_Data;
 
-cpu_perform_actions([Fun|Funs],CPU_Data) ->
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cpu_perform_actions([Fun | Funs], CPU_Data) ->
 
 	New_CPU_Data = Fun(CPU_Data),
 
-	cpu_perform_actions(Funs,New_CPU_Data).
+	cpu_perform_actions(Funs, New_CPU_Data).
 
+%%%=======================================================================================
+%% Position_Section
+%%%=======================================================================================
 %%%=======================================================================================
 %% @doc 
 % Increase the POS Address by one<br/>
 % ---- Unit-Tested ----<br/>
--spec pos_inc(Pos::binary()) -> binary().
+-spec pos_inc(Pos::position_type()) -> position_type().
 %%%=======================================================================================
 pos_inc(Pos) ->
 
-	<<Pos_Num:?SIZE_ADDRESS>> 	= Pos,
-	Pos_Inc 					= Pos_Num + 1,
-
-	<<Pos_Inc:?SIZE_ADDRESS>>.
+	pos_inc_n(Pos, 1).
 
 %%%=======================================================================================
 %% @doc 
 % Increase the POS Address by two<br/>
 % ---- Unit-Tested ----<br/>
--spec pos_inc2(Pos::binary()) -> binary().
+-spec pos_inc2(Pos::position_type()) -> position_type().
 %%%=======================================================================================
 pos_inc2(Pos) ->
 
-	<<Pos_Num:?SIZE_ADDRESS>> 	= Pos,
-	Pos_Inc 					= Pos_Num + 2,
-
-	<<Pos_Inc:?SIZE_ADDRESS>>.
+	pos_inc_n(Pos, 2).
 
 %%%=======================================================================================
 %% @doc 
 % Increase the POS Address by N <br/>
 % ---- Unit-Tested ----<br/>
--spec pos_inc_n(Pos::binary(),N::integer()) -> binary().
+-spec pos_inc_n(Pos::position_type(), N::integer()) -> position_type().
 %%%=======================================================================================
-pos_inc_n(Pos,N) ->
+pos_inc_n(Pos, N) ->
 
 	<<Pos_Num:?SIZE_ADDRESS>> 	= Pos,
 	Pos_Inc 					= Pos_Num + N,
@@ -1410,54 +1461,61 @@ pos_inc_n(Pos,N) ->
 	<<Pos_Inc:?SIZE_ADDRESS>>.
 
 %%%=======================================================================================
+%% Address_Mode_Section
+%%%=======================================================================================
+%%%=======================================================================================
 %% @doc 
 % Get the immediate data (8-bit) at pos from the Data<br/>
 % Returns: {immediate_data_8, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
--spec immediate_1_address(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary(),binary()}.
+-spec immediate_1_address(Pos::position_type(), Data::binary(), CPU_Data::cpu_type()) -> {<<_:8>>, cpu_type(), position_type()}.
 %%%=======================================================================================
-immediate_1_address(Pos,Data,CPU_Data) ->
+immediate_1_address(Pos, Data, CPU_Data) ->
 
-	{get_byte_pos(Data,Pos), CPU_Data, pos_inc(Pos)}.
+	{get_byte_pos(Data, Pos), CPU_Data, pos_inc(Pos)}.
 
 %%%=======================================================================================
 %% @doc 
 % Get the immediate data (16-bit) at pos from the Data<br/>
 % Returns: {immediate_data_16, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
--spec immediate_2_address(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary(),binary()}.
+-spec immediate_2_address(Pos::position_type(), Data::binary(), CPU_Data::cpu_type()) -> {<<_:16>>, cpu_type(), position_type()}.
 %%%=======================================================================================
-immediate_2_address(Pos,Data,CPU_Data) ->
+immediate_2_address(Pos, Data, CPU_Data) ->
 
-	Higher 			= get_byte_pos(Data,Pos),
-	Lower  			= get_byte_pos(Data,pos_inc(Pos)),
+	Higher 			= get_byte_pos(Data, Pos),
+	Lower  			= get_byte_pos(Data, pos_inc(Pos)),
 
-	{<<Higher/bits,Lower/bits>>, CPU_Data, pos_inc2(Pos)}.
+	{<<Higher/bits, Lower/bits>>, CPU_Data, pos_inc2(Pos)}.
 
 %%%=======================================================================================
 %% @doc 
 % Get the value (8-bit) from a direct request<br/>
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
--spec direct_1_address(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary(),binary()}.
+-spec direct_1_address(Pos::position_type(), Data::binary(), CPU_Data::cpu_type()) -> {<<_:8>>, cpu_type(), position_type()}.
 %%%=======================================================================================
-direct_1_address(Pos,Data,CPU_Data) ->
+direct_1_address(Pos, Data, CPU_Data) ->
 
 	DP 				= cpu_get_dp(CPU_Data),
 	Higher 			= DP,
 	Lower  			= get_byte_pos(Data,Pos),
-	Address  		= <<Higher/bits,Lower/bits>>,
+	Address  		= <<Higher/bits, Lower/bits>>,
 
-	{get_byte_pos(Data,Address), CPU_Data, pos_inc(Pos)}.
+	{get_byte_pos(Data, Address), CPU_Data, pos_inc(Pos)}.
 
 %%%=======================================================================================
 %% @doc 
 % Get the address only from a direct request<br/>
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
--spec direct_1_address_address_only(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary(),binary()}.
+-spec direct_1_address_address_only(
+										Pos 		::position_type(),
+										Data 		::binary(),
+										CPU_Data 	::cpu_type()
+									) -> {address_type(), cpu_type(), position_type()}.
 %%%=======================================================================================
-direct_1_address_address_only(Pos,Data,CPU_Data) ->
+direct_1_address_address_only(Pos, Data, CPU_Data) ->
 
 	DP 				= cpu_get_dp(CPU_Data),
 	Higher 			= DP,
@@ -1466,24 +1524,37 @@ direct_1_address_address_only(Pos,Data,CPU_Data) ->
 
 	{Address, CPU_Data, pos_inc(Pos)}.
 
+% %%%=======================================================================================
+% direct_1_address_update_value(Pos, Data, CPU_Data, Update_Fun) ->
+
+% 	{Value, CPU_Data, New_Pos} = direct_1_address(Pos, Data, CPU_Data),
+
+% 	New_Value 	= Update_Fun(Value),
+
+% 	{New_Value, New_CPU_Data, New_Pos, New_Data}.
+
 %%%=======================================================================================
 %% @doc 
 % Get the value (16-bit) from a direct request<br/>
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
--spec direct_2_address(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary(),binary()}.
+-spec direct_2_address(
+						Pos 		::position_type(), 
+						Data 		::binary(), 
+						CPU_Data 	::cpu_type()
+					  ) -> {<<_:16>>, cpu_type(), position_type()}.
 %%%=======================================================================================
-direct_2_address(Pos,Data,CPU_Data) ->
+direct_2_address(Pos, Data, CPU_Data) ->
 
 	DP 				= cpu_get_dp(CPU_Data),
 	Higher 			= DP,
 	Lower  			= get_byte_pos(Data,Pos),
 
-	Address 		= <<Higher/bits,Lower/bits>>,
+	Address 		= <<Higher/bits, Lower/bits>>,
 
-	Result_Higher 	= get_byte_pos(Data,Address),
-	Result_Lower 	= get_byte_pos(Data,pos_inc(Address)),
-	Result 			= <<Result_Higher/bits,Result_Lower/bits>>,
+	Result_Higher 	= get_byte_pos(Data, Address),
+	Result_Lower 	= get_byte_pos(Data, pos_inc(Address)),
+	Result 			= <<Result_Higher/bits, Result_Lower/bits>>,
 
 	{Result, CPU_Data, pos_inc(Pos)}.
 
@@ -1492,9 +1563,13 @@ direct_2_address(Pos,Data,CPU_Data) ->
 % Get the address only from a direct request<br/>
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
--spec direct_2_address_address_only(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary(),binary()}.
+-spec direct_2_address_address_only(
+										Pos 		::position_type(),
+										Data 		::binary(),
+										CPU_Data 	::cpu_type()
+									) -> {address_type(), cpu_type(), position_type()}.
 %%%=======================================================================================
-direct_2_address_address_only(Pos,Data,CPU_Data) ->
+direct_2_address_address_only(Pos, Data, CPU_Data) ->
 
 	DP 				= cpu_get_dp(CPU_Data),
 	Higher 			= DP,
@@ -1505,12 +1580,14 @@ direct_2_address_address_only(Pos,Data,CPU_Data) ->
 	{Address, CPU_Data, pos_inc(Pos)}.
 
 %%----Unit_Tested-------------------------------------------------------------------------
-indexed_1_address(Pos,Data,CPU_Data) ->
-	indexed_address(Pos,Data,CPU_Data,1).
+indexed_1_address(Pos, Data, CPU_Data) ->
+
+	indexed_address(Pos, Data, CPU_Data, 1).
 
 %%-----------------------------------------------------------------------------
-indexed_1_address_address_only(Pos,Data,CPU_Data) ->
-	indexed_address_address_only(Pos,Data,CPU_Data,1).
+indexed_1_address_address_only(Pos, Data, CPU_Data) ->
+
+	indexed_address_address_only(Pos, Data, CPU_Data, 1).
 
 %%----Unit_Tested-------------------------------------------------------------------------
 indexed_2_address(Pos,Data,CPU_Data) ->
@@ -1523,16 +1600,16 @@ indexed_2_address_address_only(Pos,Data,CPU_Data) ->
 	indexed_address_address_only(Pos,Data,CPU_Data,2).
 
 %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-indexed_address(Pos,Data,CPU_Data,Number_Of_Bytes) ->
+indexed_address(Pos, Data, CPU_Data, Number_Of_Bytes) ->
 
-	Post_Byte 												= get_byte_pos(Data,Pos),
+	Post_Byte 												= get_byte_pos(Data, Pos),
 
 	<<PB7:1,PB6:1,PB5:1,PB4:1,PB3:1,PB2:1,PB1:1,PB0:1>> 	= Post_Byte,
 
 	case PB7 of
 
 		0 -> 	%%-------------------------------------------------------------
-				%% Constanct offset from R, 5 bit offset
+				%% Constanst offset from R, 5 bit offset
 				%%-------------------------------------------------------------
 
 				constant_offset_from_r_5_bit_offset_direct(
@@ -1760,7 +1837,7 @@ indexed_address(Pos,Data,CPU_Data,Number_Of_Bytes) ->
 	end.
 
 %%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-indexed_address_address_only(Pos,Data,CPU_Data,Number_Of_Bytes) ->
+indexed_address_address_only(Pos, Data, CPU_Data, Number_Of_Bytes) ->
 
 	Post_Byte 												= get_byte_pos(Data,Pos),
 
@@ -1769,7 +1846,7 @@ indexed_address_address_only(Pos,Data,CPU_Data,Number_Of_Bytes) ->
 	case PB7 of
 
 		0 -> 	%%-------------------------------------------------------------
-				%% Constanct offset from R, 5 bit offset
+				%% Constanst offset from R, 5 bit offset
 				%%-------------------------------------------------------------
 
 				constant_offset_from_r_5_bit_offset_direct_address_only(
@@ -2005,11 +2082,11 @@ indexed_address_address_only(Pos,Data,CPU_Data,Number_Of_Bytes) ->
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_r_5_bit_offset_direct(
-													Pos::binary(),
-													Data::binary(),
-													CPU_Data::binary(),
-													Number_Of_Bytes::non_neg_integer()
-												) -> { binary(), binary(), binary() }.
+													Pos 				::position_type(),
+													Data 				::binary(),
+													CPU_Data 			::cpu_type(),
+													Number_Of_Bytes 	::non_neg_integer()
+												) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_r_5_bit_offset_direct(
 											Pos,
@@ -2030,11 +2107,11 @@ constant_offset_from_r_5_bit_offset_direct(
 
 	case Number_Of_Bytes of
 
-		1	-> 	{get_byte_pos(Data,<<Address:16>>), CPU_Data, pos_inc(Pos)};
+		1	-> 	{get_byte_pos(Data, <<Address:16>>), CPU_Data, pos_inc(Pos)};
 
-		2 	-> 	FH 						= get_byte_pos(Data,<<Address:16>>),
-				FL 						= get_byte_pos(Data,<<(Address+1):16>>),
-				Final 					= <<FH/bits,FL/bits>>,
+		2 	-> 	FH 						= get_byte_pos(Data, <<Address:16>>),
+				FL 						= get_byte_pos(Data, <<(Address + 1):16>>),
+				Final 					= <<FH/bits, FL/bits>>,
 				{Final, CPU_Data, pos_inc(Pos)}
 		end.
 
@@ -2047,11 +2124,11 @@ constant_offset_from_r_5_bit_offset_direct(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_r_5_bit_offset_direct_address_only(
-																Pos::binary(),
-																Data::binary(),
-																CPU_Data::binary(),
-																Number_Of_Bytes::non_neg_integer()
-															) -> { binary(), binary(), binary() }.
+																Pos 				::position_type(),
+																Data 				::binary(),
+																CPU_Data 			::cpu_type(),
+																Number_Of_Bytes 	::non_neg_integer()
+															) -> { address_type(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_r_5_bit_offset_direct_address_only(
 															Pos,
@@ -2082,11 +2159,11 @@ constant_offset_from_r_5_bit_offset_direct_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_r_no_offset(
-										Pos::binary(),
-										Data::binary(),
-										CPU_Data::binary(),
-										Number_Of_Bytes::non_neg_integer()
-									  ) -> { binary(), binary(), binary() }.
+										Pos 				::position_type(),
+										Data 				::binary(),
+										CPU_Data 			::cpu_type(),
+										Number_Of_Bytes 	::non_neg_integer()
+									  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_r_no_offset(
 									Pos,
@@ -2095,7 +2172,7 @@ constant_offset_from_r_no_offset(
 									Number_Of_Bytes
 								) ->
 
-	Post_Byte 													= get_byte_pos(Data,Pos),
+	Post_Byte 													= get_byte_pos(Data, Pos),
 
 	<<_PB7:1,PB6:1,PB5:1,PB4:1,_PB3:1,_PB2:1,_PB1:1,_PB0:1>> 	= Post_Byte,
 
@@ -2103,7 +2180,7 @@ constant_offset_from_r_no_offset(
 
 	Indirect_Field 												= PB4,
 
-	Register_Value 												= index_reg_value(RR,CPU_Data),
+	Register_Value 												= index_reg_value(RR, CPU_Data),
 
 	case Number_Of_Bytes of
 
@@ -2120,9 +2197,9 @@ constant_offset_from_r_no_offset(
 
 		2 	-> 	case Indirect_Field of
 
-					0 ->	FH 				= get_byte_pos(Data,<<Register_Value:16>>),
-							FL 				= get_byte_pos(Data,<<(Register_Value+1):16>>),
-							Final 			= <<FH/bits,FL/bits>>,
+					0 ->	FH 				= get_byte_pos(Data, <<Register_Value:16>>),
+							FL 				= get_byte_pos(Data, <<(Register_Value + 1):16>>),
+							Final 			= <<FH/bits, FL/bits>>,
 
 							{Final, CPU_Data, pos_inc(Pos)};
 
@@ -2148,11 +2225,11 @@ constant_offset_from_r_no_offset(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_r_no_offset_address_only(
-														Pos::binary(),
-														Data::binary(),
-														CPU_Data::binary(),
-														Number_Of_Bytes::non_neg_integer()
-													) -> { binary(), binary(), binary() }.
+														Pos 				::position_type(),
+														Data 				::binary(),
+														CPU_Data 			::cpu_type(),
+														Number_Of_Bytes 	::non_neg_integer()
+													) -> { <<_:16>>, cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_r_no_offset_address_only(
 												Pos,
@@ -2193,11 +2270,11 @@ constant_offset_from_r_no_offset_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_r_8_bit_offset(
-											Pos::binary(),
-											Data::binary(),
-											CPU_Data::binary(),
-											Number_Of_Bytes::non_neg_integer()
-										  ) -> { binary(), binary(), binary() }.
+											Pos 				::position_type(),
+											Data 				::binary(),
+											CPU_Data 			::cpu_type(),
+											Number_Of_Bytes 	::non_neg_integer()
+										  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_r_8_bit_offset(
 										Pos,
@@ -2263,11 +2340,11 @@ constant_offset_from_r_8_bit_offset(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_r_8_bit_offset_address_only(
-														Pos::binary(),
-														Data::binary(),
-														CPU_Data::binary(),
-														Number_Of_Bytes::non_neg_integer()
-													  ) -> { binary(), binary(), binary() }.
+														Pos 				::position_type(),
+														Data 				::binary(),
+														CPU_Data 			::cpu_type(),
+														Number_Of_Bytes 	::non_neg_integer()
+													  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_r_8_bit_offset_address_only(
 													Pos,
@@ -2312,11 +2389,11 @@ constant_offset_from_r_8_bit_offset_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_r_16_bit_offset(
-											Pos::binary(),
-											Data::binary(),
-											CPU_Data::binary(),
-											Number_Of_Bytes::non_neg_integer()
-										  ) -> { binary(), binary(), binary() }.
+											Pos 				::position_type(),
+											Data 				::binary(),
+											CPU_Data 			::cpu_type(),
+											Number_Of_Bytes 	::non_neg_integer()
+										  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_r_16_bit_offset(
 										Pos,
@@ -2383,11 +2460,11 @@ constant_offset_from_r_16_bit_offset(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_r_16_bit_offset_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_r_16_bit_offset_address_only(
 													Pos,
@@ -2433,11 +2510,11 @@ constant_offset_from_r_16_bit_offset_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_w_no_offset(
-										Pos::binary(),
-										Data::binary(),
-										CPU_Data::binary(),
-										Number_Of_Bytes::non_neg_integer()
-									  ) -> { binary(), binary(), binary() }.
+										Pos 				::position_type(),
+										Data 				::binary(),
+										CPU_Data 			::cpu_type(),
+										Number_Of_Bytes 	::non_neg_integer()
+									  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_w_no_offset(
 									Pos,
@@ -2497,11 +2574,11 @@ constant_offset_from_w_no_offset(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_w_no_offset_address_only(
-														Pos::binary(),
-														Data::binary(),
-														CPU_Data::binary(),
-														Number_Of_Bytes::non_neg_integer()
-													  ) -> { binary(), binary(), binary() }.
+														Pos 				::position_type(),
+														Data 				::binary(),
+														CPU_Data 			::cpu_type(),
+														Number_Of_Bytes 	::non_neg_integer()
+													  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_w_no_offset_address_only(
 												Pos,
@@ -2540,11 +2617,11 @@ constant_offset_from_w_no_offset_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_w_16_bit_offset(
-											Pos::binary(),
-											Data::binary(),
-											CPU_Data::binary(),
-											Number_Of_Bytes::non_neg_integer()
-										  ) -> { binary(), binary(), binary() }.
+											Pos 				::position_type(),
+											Data 				::binary(),
+											CPU_Data 			::cpu_type(),
+											Number_Of_Bytes 	::non_neg_integer()
+										  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_w_16_bit_offset(
 										Pos,
@@ -2609,11 +2686,11 @@ constant_offset_from_w_16_bit_offset(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_w_16_bit_offset_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_w_16_bit_offset_address_only(
 													Pos,
@@ -2658,11 +2735,11 @@ constant_offset_from_w_16_bit_offset_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_a_accumulator(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_a_accumulator(
 											Pos,
@@ -2729,11 +2806,11 @@ accumulator_offset_from_r_a_accumulator(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_a_accumulator_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_a_accumulator_address_only(
 														Pos,
@@ -2778,11 +2855,11 @@ accumulator_offset_from_r_a_accumulator_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_b_accumulator(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_b_accumulator(
 											Pos,
@@ -2848,11 +2925,11 @@ accumulator_offset_from_r_b_accumulator(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_b_accumulator_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_b_accumulator_address_only(
 														Pos,
@@ -2896,11 +2973,11 @@ accumulator_offset_from_r_b_accumulator_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_increment_of_r_post_increment_by_1(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_increment_of_r_post_increment_by_1(
 											Pos,
@@ -2945,11 +3022,11 @@ auto_increment_of_r_post_increment_by_1(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_increment_of_r_post_increment_by_1_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_increment_of_r_post_increment_by_1_address_only(
 														Pos,
@@ -2981,11 +3058,11 @@ auto_increment_of_r_post_increment_by_1_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_increment_of_r_post_increment_by_2(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_increment_of_r_post_increment_by_2(
 											Pos,
@@ -3050,11 +3127,11 @@ auto_increment_of_r_post_increment_by_2(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_increment_of_r_post_increment_by_2_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_increment_of_r_post_increment_by_2_address_only(
 														Pos,
@@ -3097,11 +3174,11 @@ auto_increment_of_r_post_increment_by_2_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_decrement_of_r_pre_decrement_by_1(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_decrement_of_r_pre_decrement_by_1(
 											Pos,
@@ -3143,11 +3220,11 @@ auto_decrement_of_r_pre_decrement_by_1(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_decrement_of_r_pre_decrement_by_1_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_decrement_of_r_pre_decrement_by_1_address_only(
 														Pos,
@@ -3179,11 +3256,11 @@ auto_decrement_of_r_pre_decrement_by_1_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_decrement_of_r_pre_decrement_by_2(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_decrement_of_r_pre_decrement_by_2(
 											Pos,
@@ -3248,11 +3325,11 @@ auto_decrement_of_r_pre_decrement_by_2(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_decrement_of_r_pre_decrement_by_2_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_decrement_of_r_pre_decrement_by_2_address_only(
 														Pos,
@@ -3294,11 +3371,11 @@ auto_decrement_of_r_pre_decrement_by_2_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_increment_of_w_post_increment_by_2(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_increment_of_w_post_increment_by_2(
 											Pos,
@@ -3361,11 +3438,11 @@ auto_increment_of_w_post_increment_by_2(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_increment_of_w_post_increment_by_2_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_increment_of_w_post_increment_by_2_address_only(
 														Pos,
@@ -3406,11 +3483,11 @@ auto_increment_of_w_post_increment_by_2_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_decrement_of_w_pre_decrement_by_2(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_decrement_of_w_pre_decrement_by_2(
 											Pos,
@@ -3474,11 +3551,11 @@ auto_decrement_of_w_pre_decrement_by_2(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec auto_decrement_of_w_pre_decrement_by_2_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 auto_decrement_of_w_pre_decrement_by_2_address_only(
 														Pos,
@@ -3521,11 +3598,11 @@ auto_decrement_of_w_pre_decrement_by_2_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_d_accumulator(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_d_accumulator(
 											Pos,
@@ -3591,11 +3668,11 @@ accumulator_offset_from_r_d_accumulator(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_d_accumulator_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															_Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															_Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_d_accumulator_address_only(
 														Pos,
@@ -3640,11 +3717,11 @@ accumulator_offset_from_r_d_accumulator_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_pc_8_bit_offset(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_pc_8_bit_offset(
 										Pos,
@@ -3708,11 +3785,11 @@ constant_offset_from_pc_8_bit_offset(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_pc_8_bit_offset_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_pc_8_bit_offset_address_only(
 													Pos,
@@ -3754,11 +3831,11 @@ constant_offset_from_pc_8_bit_offset_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_pc_16_bit_offset(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_pc_16_bit_offset(
 										Pos,
@@ -3824,11 +3901,11 @@ constant_offset_from_pc_16_bit_offset(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec constant_offset_from_pc_16_bit_offset_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															_Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															_Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 constant_offset_from_pc_16_bit_offset_address_only(
 													Pos,
@@ -3870,11 +3947,11 @@ constant_offset_from_pc_16_bit_offset_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec extended_indirect_16_bit_address(
-										Pos::binary(),
-										Data::binary(),
-										CPU_Data::binary(),
-										Number_Of_Bytes::non_neg_integer()
-									  ) -> { binary(), binary(), binary() }.
+										Pos 				::position_type(),
+										Data 				::binary(),
+										CPU_Data 			::cpu_type(),
+										Number_Of_Bytes 	::non_neg_integer()
+									  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 extended_indirect_16_bit_address(
 									Pos,
@@ -3916,11 +3993,11 @@ extended_indirect_16_bit_address(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec extended_indirect_16_bit_address_address_only(
-														Pos::binary(),
-														Data::binary(),
-														CPU_Data::binary(),
-														Number_Of_Bytes::non_neg_integer()
-													  ) -> { binary(), binary(), binary() }.
+														Pos 				::position_type(),
+														Data 				::binary(),
+														CPU_Data 			::cpu_type(),
+														Number_Of_Bytes 	::non_neg_integer()
+													  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 extended_indirect_16_bit_address_address_only(
 												Pos,
@@ -3950,11 +4027,11 @@ extended_indirect_16_bit_address_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_e_accumulator(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_e_accumulator(
 											Pos,
@@ -4021,11 +4098,11 @@ accumulator_offset_from_r_e_accumulator(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_e_accumulator_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_e_accumulator_address_only(
 														Pos,
@@ -4070,11 +4147,11 @@ accumulator_offset_from_r_e_accumulator_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_f_accumulator(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_f_accumulator(
 											Pos,
@@ -4141,11 +4218,11 @@ accumulator_offset_from_r_f_accumulator(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_f_accumulator_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_f_accumulator_address_only(
 														Pos,
@@ -4190,11 +4267,11 @@ accumulator_offset_from_r_f_accumulator_address_only(
 % Returns: {value, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_w_accumulator(
-												Pos::binary(),
-												Data::binary(),
-												CPU_Data::binary(),
-												Number_Of_Bytes::non_neg_integer()
-											  ) -> { binary(), binary(), binary() }.
+												Pos 				::position_type(),
+												Data 				::binary(),
+												CPU_Data 			::cpu_type(),
+												Number_Of_Bytes 	::non_neg_integer()
+											  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_w_accumulator(
 											Pos,
@@ -4260,11 +4337,11 @@ accumulator_offset_from_r_w_accumulator(
 % Returns: {address, CPU_Data, New_Position} <br/>
 % ---- Unit-Tested ----<br/>
 -spec accumulator_offset_from_r_w_accumulator_address_only(
-															Pos::binary(),
-															Data::binary(),
-															CPU_Data::binary(),
-															Number_Of_Bytes::non_neg_integer()
-														  ) -> { binary(), binary(), binary() }.
+															Pos 				::position_type(),
+															Data 				::binary(),
+															CPU_Data 			::cpu_type(),
+															Number_Of_Bytes 	::non_neg_integer()
+														  ) -> { binary(), cpu_type(), position_type() }.
 %%%=======================================================================================
 accumulator_offset_from_r_w_accumulator_address_only(
 														Pos,
@@ -4303,16 +4380,16 @@ accumulator_offset_from_r_w_accumulator_address_only(
 % Extracts the value of the encode Register RR from the provided CPU_Data<br/>
 % Returns: Integer Value not binary value<br/>
 % ---- Unit-Tested ----<br/>
--spec index_reg_value(RR::non_neg_integer(),CPU_Data::binary()) -> integer().
+-spec index_reg_value(RR::non_neg_integer(), CPU_Data::cpu_type()) -> integer().
 %%%=======================================================================================
-index_reg_value(RR,CPU_Data) ->
+index_reg_value(RR, CPU_Data) ->
 
 	case RR of
 
-		2#00 -> <<X:16>> = cpu_get_x(CPU_Data),X;
-		2#01 -> <<Y:16>> = cpu_get_y(CPU_Data),Y;
-		2#10 -> <<U:16>> = cpu_get_u(CPU_Data),U;
-		2#11 -> <<S:16>> = cpu_get_s(CPU_Data),S
+		2#00 -> <<X:16>> = cpu_get_x(CPU_Data), X;
+		2#01 -> <<Y:16>> = cpu_get_y(CPU_Data), Y;
+		2#10 -> <<U:16>> = cpu_get_u(CPU_Data), U;
+		2#11 -> <<S:16>> = cpu_get_s(CPU_Data), S
 	end.
 
 %%%=======================================================================================
@@ -4320,16 +4397,16 @@ index_reg_value(RR,CPU_Data) ->
 % Set a value to a register determined by RR encoding<br/>
 % Returns: updated CPU_Data<br/>
 % ---- Unit-Tested ----<br/>
--spec index_reg_set_value(RR::non_neg_integer(),CPU_Data::binary(),Value::integer()) -> binary().
+-spec index_reg_set_value(RR::non_neg_integer(), CPU_Data::cpu_type(), Value::integer()) -> cpu_type().
 %%%=======================================================================================
 index_reg_set_value(RR,CPU_Data,Value) ->
 
 	case RR of
 
-		2#00 -> cpu_set_x(<<Value:16>>,CPU_Data);
-		2#01 -> cpu_set_y(<<Value:16>>,CPU_Data);
-		2#10 -> cpu_set_u(<<Value:16>>,CPU_Data);
-		2#11 -> cpu_set_s(<<Value:16>>,CPU_Data)
+		2#00 -> cpu_set_x(<<Value:16>>, CPU_Data);
+		2#01 -> cpu_set_y(<<Value:16>>, CPU_Data);
+		2#10 -> cpu_set_u(<<Value:16>>, CPU_Data);
+		2#11 -> cpu_set_s(<<Value:16>>, CPU_Data)
 	end.
 
 %%%=======================================================================================
@@ -4337,7 +4414,7 @@ index_reg_set_value(RR,CPU_Data,Value) ->
 % Takes a CPU_Data and increases the PC value by 1<br/>
 % Returns: updated CPU_Data<br/>
 % ---- Unit-Tested ----<br/>
--spec pc_1_inc(CPU_Data::binary()) -> binary().
+-spec pc_1_inc(CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 pc_1_inc(CPU_Data) ->
 
@@ -4345,14 +4422,14 @@ pc_1_inc(CPU_Data) ->
 
 	New_Current_PC  	= Current_PC + 1,
 
-	cpu_set_pc(<<New_Current_PC:16>>,CPU_Data).
+	cpu_set_pc(<<New_Current_PC:16>>, CPU_Data).
 
 %%%=======================================================================================
 %% @doc 
 % Takes a CPU_Data and increases the PC value by 2<br/>
 % Returns: updated CPU_Data<br/>
 % ---- Unit-Tested ----<br/>
--spec pc_2_inc(CPU_Data::binary()) -> binary().
+-spec pc_2_inc(CPU_Data::cpu_type()) -> cpu_type().
 %%%=======================================================================================
 pc_2_inc(CPU_Data) ->
 
@@ -4454,7 +4531,7 @@ post_byte_indexed_16_offset_r_indirect(R,Offset) ->
 %% @doc 
 % Generates RR Register encoding from register name (atom)<br/>
 % ---- Unit-Tested ----<br/>
--spec rr_from_r(R::atom()) -> binary().
+-spec rr_from_r(R::atom()) -> <<_:2>>.
 %%%=======================================================================================
 rr_from_r(R) ->
 
@@ -4471,7 +4548,7 @@ rr_from_r(R) ->
 % Generates a Post-Byte for Indexed No Offset from W Direct Addressing<br/>
 % Returns: Post_Byte size 1<br/>
 % ---- Unit-Tested ----<br/>
--spec post_byte_indexed_no_offset_w_direct() -> binary().
+-spec post_byte_indexed_no_offset_w_direct() -> <<_:8>>.
 %%%=======================================================================================
 post_byte_indexed_no_offset_w_direct() -> 
 	
@@ -4482,7 +4559,7 @@ post_byte_indexed_no_offset_w_direct() ->
 % Generates a Post-Byte for Indexed No Offset from W Indirect Addressing<br/>
 % Returns: Post_Byte size 1<br/>
 % ---- Unit-Tested ----<br/>
--spec post_byte_indexed_no_offset_w_indirect() -> binary().
+-spec post_byte_indexed_no_offset_w_indirect() -> <<_:8>>.
 %%%=======================================================================================
 post_byte_indexed_no_offset_w_indirect() -> 
 	
@@ -4862,7 +4939,7 @@ update_condition_codes_from_map(Map,CPU_Data)
 % ---- Unit-Tested ----<br/>
 -spec check_cc_status_update(Map::map(),CPU_Data::binary(),Key::atom(),Fun::function()) -> binary().
 %%%=======================================================================================
-check_cc_status_update(Map,CPU_Data,Key,Fun) 
+check_cc_status_update(Map, CPU_Data, Key, Fun) 
     when 	
     		is_map(Map),
     		is_binary(CPU_Data),
@@ -4900,7 +4977,7 @@ decode_inter_register_post_byte(Post_Byte) ->
 %% @doc 
 % Decode an Inter Register Bit encoding to the corresponding register name (atom)<br/>
 % ---- Unit-Tested ----<br/>
--spec decode_inter_register_bits(Bits::binary()) -> atom().
+-spec decode_inter_register_bits(Bits::<<_:4>>) -> atom().
 %%%=======================================================================================
 decode_inter_register_bits(Bits) ->
 
@@ -5140,7 +5217,7 @@ generate_n_z_flags_map(Value) ->
 %% @doc 
 % Get the Negative Flag from a value<br/>
 % ---- Unit-Tested ----<br/>
--spec get_n_flag_of_value(Value::binary()) -> binary().
+-spec get_n_flag_of_value(Value::binary()) -> <<_:1>>.
 %%%=======================================================================================
 get_n_flag_of_value(Value) ->
 
@@ -5151,7 +5228,7 @@ get_n_flag_of_value(Value) ->
 %% @doc 
 % Get the Zero Flag from a value<br/>
 % ---- Unit-Tested ----<br/>
--spec get_z_flag_of_value(Value::binary()) -> binary().
+-spec get_z_flag_of_value(Value::binary()) -> <<_:1>>.
 %%%=======================================================================================
 get_z_flag_of_value(Value) ->
 
@@ -5191,6 +5268,11 @@ execution(Data,CPU_Data) ->
 			[16#99,_] 	    -> 	adca_direct_99(PC, Data, CPU_Data);
 			[16#A9,_] 	    -> 	adca_indexed_a9(PC, Data, CPU_Data);
 			[16#B9,_] 	    ->  adca_extended_b9(PC, Data, CPU_Data);
+
+			[16#C9,_] 		-> 	adcb_immediate_c9(PC, Data, CPU_Data);
+			[16#D9,_] 		-> 	adcb_direct_d9(PC, Data, CPU_Data);
+			[16#E9,_] 		-> 	adcb_indexed_e9(PC, Data, CPU_Data);
+			[16#F9,_] 		-> 	adcb_extended_f9(PC, Data, CPU_Data);
 
 			[16#10, 16#89]	-> 	adcd_immediate_1089(PC, Data, CPU_Data);
 			[16#10, 16#99]	-> 	adcd_direct_1099(PC, Data, CPU_Data);
@@ -5317,6 +5399,8 @@ execution(Data,CPU_Data) ->
 
 			[16#2f,_] 	    ->  ble_relative_2f(PC,Data,CPU_Data);
 
+			%%[16#25,_] 		-> 	blo_relative_25(PC, Data, CPU_Data); also bcs_relative_25
+
 			[16#23,_] 	    ->  bls_relative_23(PC,Data,CPU_Data);
 
 			[16#2d,_] 	    ->  blt_relative_2d(PC,Data,CPU_Data);
@@ -5400,6 +5484,17 @@ execution(Data,CPU_Data) ->
 
 			[16#10,16#37] 	->  cmpr_immediate_1037(PC,Data,CPU_Data);
 
+			[16#43,_] 		-> 	coma_inherent_43(PC, Data, CPU_Data);
+			[16#53,_] 		-> 	comb_inherent_53(PC, Data, CPU_Data);
+			[16#10,16#43] 	-> 	comd_inherent_1043(PC, Data, CPU_Data);
+			[16#11,16#43] 	->  come_inherent_1143(PC, Data, CPU_Data);
+			[16#11,16#53] 	-> 	comf_inherent_1153(PC, Data, CPU_Data);
+			[16#10,16#53] 	-> 	comw_inherent_1053(PC, Data, CPU_Data);
+
+			[16#03,_] 		-> 	com_memory_direct_03(PC, Data, CPU_Data);
+			[16#63,_] 		-> 	com_memory_indexed_63(PC, Data, CPU_Data);
+			[16#73,_] 		-> 	com_memory_extended_73(PC, Data, CPU_Data);
+
 			[ _, _ ]        ->	ok
 
 			end,
@@ -5427,12 +5522,12 @@ execution(Data,CPU_Data) ->
 % <br/>
 % ---- Unit-Tested ----<br/>
 -spec abx_inherent_3a(
-						Pos::binary(),
-						Data::binary(),
-						CPU_Data::binary()
-					 )  -> {binary(),binary()}.
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					 )  -> {binary(), cpu_type()}.
 %%%=======================================================================================
-abx_inherent_3a(Pos,Data,CPU_Data) 
+abx_inherent_3a(Pos, Data, CPU_Data) 
     when
     		is_binary(Pos),
     		is_binary(Data),
@@ -5450,7 +5545,7 @@ abx_inherent_3a(Pos,Data,CPU_Data)
 
 	PC_CPU 					= cpu_set_pc(pos_inc(Pos),X_CPU),
 
-	{Data,PC_CPU}.
+	{Data, PC_CPU}.
 
 %%%=======================================================================================
 %% @doc 
@@ -5458,9 +5553,13 @@ abx_inherent_3a(Pos,Data,CPU_Data)
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adca_immediate_89(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adca_immediate_89(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
-adca_immediate_89(Pos,Data,CPU_Data) ->
+adca_immediate_89(Pos, Data, CPU_Data) ->
 
 	{Memory_Data, New_CPU_Data, New_Pos} 	= immediate_1_address(pos_inc(Pos),Data,CPU_Data),
 
@@ -5480,9 +5579,13 @@ adca_immediate_89(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adca_direct_99(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adca_direct_99(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
-adca_direct_99(Pos,Data,CPU_Data) -> 
+adca_direct_99(Pos, Data, CPU_Data) -> 
 
 	{Memory_Data, New_CPU_Data, New_Pos} 	= direct_1_address(pos_inc(Pos),Data,CPU_Data),
 
@@ -5502,7 +5605,11 @@ adca_direct_99(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adca_indexed_a9(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adca_indexed_a9(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adca_indexed_a9(Pos,Data,CPU_Data) -> 
 
@@ -5524,7 +5631,11 @@ adca_indexed_a9(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adca_extended_b9(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adca_extended_b9(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					  ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adca_extended_b9(Pos,Data,CPU_Data) ->
 
@@ -5546,7 +5657,11 @@ adca_extended_b9(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcb_immediate_c9(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcb_immediate_c9(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adcb_immediate_c9(Pos,Data,CPU_Data) ->
 
@@ -5568,7 +5683,11 @@ adcb_immediate_c9(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcb_direct_d9(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcb_direct_d9(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adcb_direct_d9(Pos,Data,CPU_Data) -> 
 
@@ -5590,7 +5709,11 @@ adcb_direct_d9(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcb_indexed_e9(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcb_indexed_e9(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					 ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adcb_indexed_e9(Pos,Data,CPU_Data) -> 
 
@@ -5612,7 +5735,11 @@ adcb_indexed_e9(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcb_extended_f9(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcb_extended_f9(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					  ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adcb_extended_f9(Pos,Data,CPU_Data) ->
 
@@ -5645,14 +5772,14 @@ adcb_extended_f9(Pos,Data,CPU_Data) ->
 % <br/>
 % ---- Unit-Tested ----<br/>
 -spec adc_generic_part(
-							_Pos::binary(),
-							Data::binary(),
-							New_CPU_Data::binary(),
-							Memory_Data::binary(),
-							Get_Reg_Fun::function(),
-							Set_Reg_Fun::function(),
-							New_Pos::binary()
-						)  -> {binary(),binary()}.
+							_Pos 			::position_type(),
+							Data 			::binary(),
+							New_CPU_Data 	::cpu_type(),
+							Memory_Data 	::binary(),
+							Get_Reg_Fun 	::function(),
+							Set_Reg_Fun 	::function(),
+							New_Pos 		::binary()
+						)  -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adc_generic_part(
 					_Pos,
@@ -5694,7 +5821,11 @@ adc_generic_part(
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcd_immediate_1089(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcd_immediate_1089(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						 ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adcd_immediate_1089(Pos,Data,CPU_Data) ->
 
@@ -5714,9 +5845,13 @@ adcd_immediate_1089(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcd_direct_1099(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcd_direct_1099(
+						Pos 	 	::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					  ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
-adcd_direct_1099(Pos,Data,CPU_Data) ->
+adcd_direct_1099(Pos, Data, CPU_Data) ->
 
 	{Memory_Data, New_CPU_Data, New_Pos} = direct_2_address(pos_inc2(Pos),Data,CPU_Data),
 
@@ -5734,9 +5869,13 @@ adcd_direct_1099(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcd_indexed_10a9(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcd_indexed_10a9(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
-adcd_indexed_10a9(Pos,Data,CPU_Data) ->
+adcd_indexed_10a9(Pos, Data, CPU_Data) ->
 
 	{Memory_Data, New_CPU_Data, New_Pos}  = indexed_2_address(pos_inc2(Pos),Data,CPU_Data),
 
@@ -5754,9 +5893,13 @@ adcd_indexed_10a9(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcd_extended_10b9(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcd_extended_10b9(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
-adcd_extended_10b9(Pos,Data,CPU_Data) ->
+adcd_extended_10b9(Pos, Data, CPU_Data) ->
 
 	{Memory_Data, New_CPU_Data, New_Pos}  = indexed_2_address(pos_inc2(Pos),Data,CPU_Data),
 
@@ -5816,7 +5959,11 @@ adcd_generic_part(
 % C The Carry flag is set if a carry out of the high-order bit occured; cleared otherwise.<br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adcr_immediate_1031(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adcr_immediate_1031(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adcr_immediate_1031(Pos,Data,CPU_Data) ->
 
@@ -5887,14 +6034,14 @@ adcr_immediate_1031(Pos,Data,CPU_Data) ->
 % ---- Unit-Tested ----<br/>
 %%%=======================================================================================
 -spec add_generic_part(
-							_Pos::binary(),
-							Data::binary(),
-							New_CPU_Data::binary(),
-							Memory_Data::binary(),
-							Get_Reg_Fun::function(),
-							Set_Reg_Fun::function(),
-							New_Pos::binary()
-						)  -> {binary(),binary()}.
+							_Pos 			::position_type(),
+							Data 			::binary(),
+							New_CPU_Data 	::cpu_type(),
+							Memory_Data 	::binary(),
+							Get_Reg_Fun 	::function(),
+							Set_Reg_Fun 	::function(),
+							New_Pos 		::position_type()
+						)  -> {binary(), cpu_type()}.
 %%%=======================================================================================
 add_generic_part(
 					_Pos,
@@ -5934,7 +6081,11 @@ add_generic_part(
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adda_immediate_8b(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adda_immediate_8b(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adda_immediate_8b(Pos,Data,CPU_Data) -> 
 
@@ -5956,7 +6107,11 @@ adda_immediate_8b(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addb_immediate_cb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addb_immediate_cb(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addb_immediate_cb(Pos,Data,CPU_Data) -> 
 
@@ -5978,7 +6133,11 @@ addb_immediate_cb(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adde_immediate_118b(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adde_immediate_118b(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adde_immediate_118b(Pos,Data,CPU_Data) -> 
 
@@ -6000,7 +6159,11 @@ adde_immediate_118b(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addf_immediate_11cb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addf_immediate_11cb(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addf_immediate_11cb(Pos,Data,CPU_Data) -> 
 
@@ -6022,7 +6185,11 @@ addf_immediate_11cb(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adda_direct_9b(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adda_direct_9b(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adda_direct_9b(Pos,Data,CPU_Data) -> 
 
@@ -6044,7 +6211,11 @@ adda_direct_9b(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addb_direct_db(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addb_direct_db(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addb_direct_db(Pos,Data,CPU_Data) -> 
 
@@ -6066,7 +6237,11 @@ addb_direct_db(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adde_direct_119b(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adde_direct_119b(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adde_direct_119b(Pos,Data,CPU_Data) -> 
 
@@ -6088,7 +6263,11 @@ adde_direct_119b(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addf_direct_11db(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addf_direct_11db(
+						Pos 	 	::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					 ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addf_direct_11db(Pos,Data,CPU_Data) -> 
 
@@ -6110,7 +6289,11 @@ addf_direct_11db(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adda_indexed_ab(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adda_indexed_ab(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adda_indexed_ab(Pos,Data,CPU_Data) -> 
 
@@ -6132,7 +6315,11 @@ adda_indexed_ab(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addb_indexed_eb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addb_indexed_eb(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addb_indexed_eb(Pos,Data,CPU_Data) -> 
 
@@ -6154,7 +6341,11 @@ addb_indexed_eb(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adde_indexed_11ab(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adde_indexed_11ab(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adde_indexed_11ab(Pos,Data,CPU_Data) -> 
 
@@ -6176,7 +6367,11 @@ adde_indexed_11ab(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addf_indexed_11eb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addf_indexed_11eb(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addf_indexed_11eb(Pos,Data,CPU_Data) -> 
 
@@ -6198,7 +6393,11 @@ addf_indexed_11eb(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adda_extended_bb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adda_extended_bb(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adda_extended_bb(Pos,Data,CPU_Data) -> 
 
@@ -6220,7 +6419,11 @@ adda_extended_bb(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addb_extended_fb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addb_extended_fb(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					  ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addb_extended_fb(Pos,Data,CPU_Data) -> 
 
@@ -6242,7 +6445,11 @@ addb_extended_fb(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec adde_extended_11bb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec adde_extended_11bb(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 adde_extended_11bb(Pos,Data,CPU_Data) -> 
 	
@@ -6264,7 +6471,11 @@ adde_extended_11bb(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addf_extended_11fb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addf_extended_11fb(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addf_extended_11fb(Pos,Data,CPU_Data) -> 
 
@@ -6286,7 +6497,11 @@ addf_extended_11fb(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addd_immediate_c3(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addd_immediate_c3(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addd_immediate_c3(Pos,Data,CPU_Data) -> 
 
@@ -6308,7 +6523,11 @@ addd_immediate_c3(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addw_immediate_108b(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addw_immediate_108b(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addw_immediate_108b(Pos,Data,CPU_Data) -> 
 
@@ -6330,7 +6549,11 @@ addw_immediate_108b(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addd_direct_d3(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addd_direct_d3(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addd_direct_d3(Pos,Data,CPU_Data) -> 
 	
@@ -6352,7 +6575,11 @@ addd_direct_d3(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addw_direct_109b(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addw_direct_109b(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					  ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addw_direct_109b(Pos,Data,CPU_Data) -> 
 
@@ -6374,7 +6601,11 @@ addw_direct_109b(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addd_indexed_e3(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addd_indexed_e3(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addd_indexed_e3(Pos,Data,CPU_Data) -> 
 
@@ -6396,7 +6627,11 @@ addd_indexed_e3(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addw_indexed_10ab(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addw_indexed_10ab(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addw_indexed_10ab(Pos,Data,CPU_Data) -> 
 
@@ -6418,7 +6653,11 @@ addw_indexed_10ab(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addd_extended_f3(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addd_extended_f3(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					 ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addd_extended_f3(Pos,Data,CPU_Data) -> 
 
@@ -6440,7 +6679,11 @@ addd_extended_f3(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addw_extended_10bb(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addw_extended_10bb(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addw_extended_10bb(Pos,Data,CPU_Data) -> 
 
@@ -6471,7 +6714,11 @@ addw_extended_10bb(Pos,Data,CPU_Data) ->
 % C The Carry flag is set if a carry out of the high-order bit occured; cleared otherwise.<br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec addr_immediate_1030(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec addr_immediate_1030(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 addr_immediate_1030(Pos,Data,CPU_Data) ->
 
@@ -6505,7 +6752,11 @@ addr_immediate_1030(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec aim_direct_02(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec aim_direct_02(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 aim_direct_02(Pos,Data,CPU_Data) -> 
 	
@@ -6531,9 +6782,13 @@ aim_direct_02(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec aim_indexed_62(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec aim_indexed_62(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
-aim_indexed_62(Pos,Data,CPU_Data) -> 
+aim_indexed_62(Pos, Data, CPU_Data) -> 
 
 	{Memory_Data, New_CPU_Data, New_Pos} 	= indexed_1_address(pos_inc(Pos),Data,CPU_Data),
 
@@ -6557,7 +6812,11 @@ aim_indexed_62(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec aim_extended_72(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec aim_extended_72(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					 ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 aim_extended_72(Pos,Data,CPU_Data) -> 
 
@@ -6595,14 +6854,14 @@ aim_extended_72(Pos,Data,CPU_Data) ->
 % <br/>
 % ---- Unit-Tested ----<br/>
 -spec aim_generic_part(
-						_Pos::binary(),
-						Data::binary(),
-						New_CPU_Data::binary(),
-						Memory_Data::binary(),
-						Immediate_Byte::binary(),
-						Designated_Memory_Location::binary(),
-						New_Pos::binary()
-					 ) -> { binary(), binary() }.
+						_Pos 						::position_type(),
+						Data 						::binary(),
+						New_CPU_Data 				::cpu_type(),
+						Memory_Data 				::binary(),
+						Immediate_Byte 				::binary(),
+						Designated_Memory_Location 	::binary(),
+						New_Pos 					::position_type()
+					 ) -> { binary(), cpu_type() }.
 %%%=======================================================================================
 aim_generic_part(
 					_Pos,
@@ -6652,14 +6911,14 @@ aim_generic_part(
 % <br/>
 % ---- Unit-Tested ----<br/>
 -spec and_generic_part(
-						_Pos::binary(),
-						Data::binary(),
-						New_CPU_Data::binary(),
-						Memory_Data::binary(),
-						Get_Reg_Fun::function(),
-						Set_Reg_Fun::function(),
-						New_Pos::binary()
-					  ) -> {binary(),binary()}.
+						_Pos 			::position_type(),
+						Data 			::binary(),
+						New_CPU_Data 	::cpu_type(),
+						Memory_Data 	::binary(),
+						Get_Reg_Fun 	::function(),
+						Set_Reg_Fun 	::function(),
+						New_Pos 		::position_type()
+					  ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 and_generic_part(
 					_Pos,
@@ -6695,7 +6954,11 @@ and_generic_part(
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec anda_immediate_84(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec anda_immediate_84(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 anda_immediate_84(Pos,Data,CPU_Data) ->
 
@@ -6717,7 +6980,11 @@ anda_immediate_84(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andb_immediate_c4(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andb_immediate_c4(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andb_immediate_c4(Pos,Data,CPU_Data) -> 
 
@@ -6739,7 +7006,11 @@ andb_immediate_c4(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec anda_direct_94(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec anda_direct_94(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 anda_direct_94(Pos,Data,CPU_Data) -> 
 
@@ -6761,7 +7032,11 @@ anda_direct_94(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andb_direct_d4(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andb_direct_d4(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andb_direct_d4(Pos,Data,CPU_Data) -> 
 
@@ -6783,7 +7058,11 @@ andb_direct_d4(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec anda_indexed_a4(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec anda_indexed_a4(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 anda_indexed_a4(Pos,Data,CPU_Data) -> 
 
@@ -6805,7 +7084,11 @@ anda_indexed_a4(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andb_indexed_e4(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andb_indexed_e4(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andb_indexed_e4(Pos,Data,CPU_Data) -> 
 
@@ -6827,7 +7110,11 @@ andb_indexed_e4(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec anda_extended_b4(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec anda_extended_b4(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					 ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 anda_extended_b4(Pos,Data,CPU_Data) -> 
 
@@ -6849,7 +7136,11 @@ anda_extended_b4(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andb_extended_f4(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andb_extended_f4(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					  ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andb_extended_f4(Pos,Data,CPU_Data) -> 
 
@@ -6885,7 +7176,11 @@ andb_extended_f4(Pos,Data,CPU_Data) ->
 % |E|F|H|I|N|Z|V|C| <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andcc_immediate_1c(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andcc_immediate_1c(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andcc_immediate_1c(Pos,Data,CPU_Data) ->
 
@@ -6922,12 +7217,12 @@ andcc_immediate_1c(Pos,Data,CPU_Data) ->
 % <br/>
 % ---- Unit-Tested ----<br/>
 -spec andd_generic_part(
-							_Pos::binary(),
-							Data::binary(),
-							New_CPU_Data::binary(),
-							Memory_Data::binary(),
-							New_Pos::binary()
-						) -> {binary(),binary()}.
+							_Pos 			::position_type(),
+							Data 			::binary(),
+							New_CPU_Data 	::cpu_type(),
+							Memory_Data 	::binary(),
+							New_Pos 		::position_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andd_generic_part(
 					_Pos,
@@ -6961,7 +7256,11 @@ andd_generic_part(
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andd_immediate_1084(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andd_immediate_1084(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						 ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andd_immediate_1084(Pos,Data,CPU_Data) -> 
 
@@ -6981,7 +7280,11 @@ andd_immediate_1084(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andd_direct_1094(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andd_direct_1094(
+						Pos 		::position_type(),
+						Data 		::binary(),
+						CPU_Data 	::cpu_type()
+					 ) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andd_direct_1094(Pos,Data,CPU_Data) -> 
 
@@ -7001,7 +7304,11 @@ andd_direct_1094(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andd_indexed_10a4(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andd_indexed_10a4(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), binary()}.
 %%%=======================================================================================
 andd_indexed_10a4(Pos,Data,CPU_Data) -> 
 
@@ -7021,7 +7328,11 @@ andd_indexed_10a4(Pos,Data,CPU_Data) ->
 % See Generic Part for details <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andd_extended_10b4(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andd_extended_10b4(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andd_extended_10b4(Pos,Data,CPU_Data) -> 
 
@@ -7049,7 +7360,11 @@ andd_extended_10b4(Pos,Data,CPU_Data) ->
 % C The Carry flag is not affected by this instruction. <br/>
 % <br/>
 % ---- Unit-Tested ----<br/>
--spec andr_immediate_1034(Pos::binary(),Data::binary(),CPU_Data::binary()) -> {binary(),binary()}.
+-spec andr_immediate_1034(
+							Pos 		::position_type(),
+							Data 		::binary(),
+							CPU_Data 	::cpu_type()
+						) -> {binary(), cpu_type()}.
 %%%=======================================================================================
 andr_immediate_1034(Pos,Data,CPU_Data) ->
 
@@ -8424,7 +8739,7 @@ clrw_inherent_105f(Pos,Data,CPU_Data) ->
 										CPU_Data
 									 ),
 
-	{Data,Final_CPU}.
+	{Data, Final_CPU}.
 
 %%----Unit_Tested-------------------------------------------------------------------------
 clr_generic_part(
@@ -9050,7 +9365,7 @@ cmpw_extended_00b1(Pos,Data,CPU_Data) ->
 					).
 
 %%-----------------------------------------------------------------------------
-cmpx_extended_bc(Pos,Data,CPU_Data) -> 
+cmpx_extended_bc(Pos, Data, CPU_Data) -> 
 
 	{Memory_Data, New_CPU_Data, New_Pos} = indexed_2_address(pos_inc(Pos),Data,CPU_Data),
 
@@ -9064,7 +9379,7 @@ cmpx_extended_bc(Pos,Data,CPU_Data) ->
 					).
 
 %%-----------------------------------------------------------------------------
-cmpy_extended_00bc(Pos,Data,CPU_Data) -> 
+cmpy_extended_00bc(Pos, Data, CPU_Data) -> 
 
 	{Memory_Data, New_CPU_Data, New_Pos} = indexed_2_address(pos_inc2(Pos),Data,CPU_Data),
 
@@ -9078,7 +9393,7 @@ cmpy_extended_00bc(Pos,Data,CPU_Data) ->
 					).
 
 %%----Unit_Tested-------------------------------------------------------------------------
-cmpr_immediate_1037(Pos,Data,CPU_Data) ->
+cmpr_immediate_1037(Pos, Data, CPU_Data) ->
 
 	{Memory_Data, New_CPU_Data, New_Pos} 	= immediate_1_address(pos_inc2(Pos),Data,CPU_Data),
 
@@ -9131,20 +9446,92 @@ com_generic_part(
 
 	{Data, Final_CPU}.
 
-%%-----------------------------------------------------------------------------
-coma_inherent_43(Pos,Data,CPU_Data) -> ok.
+%%----Unit_Tested--------------------------------------------------------------
+coma_inherent_43(Pos, Data, CPU_Data) -> 
+
+	com_generic_part(
+						Pos,
+						Data,
+						CPU_Data,
+						fun cpu_get_a/1,
+						fun cpu_set_a/2,
+						pos_inc(Pos)
+					).
+
+%%----Unit_Tested--------------------------------------------------------------
+comb_inherent_53(Pos, Data, CPU_Data) -> 
+
+	com_generic_part(
+						Pos,
+						Data,
+						CPU_Data,
+						fun cpu_get_b/1,
+						fun cpu_set_b/2,
+						pos_inc(Pos)
+					).
+
+%%----Unit_Tested--------------------------------------------------------------
+comd_inherent_1043(Pos, Data, CPU_Data) ->
+	
+	com_generic_part(
+						Pos,
+						Data,
+						CPU_Data,
+						fun cpu_get_d/1,
+						fun cpu_set_d/2,
+						pos_inc2(Pos)
+					).
+
+%%----Unit_Tested--------------------------------------------------------------
+come_inherent_1143(Pos, Data, CPU_Data) -> 
+	
+	com_generic_part(
+						Pos,
+						Data,
+						CPU_Data,
+						fun cpu_get_e/1,
+						fun cpu_set_e/2,
+						pos_inc2(Pos)
+					).
+
+%%----Unit_Tested--------------------------------------------------------------
+comf_inherent_1153(Pos, Data, CPU_Data) -> 
+
+	com_generic_part(
+						Pos,
+						Data,
+						CPU_Data,
+						fun cpu_get_f/1,
+						fun cpu_set_f/2,
+						pos_inc2(Pos)
+					).
 
 %%-----------------------------------------------------------------------------
-comb_inherent_53(Pos,Data,CPU_Data) -> ok.
+comw_inherent_1053(Pos, Data, CPU_Data) -> 
+
+	com_generic_part(
+						Pos,
+						Data,
+						CPU_Data,
+						fun cpu_get_w/1,
+						fun cpu_set_w/2,
+						pos_inc2(Pos)
+					).
 
 %%-----------------------------------------------------------------------------
-comd_inherent_1043(Pos,Data,CPU_Data) -> ok.
+com_memory_direct_03(PC, Data, CPU_Data) -> ok.
+
+	% Pos 	= pos_inc(PC),
+	% direct_1_address(Pos, Data, CPU_Data),
+
+	% ram_64k:set_byte_pos(
+	% 						Data,
+	% 						Result,
+	% 						Designated_Memory_Location
+	% 					  )
 
 %%-----------------------------------------------------------------------------
-come_inherent_1143(Pos,Data,CPU_Data) -> ok.
-
+com_memory_indexed_63(PC, Data, CPU_Data) -> ok.
 %%-----------------------------------------------------------------------------
-comf_inherent_1153(Pos,Data,CPU_Data) -> ok.
+com_memory_extended_73(PC, Data, CPU_Data) -> ok.
 
-%%-----------------------------------------------------------------------------
-comw_inherent_1053(Pos,Data,CPU_Data) -> ok.

@@ -134,10 +134,13 @@ terminate(Reason,_) ->
 	ok.
 
 %%%----------------------------------------------------------------------------
+-spec set_byte_pos(Data::binary(), Byte::<<_:8>>, Position::<<_:16>>) -> binary().
+%%-----------------------------------------------------------------------------
 set_byte_pos(<<>>,Byte,_Pos) ->
 
 	Byte;
 
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_byte_pos(Data,Byte,<<0:16>>) ->
 
 	Length_Of_Data = byte_size(Data),
@@ -149,6 +152,7 @@ set_byte_pos(Data,Byte,<<0:16>>) ->
 				<<Byte/binary,Rest/binary>>
 		end;
 
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_byte_pos(Data,Byte,<<Pos:16>>) when Pos =:= (byte_size(Data) - 1) ->
 
 	Length_Of_Data 	= byte_size(Data),
@@ -164,6 +168,7 @@ set_byte_pos(Data,Byte,<<Pos:16>>) when Pos =:= (byte_size(Data) - 1) ->
 				<<Rest/binary,Byte/binary>>
 	    end;
 
+%%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 set_byte_pos(Data,Byte,Position) ->
 
 	<<Pos:16>> 		= Position,

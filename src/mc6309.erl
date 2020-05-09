@@ -1499,7 +1499,7 @@ direct_1_address(Pos, Data, CPU_Data) ->
 
 	DP 				= cpu_get_dp(CPU_Data),
 	Higher 			= DP,
-	Lower  			= get_byte_pos(Data,Pos),
+	Lower  			= get_byte_pos(Data, Pos),
 	Address  		= <<Higher/bits, Lower/bits>>,
 
 	{get_byte_pos(Data, Address), CPU_Data, pos_inc(Pos)}.
@@ -9519,16 +9519,34 @@ comw_inherent_1053(Pos, Data, CPU_Data) ->
 					).
 
 %%-----------------------------------------------------------------------------
-com_memory_direct_03(PC, Data, CPU_Data) -> ok.
+com_memory_direct_03(PC, Data, CPU_Data) -> 
 
-	% Pos 	= pos_inc(PC),
-	% direct_1_address(Pos, Data, CPU_Data),
+	Pos 		= pos_inc(PC),
 
-	% ram_64k:set_byte_pos(
-	% 						Data,
-	% 						Result,
-	% 						Designated_Memory_Location
-	% 					  )
+	{Address, _CPU_Data, New_Pos} 	= direct_1_address_address_only(Pos, Data, CPU_Data),
+
+	Byte 		= get_byte_pos(Data, Address),
+
+	New_Byte 	= binary_logic:complement_binary(Byte),
+
+	New_Data 	= ram_64k:set_byte_pos(
+										Data,
+										New_Byte,
+										Address
+									  ),
+
+	Flags 		= generate_n_z_flags_map(New_Byte),
+
+	Final_CPU 	= cpu_perform_actions(
+									 	[
+									 		?UPDATE_FLAGS(Flags),
+									 		?SET_CC_C(<<1:?SIZE_CC_C>>), % always set
+									 		?SET_CC_V(<<0:?SIZE_CC_V>>), % always cleared
+									 		?SET_PC(pos_inc(Pos))
+									 	],
+									 	CPU_Data
+									 ),
+	{New_Data, Final_CPU}.
 
 %%-----------------------------------------------------------------------------
 com_memory_indexed_63(PC, Data, CPU_Data) -> ok.

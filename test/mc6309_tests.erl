@@ -13287,3 +13287,28 @@ comw_inherent_1053_2_test() ->
 												  )
 					},
 	tester(Expected, mc6309:comw_inherent_1053(Pos, Data, CPU_Data), ?PRINT).
+
+%%=============================================================================
+% com_memory_direct_03(PC, Data, CPU_Data)
+%%=============================================================================
+com_memory_direct_03_1_test() ->
+
+	PC 			= <<0:?SIZE_ADDRESS>>,
+	Data 		= <<0,4,1,1,0>>,
+	CPU_Data 	= mc6309:cpu_perform_actions(
+												[
+												]
+											),
+	Expected 	= {
+						<<0,4,1,1,255>>,
+						mc6309:cpu_perform_actions(
+													[
+														?SET_PC(<<2:?SIZE_PC>>),
+														?SET_CC_N(<<1:?SIZE_CC_N>>),
+														?SET_CC_Z(<<0:?SIZE_CC_Z>>),
+														?SET_CC_V(<<0:?SIZE_CC_V>>),
+														?SET_CC_C(<<1:?SIZE_CC_C>>)
+													]
+												  )
+					},
+	tester(Expected, mc6309:com_memory_direct_03(PC, Data, CPU_Data), ?PRINT).
